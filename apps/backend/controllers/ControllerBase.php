@@ -7,9 +7,9 @@ class ControllerBase extends Controller {
 
     // Common Innit for all Controller
     public function initialize() {
-        $this->tag->setTitle("{$ControllerName} management");
         $ControllerName = $this->router->getControllerName();
         $ActionName     = $this->router->getActionName();
+        $this->tag->setTitle("{$ControllerName} management");
         $this->view->setVars(array(
             "ControllerName"    => $ControllerName,
             "ActionName"        => $ActionName,
