@@ -1,0 +1,166 @@
+<!-- apps/views/product/edit.phtml-->
+<?php
+use Multipile\Backend\Models\Category as Cate;
+use Multipile\Backend\Models\Brand as Brand;
+?>
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="{{base_url}}/cpanel/">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="{{base_url}}/cpanel/{{ControllerName}}">Product manager</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            {{id > 0 ?"Edit": "Add new" }} Product
+        </li>
+    </ul>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+<h3 class="page-title"> Users
+    <small>{{  id > 0 ? "Edit" : "Add new" }} Product </small>
+</h3>
+<!-- END PAGE TITLE-->
+<!-- END PAGE HEADER-->
+<div>
+    <!-- BEGIN VALIDATION STATES-->
+    <div class="portlet light bordered" >
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form action="/cpanel/{{ControllerName}}/{{ActionName}}{{id >0 ? '/'~id :""}}" class="form-horizontal" method="post" >
+                {{ hidden_field("product_id", "value": id) }}
+                <div class="form-body">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Name
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-10">
+                            {{ text_field("name","class":"form-control","data-required":"1" , "value" : not detail is empty  ? detail.name :'') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Category</label>
+                        <div class="col-md-4">
+                            <?php
+                            // Creating a Select Tag with an empty option
+                            echo $this->tag->select(
+                                array(
+                                    'cate_id',
+                                    Cate::find(),
+                                    'using'         => array('cate_id', 'name'),
+                                    'useEmpty'      => true,
+                                    'emptyText'     => 'Please, choose one...',
+                                    'emptyValue'    => '',
+                                    'class'         => 'form-control',
+                                    'value'         => !empty($detail) ? $detail->cate_id : '',
+                                ));
+                            ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Description
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-10">
+                            {{ text_area("description", "This is the Description","class" :"form-control", "rows": 8,
+                            "value": not detail is empty ? detail.description : "" ) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Role</label>
+                        <div class="col-md-10">
+                            <?php
+                                // Creating a Select Tag with an empty option
+                                echo $this->tag->select(
+                                        array(
+                                            'role',
+                                            array(
+                                                '1' => 'Admin',
+                                                '0' => 'User'
+                                            ),
+                                            'class'         => 'form-control',
+                                            'value'         => !empty($user) ? $user->role : '',
+                                        )
+                                    );
+                            ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Status</label>
+                        <div class="col-md-10">
+                            <?php
+                                // Creating a Select Tag with an empty option
+                                echo $this->tag->selectStatic(
+                                        array(
+                                            'status',
+                                            array(
+                                                '1' => 'Active',
+                                                '0' => 'Inactive'
+                                            ),
+                                            'class'         => 'form-control',
+                                            'value'         => !empty($user) ? $user->status : '',
+                                        )
+                                    );
+                            ?>
+                        </div>
+                    </div>
+
+                    <!-- multiupload Imgage -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="/cpanel/{{ControllerName}}/uploadavatar" class="dropzone dropzone-file-area" id="my-dropzone" style="width: 500px; margin-top: 50px;">
+                                <h3 class="sbold">Drop files here or click to upload</h3>
+                                <p> This is just a demo dropzone. Selected files are not actually uploaded. </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn green">Save</button>
+                            <button type="button" class="btn default">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+    </div>
+    <!-- END VALIDATION STATES-->
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        Dropzone.autoDiscover = false;
+        $('div#uploadAvatar').dropzone({
+            url:'/cpanel/{{ControllerName}}/uploadavatar',
+            paramName: 'favatar',
+            maxFileSize: 2,
+            maxFiles: 1,
+            init: function() {
+                this.on("maxfilesexceeded", function(file){
+                    toastr.error("Cannot upload more than 1 file!");
+                });
+                this.on("addedfile", function(file) {
+                    var removeButton = Dropzone.createElement("<button class='btn btn-default btn-sm'><i class='fa fa-times'></i></button>");
+                    var _this = this;
+                    removeButton.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        _this.removeFile(file);
+                    });
+                    file.previewElement.appendChild(removeButton);
+                });
+                this.on("success", function(file, response) {
+                    var path = response.jsondata.favatar.path
+                    $("#uploadAvatarInput").val(path.replace("/public", ""));
+                    toastr.success("File upload OK!");
+                });
+            },
+        });
+    });
+</script>

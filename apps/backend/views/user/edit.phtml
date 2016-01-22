@@ -1,0 +1,151 @@
+<!-- apps/views/user/edit.phtml-->
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="{{base_url}}/cpanel/">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="{{base_url}}/cpanel/{{ControllerName}}">User manager</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            {{user_id > 0 ?"Edit": "Add new" }} User
+        </li>
+    </ul>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+<h3 class="page-title"> Users
+    <small>{{user_id > 0 ? "Edit" : "Add new" }} User</small>
+</h3>
+<!-- END PAGE TITLE-->
+<!-- END PAGE HEADER-->
+<div>
+    <!-- BEGIN VALIDATION STATES-->
+    <div class="portlet light bordered" >
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form action="/cpanel/{{ControllerName}}/{{ActionName}}/{{user_id >0 ? user_id :""}}" class="form-horizontal" method="post" >
+                {{ hidden_field("user_id", "value": user_id) }}
+                <div class="form-body">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">User name
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-4">
+                            {{ text_field("user_name","class":"form-control","data-required":"1" , "value" : not user is empty  ? user.user_name :'') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Email
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-4">
+                            {{ text_field("email","class":"form-control","autocomplete":"off" , "value" : not user is empty  ? user.email :'') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Role</label>
+                        <div class="col-md-4">
+                            <?php
+                                // Creating a Select Tag with an empty option
+                                echo $this->tag->selectStatic(
+                                        array(
+                                            'role',
+                                            array(
+                                                '1' => 'Admin',
+                                                '0' => 'User'
+                                            ),
+                                            'class'         => 'form-control',
+                                            'value'         => !empty($user) ? $user->role : '',
+                                        )
+                                    );
+                            ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Status</label>
+                        <div class="col-md-4">
+                            <?php
+                                // Creating a Select Tag with an empty option
+                                echo $this->tag->selectStatic(
+                                        array(
+                                            'status',
+                                            array(
+                                                '1' => 'Active',
+                                                '0' => 'Inactive'
+                                            ),
+                                            'class'         => 'form-control',
+                                            'value'         => !empty($user) ? $user->status : '',
+                                        )
+                                    );
+                            ?>
+                        </div>
+                    </div>
+                    {% if(user_id ==0 ) %}
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Password
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-4">
+                            {{ text_field("password","class":"form-control  placeholder-no-fix","autocomplete":"off" , "placeholder" :'Password') }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Confirm password
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-4">
+                            {{ text_field("rpassword","class":"form-control  placeholder-no-fix","autocomplete":"off" , "placeholder" :'Re-type Your Password') }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn green">Save</button>
+                            <button type="button" class="btn default">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+    </div>
+    <!-- END VALIDATION STATES-->
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        Dropzone.autoDiscover = false;
+        $('div#uploadAvatar').dropzone({
+            url:'/cpanel/{{ControllerName}}/uploadavatar',
+            paramName: 'favatar',
+            maxFileSize: 2,
+            maxFiles: 1,
+            init: function() {
+                this.on("maxfilesexceeded", function(file){
+                    toastr.error("Cannot upload more than 1 file!");
+                });
+                this.on("addedfile", function(file) {
+                    var removeButton = Dropzone.createElement("<button class='btn btn-default btn-sm'><i class='fa fa-times'></i></button>");
+                    var _this = this;
+                    removeButton.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        _this.removeFile(file);
+                    });
+                    file.previewElement.appendChild(removeButton);
+                });
+                this.on("success", function(file, response) {
+                    var path = response.jsondata.favatar.path
+                    $("#uploadAvatarInput").val(path.replace("/public", ""));
+                    toastr.success("File upload OK!");
+                });
+            },
+        });
+    });
+</script>

@@ -1,0 +1,260 @@
+<!-- apps/views/user/index.phtml-->
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a href="{{base_url}}/cpanel/">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            List User
+        </li>
+    </ul>
+</div>
+<!-- END PAGE BAR -->
+<!-- BEGIN PAGE TITLE-->
+<h3 class="page-title"> Users
+    <small>List User & management</small>
+</h3>
+<!-- END PAGE TITLE-->
+<!-- END PAGE HEADER-->
+<div class="light bordered">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-social-dribbble font-blue-sharp"></i>
+                <span class="caption-subject font-blue-sharp bold uppercase">Input parameter search </span>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <form class="form-horizontal" role="form" action="/cpanel/{{ControllerName}}/{{ActionName}}" method="get" enctype="multipart/form-data">
+                {{ hidden_field("page","id" :"page", "value":  obj["page"]) }}
+                {{ hidden_field("page_size","id" :"page_size",  "value":  obj["page_size"]) }}
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">User name</label>
+                                <div class="col-md-9">
+                                    {{ text_field("user_name","class":"form-control", "value" : obj["user_name"] ) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">email </label>
+                                <div class="col-md-9">
+                                     {{ text_field("email","class":"form-control", "value" : obj["email"] ) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Role</label>
+                                <div class="col-md-9">
+                                     <?php
+                                        // Creating a Select Tag with an empty option
+                                        echo $this->tag->selectStatic(
+                                                                array(
+                                                                    'role',
+                                                                    array(
+                                                                        '1'     => 'Admin',
+                                                                        '0'    => 'User',
+                                                                    ),
+                                                                    'useEmpty'      => true,
+                                                                    'emptyText'     => '-- All --',
+                                                                    'emptyValue'    => '-1',
+                                                                    'class'         => 'form-control',
+                                                                    'value'         => $obj['role'],
+                                                                )
+                                                            );
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">create date</label>
+                                <div class="col-md-9">
+
+                                    <div class="input-group input-large date-picker input-daterange" data-date="10/11/2010" data-date-format="mm/dd/yyyy">
+                                        {{ text_field("create_date_from","class":"form-control", "value" : obj["create_date_from"]) }}
+                                        <span class="input-group-addon"> to </span>
+                                        {{ text_field("create_date_to","class":"form-control", "value" : obj["create_date_to"]) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Status</label>
+                                <div class="input-group col-md-9">
+                                    <div class="icheck-inline">
+                                        <label>
+                                            <input value="-1" type="radio" name="status" class="icheck" <?php echo $obj[ 'status'] == - 1 ? "checked" : "" ?>> All </label>
+                                        <label>
+                                            <input value="1" type="radio" name="status" class="icheck" <?php echo $obj[ 'status'] == 1 ? "checked" : "" ?>></input> Active </label>
+                                        <label>
+                                            <input value="0" type="radio" name="status" class="icheck" <?php echo $obj[ 'status'] == 0 ? "checked" : "" ?>> InActive </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions right">
+                    <button class="btn green" type="submit">Search</button>
+                    <button class="btn default" type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- BEGIN SAMPLE TABLE PORTLET-->
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <div class="dataTables_length" id="sample_editable_1_length">
+            <label>
+                 <?php
+                    // Creating a Select Tag with an empty option
+                    echo $this->tag->selectStatic(
+                                            array(
+                                                'select-page_size',
+                                                array(
+                                                    '5'     => '5',
+                                                    '10'    => '10',
+                                                    '20'    => '20',
+                                                    '50'    => '50',
+                                                    '100'   => '100',
+                                                ),
+                                                'id'        => "select-page_size",
+                                                'class'     => 'form-control input-sm input-xsmall input-inline',
+                                                'value'     => $obj['page_size'],
+                                            )
+                                        );
+                ?> records
+            </label>
+        </div>
+    </div>
+</div>
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>List User Tables </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"> </a>
+            <a href="javascript:;" class="reload"> </a>
+        </div>
+    </div>
+    <div class="portlet-body flip-scroll">
+        <div class="portlet-body flip-scroll dataTables_wrapper no-footer ">
+            <div class="table-scrollable">
+                <table id="tbl_user_list_ajax" class="table table-striped table-hover table-bordered dataTable no-footer">
+                    <thead class="flip-content">
+                        <tr>
+                            <th width="30px"> NO </th>
+                            <th width="15%"> UserName </th>
+                            <th class="numeric"> email </th>
+                            <th class="numeric"> role </th>
+                            <th class="numeric"> status </th>
+                            <th class="numeric"> create date </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i =0;?>
+                            {% for r in users.items %}
+                            <?php $i++ ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $obj["page_size"] * ($users->current - 1) + $i; ?>
+                                    </td>
+                                    <td>
+                                        <a href="{{base_url}}/cpanel/{{ControllerName}}/edit/{{r.user_id}}">
+                                            {{ r.user_name}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{base_url}}/cpanel/{{ControllerName}}/edit/{{r.user_id}}">
+                                            {{ r.email}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <i data-toggle="dropdown" title="{{r.role == 1 ?"Admin" : "User"}}">
+                                                {{ r.role == 1 ?
+                                                "<span class='label label-sm label-success'> Admin </span>" :
+                                                "<span class='label label-sm label-warning'> User </span>" }}
+                                            </i>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="javascript:;" onclick="Change({{r.role == 0 ? 1 : 0 }},{{r.user_id}},'role',$(this));">
+                                                        {{ r.role == 0 ?
+                                                        "<span class='label label-sm label-success'> Admin </span>" :
+                                                        "<span class='label label-sm label-warning'> User </span>" }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <i data-toggle="dropdown" title="{{r.status == 1 ? "Activce" : "Inactive"}}">
+                                                {{ r.status == 1 ?
+                                                "<span class='label label-sm label-success'> Activce </span>" :
+                                                "<span class='label label-sm label-warning'> Inactive </span>" }}
+                                            </i>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="javascript:;" onclick="Change({{r.status == 0 ? 1 : 0 }},{{r.user_id}},'status', $(this));">
+                                                        {{ r.status == 0 ?
+                                                        "<span class='label label-sm label-success'> Activce </span>" :
+                                                        "<span class='label label-sm label-warning'> Inactive </span>" }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="date">{{ date("Y-m-d H:i", time(r.create_date)) }}</td>
+
+                                </tr>
+                                {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- PAGING HERE -->
+            {{ partial('Paging', [ 'start' : users.total_items > 0 ? obj["page_size"] * (users.current - 1) +1 : 0,
+                                    'end' : obj["page_size"] > -1 ?
+                                            (users.total_items < (users.current * obj[ "page_size"])?
+                                                                               users.total_items : users.current * obj[ "page_size"])
+                                                                : users.total_items,
+                                    'total_records' : users.total_items,
+                                    'total_pages' : users.total_pages,
+                                    'current' : users.current ]) }}
+            <!-- END PAGING -->
+        </div>
+    </div>
+    <!-- END SAMPLE TABLE PORTLET-->
+    <script type="text/javascript">
+        function Change(_value, _id, _type, _obj) {
+            $.ajax({
+                type: "POST",
+                url: "/cpanel/{{ControllerName}}/changeUser",
+                dataType: 'json',
+                data: {
+                    value: _value,
+                    id: _id,
+                    type: _type
+                },
+                success: function(response) {
+                    if (response) {
+                        if (response.result * 1 == 1) {
+                            $(".form-actions >button[type='submit']").click();
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        };
+
+    </script>

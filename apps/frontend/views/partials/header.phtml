@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="span12" >
+            <div class="row">
+                <div class="span6" >
+                    <br>
+                    <div class="logo pull-left">
+                        <a href="/" class="logo_h logo_h__img"><img src="/frontend/images/logo.png" alt="TV Channel" title="The best movies and videos"></a>
+                        <p class="logo_tagline">The best movies and videos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="block_2">
+                <div class="row">
+                    <div class="span12" >
+                        <nav class="nav nav__primary clearfix">
+                            {%- macro print_menu_level(menu_level_items) %}
+                                {%- for menu_item in menu_level_items %}
+                                    {% if loop.first %}
+                                        <ul id="topnav" class="sf-menu sf-js-enabled">
+                                    {% endif %}
+                                    <li id="menu-item-{{ menu_item.menu_id }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+                                        <a href="{{ menu_item.seo_url }}">{{ menu_item.name }}</a>
+                                        {% set next_menu_level_items = menu_item.getChilds() %}
+                                        {% if next_menu_level_items %}
+                                            {{ print_menu_level(next_menu_level_items) }}
+                                        {% endif %}
+                                    </li>
+                                    {% if loop.last %}
+                                        </ul>
+                                    {% endif %}
+                                {%- endfor %}
+                            {%- endmacro %}
+                            {{ print_menu_level(root_menu_items) }}                                                       
+                        </nav>
+                        <div class="pseudoStickyBlock" style="position: relative; display: block;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

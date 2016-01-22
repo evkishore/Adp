@@ -1,0 +1,90 @@
+<!-- BEGIN SIDEBAR -->
+<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+<div class="page-sidebar navbar-collapse collapse">
+    <!-- BEGIN SIDEBAR MENU -->
+    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+        <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+        <li class="sidebar-toggler-wrapper hide">
+            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            <div class="sidebar-toggler"> </div>
+            <!-- END SIDEBAR TOGGLER BUTTON -->
+        </li>
+        <li class="heading">
+            <h3 class="uppercase">MANAGERMENT</h3>
+        </li>
+        <li class="nav-item {{ControllerName == "user" or (ControllerName =="index" and ActionName == "contact")  ? "active open ":""}}">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-user"></i>
+                <span class="title">User manager</span>
+                <span class="arrow  {{ControllerName == "user" ? "open ":""}}"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item {{ActionName == "" ? "active open":""}}">
+                    <a href="/cpanel/user/" class="nav-link ">
+                        <span class="title">List user</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ActionName == "edit" ? "active open":""}}">
+                    <a href="/cpanel/user/edit" class="nav-link ">
+                        <span class="title">Add new </span>
+                    </a>
+                </li>
+                  <li class="nav-item {{ActionName == "contact" ? "active open":""}}">
+                    <a href="/cpanel/contact/" class="nav-link ">
+                        <span class="title">Contact info</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item {{ControllerName == "category" ? "active open ":""}}">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-puzzle"></i>
+                <span class="title">Category manager</span>
+                <span class="arrow {{ControllerName == "category" ? "open ":""}}"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item {{ActionName == "" ? "active open":""}}">
+                    <a href="/cpanel/category/" class="nav-link ">
+                        <span class="title">List menu</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ActionName == "edit" ? "active open":""}}">
+                    <a href="/cpanel/category/edit" class="nav-link ">
+                        <span class="title">Add new category</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item {{ControllerName == "brand" ? "active open ":""}}">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-social-dribbble"></i>
+                <span class="title">Brand manager</span>
+                <span class="arrow  {{ControllerName == "brand" ? "open ":""}}"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item  {{ActionName == "" ? "active open":""}}">
+                    <a href="/cpanel/brand/" class="nav-link ">
+                        <span class="title">List Brand</span>
+                    </a>
+                </li>
+                <li class="nav-item  {{ActionName == "edit" ? "active open":""}}">
+                    <a href="/cpanel/brand/edit" class="nav-link ">
+                        <span class="title">Add new brand </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- END SIDEBAR MENU -->
+    <!-- END SIDEBAR MENU -->
+</div>
+<!-- END SIDEBAR -->
