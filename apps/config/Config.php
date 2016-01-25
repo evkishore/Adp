@@ -13,7 +13,7 @@ return new \Phalcon\Config( array(
         'fullUri'   => 'http://itv-homeshopping.dev/',
         'image' => array(
             'directory' =>  '/images/upload/',
-            'baseURL'   => "http://itv-homeshopping.dev/",
+            'baseURL'   => "http://itv-homeshopping.dev",
             'minsize' => 1000,
             'maxsize' => 1000000,
             'mimes' => array(

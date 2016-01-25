@@ -2,11 +2,13 @@
 namespace Multiple\Backend\Controllers;
 
 use Multiple\Backend\Models\Product as Product;
+use Multiple\Backend\Models\ProductImage as ProductImage;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Phalcon\Tag as Tag;
 
 class ProductController extends ControllerBase {
 
+    const slag = "@#@";
     public function indexAction() {
         $this->tag->prependTitle("List of content - ");
         // Get parameter from request url
@@ -117,52 +119,72 @@ class ProductController extends ControllerBase {
                 )
             );
         }
-        $product = $paginator->getPaginate();
+        $items = $paginator->getPaginate();
         $obj['page']        = $page;
         $obj['page_size']   = $page_size;
 
-        $this->view->setVars(array("product"    => $product,
+        $this->view->setVars(array("items"    => $items,
                                    "obj"        => $obj
                                   ));
 
     }
 
-    public function editAction($product_id = 0) {
+    public function editAction($id = 0) {
         global $config;
         $this->tag->prependTitle("Edit of content - ");
-        $product_detail = Product::findFirst("product_id={$product_id}");
-        $this->view->setVars(array(
-            "product_id"    => $product_id,
-            'content'       => $product_detail,
-            'baseImageURL'  => $config->app->image->baseURL
-        ));
         if ($this->request->isPost() == true) {
-            /* END PROCESS UPLOAD */
-            if($content_id == 0){
-                $content = new Content();
+            $dataPost = $this->request->getPost();
+            if($id == 0){
+                $object = new Product();
+                unset( $dataPost['product_id']);
             }else{
-                $content = Content::findFirst("product_id={$product_id}");
-                $content->modify_date  = date('Y-m-d H:i');
+                $object = Product::findFirst("product_id={$id}");
+                $dataPost['modify_date'] = date('Y-m-d H:i');
             }
+            // Get list Images upload for product
+            $arr_images = explode(self::slag,trim($this->request->getPost("himages")));
+            $arr_images_old = explode(self::slag,trim($this->request->getPost("himages_old")));
 
-            $content->title             = trim($this->request->getPost("title"));
-            $content->description       = trim($this->request->getPost("description"));
-            $content->img_url           = $image_url;
-            $content->video_link        = trim($this->request->getPost("video_link"));
-            $content->content           = trim($this->request->getPost("content"));
-            $content->type_id           = intval($this->request->getPost("type_id"));
-            $content->menu_id           = intval($this->request->getPost("menu_id"));
-            $content->parent_id         = intval($this->request->getPost("parent_id"));
-            $content->is_hot            = intval($this->request->getPost("is_hot"));
-            $content->status            = intval($this->request->getPost("status"));
-
-            if ($content->save() == false) {
+            if ($object->save($dataPost) == false) {
                 $this->flashSession->error("too bad! Save data unSuccessful");
-                //return  $this->response->redirect( "cpanel/{}/{}/{}");
             } else {
-                $this->flashSession->success("yes!, Save data successful");
+                 // Save Image for productImages
+                //Deleting Product Image olde before inser New
+                if($object->ProductImage->delete() == false){
+                    $this->flashSession->error("too bad! Delete product Images fail.");
+                }
+
+                $c_success = 0;
+                $index = 0;
+                foreach($arr_images as $img){
+                    if($img !=""){
+                        $p_img = new ProductImage();
+                        $arr_basic = array(
+                            'img_url'       => $img,
+                            'status'        => 1,
+                            'order_id'      => $index,
+                            'product_id'    => $object->product_id,
+                        );
+                        if($p_img->save($arr_basic) == true){
+                            $c_success ++ ;
+                            unset($arr_images[$index]);
+                        }
+                    }
+                    $index ++;
+                }
+                //unlink old image
+                $this->deleteImages(array_merge($arr_images_old,$arr_images));
+                $this->flashSession->success("yes!, Save Product successful - {$c_success} Images product effected!");
             }
         }
+        $detail         = Product::findFirst("product_id={$id}");
+        $this->view->setVars(array(
+            "id"            => $id,
+            'detail'        => $detail,
+            'baseImageURL'  => $config->app->image->baseURL,
+            'obj'           => array('images' => $detail->ProductImage),
+            'slag'          => self::slag
+        ));
     }
 
     public function changeStatusAction(){
@@ -196,25 +218,53 @@ class ProductController extends ControllerBase {
         }
     }
 
-    public function getParentMenuAction(){
+    public function uploadImageAction(){
+        $this->view->disable();
+        $request = $this->request;
+        if ($request->isPost() == true && $request->isAjax() == true) {
+            global $config;
+            $image_url = "";
+            $name = "";
+            if ($this->request->hasFiles() == true ) {
+                $dir = date("Y/m/d/", time());
+                // Code ftp image here
+                $baseLocation = "../public/". $config->app->image->directory. $dir;
+                $this->checkDirectoryExist($baseLocation);
+                foreach ($this->request->getUploadedFiles() as $file) {
+                    $name = $file->getName();
+                    if (!empty($name)){
+                        //Move the file into the application
+                        $ran = rand(100000, 999999);
+                        $file->moveTo($baseLocation . $ran ."-" . $name);
+                        $image_url = $config->app->image->directory. $dir . $ran ."-" . $name;
+
+                    }
+                }
+            }
+            echo json_encode(array('path' => $image_url,'name' => $name ));
+        }
+    }
+
+    public function getParentCateAction(){
         $request =$this->request;
         if ($request->isPost() == true) {
             if ($request->isAjax() == true) {
-                $menu_id  = $request->getPost("menu_id");
+                $id  = $request->getPost("id");
                 $this->view->disable();
 
-                $menu = Menu::findFirst("menu_id={$menu_id}");
+                $detail = Cate::findFirst("cate_id={$id}");
                 $result = array();
                 if($menu != null){
-                    $result = array('data' => $menu->parent_id ,'result' => 1 , 'message'=> "Successfull!");
+                    $result = array('data' => $detail->cate_id ,'result' => 1 , 'message'=> "Successfull!");
                 }else{
-                    $result = array('data' => 0 ,'result'=>0 , 'message'=> "User is not exists!!");
+                    $result = array('data' => 0 ,'result'=>0 , 'message'=> "Category is not exists!!");
                 }
                 $this->response->setJsonContent($result) ;
                 return $this->response;
             }
         }
     }
+
 
     /**
      * Create Directory if not exist
@@ -254,6 +304,13 @@ class ProductController extends ControllerBase {
             $image_url = trim($this->request->getPost("himage_url"));
         }
         return $image_url;
+    }
+
+    private function deleteImages($array_images= array())
+    {
+        foreach($arr_images as $img){
+            unlink("../public/".$img);
+        }
     }
 }
 ?>

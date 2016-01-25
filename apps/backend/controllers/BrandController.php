@@ -112,7 +112,12 @@ class BrandController extends ControllerBase {
             $object->parent_id    = intval($this->request->getPost("parent_id"));
             $object->seo_url      = "";
             if ($object->save() == false) {
-                $this->flash->error("too bad! Save data unSuccessful");
+                // Show validation messages
+                $error = array();
+                foreach ($object->getMessages() as $message) {
+                   $error[] = $message;
+                }
+                $this->flash->error("too bad! Save data unSuccessful! ". implode($error," <br/>") );
             } else {
                 // save seo_url
                 if($id == 0){

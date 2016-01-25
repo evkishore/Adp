@@ -48,7 +48,7 @@ class ControllerBase extends Controller {
             ->addCss('backend/assets/global/plugins/bootstrap-summernote/summernote.css')
             ->addCss('backend/assets/global/plugins/jquery-notific8/jquery.notific8.min.css')
             ->addCss('backend/assets/global/plugins/dropzone/dropzone.min.css')
-            ->addCss('backend/assets/global/plugins/dropzone/basic.min.css')
+            //->addCss('backend/assets/global/plugins/dropzone/basic.min.css')
             ;
 
         $this->assets

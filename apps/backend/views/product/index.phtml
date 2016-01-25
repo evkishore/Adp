@@ -203,12 +203,10 @@ use Multiple\Backend\Models\Category as Cate;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i =0;?>
-                            {% for r in product.items %}
-                            <?php $i++ ?>
+                            {% for r in items.items %}
                                 <tr>
                                     <td>
-                                        <?php echo $obj["page_size"] * ($users->current - 1) + $i; ?>
+                                        {{ obj["page_size"] * (items.current - 1) + loop.index }}
                                     </td>
                                     <td>
                                         <a href="{{base_url}}/cpanel/{{ControllerName}}/edit/{{r.product_id}}">
@@ -221,7 +219,7 @@ use Multiple\Backend\Models\Category as Cate;
                                         </a>
                                     </td>
                                     <td>
-                                        {{r.Category.name}}
+                                        {{r.Cate.name}}
                                     </td>
                                     <td>
                                         {{r.Brand.name}}
@@ -261,14 +259,14 @@ use Multiple\Backend\Models\Category as Cate;
                 </table>
             </div>
             <!-- PAGING HERE -->
-            {{ partial('Paging', [ 'start' : product.total_items > 0 ? obj["page_size"] * (product.current - 1) +1 : 0,
+            {{ partial('Paging', [ 'start' : items.total_items > 0 ? obj["page_size"] * (items.current - 1) +1 : 0,
                                     'end' : obj["page_size"] > -1 ?
-                                            (product.total_items < (product.current * obj[ "page_size"])?
-                                                                               product.total_items : product.current * obj[ "page_size"])
-                                                                : product.total_items,
-                                    'total_records' : product.total_items,
-                                    'total_pages' : product.total_pages,
-                                    'current' : product.current ]) }}
+                                            (items.total_items < (items.current * obj[ "page_size"])?
+                                                                               items.total_items : items.current * obj[ "page_size"])
+                                                                : items.total_items,
+                                    'total_records' : items.total_items,
+                                    'total_pages' : items.total_pages,
+                                    'current' : items.current ]) }}
             <!-- END PAGING -->
         </div>
     </div>
