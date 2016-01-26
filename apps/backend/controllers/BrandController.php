@@ -84,18 +84,11 @@ class BrandController extends ControllerBase {
     public function editAction($id = 0) {
         global $config;
         $this->tag->prependTitle("Edit Brand - ");
-        $detail = Brand::findFirst("brand_id={$id}");
-        $this->view->setVars(array(
-            "id"            => $id,
-            "detail"        => $detail == null ? array(): $detail,
-            "baseImageURL"  => $config->app->image->baseURL
-
-        ));
         if ($this->request->isPost() == true) {
             if($id == 0){
                 $object = new Brand();
             }else{
-                $object = Brand::findFirst("cate_id={$id}");
+                $object = Brand::findFirst("brand_id={$id}");
                 if($object == null){
                     $this->flash->error("too bad! The Brand with id {$id} not exists in sytems!");
                     exit;
@@ -110,6 +103,7 @@ class BrandController extends ControllerBase {
             $object->status       = intval($this->request->getPost("status"));
             $object->order_id     = intval($this->request->getPost("order_id"));
             $object->parent_id    = intval($this->request->getPost("parent_id"));
+            $object->logo         = $image_url;
             $object->seo_url      = "";
             if ($object->save() == false) {
                 // Show validation messages
@@ -120,6 +114,7 @@ class BrandController extends ControllerBase {
                 $this->flash->error("too bad! Save data unSuccessful! ". implode($error," <br/>") );
             } else {
                 // save seo_url
+                $object = Brand::findFirst("brand_id=".$object->brand_id );
                 if($id == 0){
                     $object->seo_url = $this->seo_url($object->brand_id, $object->name, $object->parent_id );
                 }else{
@@ -132,6 +127,13 @@ class BrandController extends ControllerBase {
                 }
             }
         }
+        $detail = Brand::findFirst("brand_id={$id}");
+        $this->view->setVars(array(
+            "id"            => $id,
+            "detail"        => $detail == null ? array(): $detail,
+            "baseImageURL"  => $config->app->image->baseURL
+
+        ));
     }
 
     public function changeStatusAction(){

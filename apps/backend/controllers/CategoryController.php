@@ -83,44 +83,46 @@ class CategoryController extends ControllerBase {
 
     public function editAction($id = 0) {
         $this->tag->prependTitle("Edit Category - ");
-        $detail = Cate::findFirst("cate_id={$id}");
-        $this->view->setVars(array(
-            "id"        => $id,
-            "detail"    => $detail == null ? array(): $detail,
-
-        ));
         if ($this->request->isPost() == true) {
+            $dataPost = $this->request->getPost();
+           /* echo "<pre>";
+            echo var_dump($dataPost);exit;*/
             if($id == 0){
                 $object = new Cate();
+                unset( $dataPost['cate_id'] );
             }else{
                 $object = Cate::findFirst("cate_id={$id}");
                 if($object == null){
                     $this->flash->error("too bad! The Category with id {$id} not exists in sytems!");
                     exit;
                 }
-                $object->modify_date  = date('Y-m-d H:i');
+                $dataPost['modify_date'] = date('Y-m-d H:i');
             }
-            $object->name         = trim($this->request->getPost("name"));
-            $object->status       = intval($this->request->getPost("status"));
-            $object->order_id     = intval($this->request->getPost("order_id"));
-            $object->parent_id    = intval($this->request->getPost("parent_id"));
-            $object->seo_url      = "";
-            if ($object->save() == false) {
+
+            if ($object->save($dataPost) == false) {
                 $this->flash->error("too bad! Save data unSuccessful");
             } else {
                 // save seo_url
+                $object = Cate::findFirst("cate_id=".$object->cate_id);
+                $dataUpdate= array();
                 if($id == 0){
-                    $object->seo_url = $this->seo_url($object->cate_id, $object->name, $object->parent_id );
+                    $dataUpdate['seo_url']  = $this->seo_url($object->cate_id, $object->name, $object->parent_id );
                 }else{
-                    $object->seo_url = trim($this->request->getPost("seo_url"));
+                   $dataUpdate['seo_url']   = trim($this->request->getPost("seo_url"));
                 }
-                if ($object->save() == false) {
+                if ($object->update($dataUpdate) == false) {
                     $this->flash->error("too bad! Save data unSuccessful");
                 } else {
                     $this->flash->success("yes!, Save data successful");
                 }
             }
         }
+        $detail = Cate::findFirst("cate_id={$id}");
+        $this->view->setVars(array(
+            "id"        => $id,
+            "detail"    => $detail == null ? array(): $detail,
+
+        ));
     }
 
     public function changeStatusAction(){
@@ -158,13 +160,15 @@ class CategoryController extends ControllerBase {
     /*
         PRIVATE FUNCTION
     */
-    private function seo_url($cate_id =0, $name="", $parent_id = 0){
+    private function seo_url($cate_id = 0, $name="", $parent_id = 0){
         $result ="";
         $name = $this->remove_accent($name);
         if($parent_id > 0){
-            $parent = Cate::findFirst("menu_id={$parent_id}");
+            $parent = Cate::findFirst("cate_id={$parent_id}");
+            $result = "{$parent->seo_url}/{$cate_id}/{$name}";
+        }else{
+            $result = "/{$name}";
         }
-        $result = $parent_id == 0 ? "/{$name}" :"{$parent->seo_url}/{$cate_id}/{$name}";
         return $result;
     }
 

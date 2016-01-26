@@ -31,7 +31,7 @@ use Phalcon\Tag as Tag;
     <div class="portlet light bordered">
         <div class="portlet-body form">
             <!-- BEGIN FORM-->
-            <form action="/cpanel/{{ControllerName}}/{{ActionName}}/{{id >0 ? id :""}}" class="form-horizontal" method="post" >
+            <form action="/cpanel/{{ControllerName}}/{{ActionName}}/{{id >0 ? id :""}}" class="form-horizontal" method="post"  enctype="multipart/form-data">
                 {{ hidden_field("brand_id", "value": id) }}
                 <div class="form-body">
                     <div class="form-group">
