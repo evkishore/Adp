@@ -1,21 +1,38 @@
 <?php
 namespace Multiple\Frontend\Controllers;
+use Multiple\Frontend\Models\Brand as Brand;
+use Multiple\Frontend\Models\Product as Product;
 
 class IndexController extends ControllerBase {
     public function indexAction() {
         $parentCate = $this->getParentCategory();
         $this->view->setVar('root_cate_items', $parentCate);
-//        $services = $this->getContentList('status = 1 AND parent_id = 3', 'content_id DESC', 3);
-//        $this->view->serviceList = $services;
-//        $news = $this->getContentList('status = 1 AND parent_id = 4', 'content_id DESC',6);
-//        $this->view->newsList = $news;
-//        $video = $this->getContentList('status = 1 AND parent_id = 5', 'total_view DESC', 10);
-//        $this->view->videoList = $video;
-//        $hot = $this->getContentList('status = 1 AND is_hot = 1 AND parent_id = 4', 'content_id DESC',6);
-//        $this->view->hotList = $hot;
+        $this->view->setVars(array("root_cate_items"    => $parentCate,
+                                   "brand"        => $this->getBrand(),
+                                   "product"        => $this->getProduct()
+                                  ));
     }
+    private function getBrand(){
+        $conditions = "status = 1";
+        $brand = Brand::find(
+                array(
+                    $conditions,
+                    "order" => "order_id ASC"
+                )
+            );
+        return $brand;
+    }
+     
     private function getProduct(){
-        
+        $conditions = "status = 1 AND price >0 ";
+        $product = Product::find(
+                array(
+                    $conditions,
+                    "order" => "product_id DESC",
+                    'limit' => 6
+                )                
+            );
+        return $product;        
     }
 }
 ?>
