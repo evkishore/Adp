@@ -1,42 +1,262 @@
-<div class="container">
-    <div class="row">
-        <div class="span12" >
-            <div class="row">
-                <div class="span6" >
-                    <br>
-                    <div class="logo pull-left">
-                        <a href="/" class="logo_h logo_h__img"><img src="/frontend/images/logo.png" alt="TV Channel" title="The best movies and videos"></a>
-                        <p class="logo_tagline">The best movies and videos</p>
+
+                <div class="top-bar">
+                    <div class="container">
+                        <div class="top-bar-inner clearfix">
+                            <div class="phone-number">
+                                HOTLINE:<span>(+800) 123 456 7890</span>
+                            </div>
+                            <div class="top-menu widget">
+                                <div class="menu-top-menu-container">
+                                    <ul id="menu-top-menu" class="nav_menu">
+                                        <li class="first"><a href="">My Account</a></li>
+                                        <li><a href="">My Wishlist</a></li>
+                                        <li><a href="">Shopping Cart</a></li>
+                                        <li><a href="">Checkout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="lang_sel">
+                                <ul>
+                                    <li><a href="#" class="lang_sel_sel icl-en">English</a> </li>
+                                </ul>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="block_2">
-                <div class="row">
-                    <div class="span12" >
-                        <nav class="nav nav__primary clearfix">
-                            {%- macro print_menu_level(menu_level_items) %}
-                                {%- for menu_item in menu_level_items %}
-                                    {% if loop.first %}
-                                        <ul id="topnav" class="sf-menu sf-js-enabled">
-                                    {% endif %}
-                                    <li id="menu-item-{{ menu_item.menu_id }}" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-                                        <a href="{{ menu_item.seo_url }}">{{ menu_item.name }}</a>
-                                        {% set next_menu_level_items = menu_item.getChilds() %}
-                                        {% if next_menu_level_items %}
-                                            {{ print_menu_level(next_menu_level_items) }}
-                                        {% endif %}
-                                    </li>
-                                    {% if loop.last %}
-                                        </ul>
-                                    {% endif %}
-                                {%- endfor %}
-                            {%- endmacro %}
-                            {{ print_menu_level(root_menu_items) }}                                                       
-                        </nav>
-                        <div class="pseudoStickyBlock" style="position: relative; display: block;"></div>
+                <div class="header">
+                    <div class="container">
+                        <div class="header-inner">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-3">
+                                    <div class="logo">
+                                        <a href="" title="Saharan Accessories" rel="home">
+                                            <img src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2015/08/logo.png" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-9">
+                                    <div class="widget bootexpert widget_shopping_cart">
+                                        <div class="widget_shopping_cart_content">
+                                            <div class="cart-toggler">
+                                                <a href="">
+                                                    <span class="mini-cart-link">
+															<span class="cart-title">My Cart: (<span class="cart-quantity">2</span>)
+                                                    </span>
+                                                    </span>
+                                                    <span class="cart-total"><span class="amount">£140.00</span></span>
+                                                </a>
+                                            </div>
+                                            <div class="mini_cart_content">
+                                                <div class="mini_cart_inner">
+                                                    <div class="mini_cart_arrow"></div>
+                                                    <ul class="cart_list">
+                                                        <li>
+                                                            <a href="" class="product-image">
+                                                                <img width="185" height="185" alt="11" class="attachment-shop_thumbnail" src="images/accessories/product/111-185x185.jpg">
+                                                                <span class="quantity">1</span>
+                                                            </a>
+                                                            <div class="product-details">
+                                                                <a title="Remove this item" class="remove"><i class="fa fa-times-circle"></i></a>
+                                                                <a href="" class="product-name">Vulputate justo&nbsp;</a>
+                                                                <span class="quantity"><span class="amount">£90.00</span></span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" class="product-image">
+                                                                <img width="185" height="185" alt="17" class="attachment-shop_thumbnail" src="images/accessories/product/17-185x185.png">
+                                                                <span class="quantity">1</span>
+                                                            </a>
+                                                            <div class="product-details">
+                                                                <a title="Remove this item" class="remove"><i class="fa fa-times-circle"></i></a>
+                                                                <a href="" class="product-name">Buscipit at magna → Vestibulum suscipit&nbsp;</a>
+                                                                <span class="quantity"><span class="amount">£65.00</span></span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- end product list -->
+                                                    <p class="total">Subtotal: <span class="amount">£155.00</span></p>
+                                                    <p class="buttons">
+                                                        <a class="button" href="">Checkout</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="header-search">
+                                        <div class="widget bootexpert widget_product_search">
+
+                                            <form method="get" id="searchform" action="#">
+                                                <input type="text" value="" name="s" id="ws" placeholder="Search product..." />
+                                                <button id="wsearchsubmit" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-container">
+                        <div class="container">
+                            <div class="nav-inner clearfix">
+                                <div class="horizontal-menu">
+                                    <div class="visible-large">
+                                        <div id="saharan_mega_main_menu" class="dropdowns_trigger-hover dropdowns_animation-anim_5">
+                                            <div class="menu_holder">
+                                                <div class="mmm_fullwidth_container"></div>
+                                                <!-- class="fullwidth_container" -->
+                                                <nav class="menu_inner">
+                                                    <!-- /class="nav_logo" -->
+                                                    <ul>
+                                                        <li class="active-menu-item first default_dropdown drop_to_right">
+                                                            <a href="/" class="item_link">
+                                                                <span class="link_content">
+																		<span class="link_text">Home</span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="multicolumn_dropdown drop_to_right children-menu">
+                                                            <a href="/product" class="item_link">
+                                                                <span class="link_content">
+																		<span class="link_text">Products</span>
+                                                                </span>
+                                                            </a>
+                                                             {%- macro print_cate_level(cate_level_items) %}
+                                                                {%- for cate_item in cate_level_items %}
+                                                                    {% if loop.first %}
+                                                                         <ul class="mega_dropdown">
+                                                                    {% endif %}
+                                                                    <li class="default_dropdown drop_to_right children-menu" >
+                                                                        <a href="{{ cate_item.seo_url }}" class="item_link">
+                                                                            <span class="link_content">
+                                                                                    <span class="link_text">{{ cate_item.name }}</span>
+                                                                            </span>
+                                                                        </a>                                                                        
+                                                                        {% set next_cate_level_items = cate_item.getChilds() %}
+                                                                        {% if next_cate_level_items %}
+                                                                            {{ print_cate_level(next_cate_level_items) }}
+                                                                        {% endif %}
+                                                                    </li>
+                                                                    {% if loop.last %}
+                                                                        </ul>
+                                                                    {% endif %}
+                                                                {%- endfor %}
+                                                            {%- endmacro %}
+                                                            {{ print_cate_level(root_cate_items) }}        
+                                                            <!-- /.mega_dropdown -->
+                                                        </li>
+
+
+
+                                                        <li class="default_dropdown drop_to_right children-menu">
+                                                            <a href="/about" class="item_link ">
+                                                                <span class="link_content">
+																		<span class="link_text">About Us</span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="default_dropdown drop_to_right children-menu">
+                                                            <a href="/contact" class="item_link ">
+                                                                <span class="link_content">
+																		<span class="link_text">Contact</span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                                <!-- /class="menu_inner" -->
+                                            </div>
+                                            <!-- /class="menu_holder" -->
+                                        </div>
+                                        <!-- /id="saharan_mega_main_menu" -->
+                                    </div>
+                                    <!-- Mobile Menu -->
+                                    <div class="visible-small mobile-menu">
+                                        <div class="nav-container">
+                                            <div class="mbmenu-toggler">Menu<span class="mbmenu-icon"></span></div>
+                                            <nav class="mobile-menu-container">
+                                                <ul id="menu-horizontal-menu" class="nav-menu">
+                                                    <li class="first"><a href="/">Home</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="index-2.html">Home Accessories 2</a></li>
+                                                            <li><a href="index-3.html">Home Accessories 3</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="children-menu"><a href="#">Shop</a>
+                                                        <ul class="sub-menu">
+                                                            <li class="children-menu"><a href="#">Shop Layouts</a>
+                                                                <ul class="sub-menu">
+                                                                    <li><a href="#">Full Width</a></li>
+                                                                    <li><a href="#">Sidebar Left</a></li>
+                                                                    <li><a href="shop-sidebar-right">Sidebar Right</a></li>
+                                                                    <li><a href="#">List View</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="children-menu"><a href="#">Shop Pages</a>
+                                                                <ul class="sub-menu">
+                                                                    <li><a href="#">Category</a></li>
+                                                                    <li><a href="#">My Account</a></li>
+                                                                    <li><a href="#">Shopping Cart</a></li>
+                                                                    <li><a href="#">Checkout</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="children-menu"><a href="#">Product Types</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="#">Simple Product</a></li>
+                                                            <li><a href="#">Variable Product</a></li>
+                                                            <li><a href="#">Grouped Product</a></li>
+                                                            <li><a href="#">Downloadable</a></li>
+                                                            <li><a href="#">External Product</a></li>
+                                                            <li><a href="#">Virtual Product</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="children-menu"><a href="#">Blog</a>
+                                                        <ul class="sub-menu">
+                                                            <li class="children-menu"><a href="#">Blog Layouts</a>
+                                                                <ul class="sub-menu">
+                                                                    <li><a href="#">None Sidebar</a></li>
+                                                                    <li><a href="#">Sidebar Left</a></li>
+                                                                    <li><a href="#">Sidebar Right</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="children-menu"><a href="#">Blog Pages</a>
+                                                                <ul class="sub-menu">
+                                                                    <li><a href="#">Author</a></li>
+                                                                    <li><a href="#">Archive</a></li>
+                                                                    <li><a href="#">Category</a></li>
+                                                                    <li><a href="#">Blog Tag</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li class="children-menu"><a href="#">Post Formats</a>
+                                                                <ul class="sub-menu">
+                                                                    <li><a href="#">Image Format</a></li>
+                                                                    <li><a href="#">Gallery Format</a></li>
+                                                                    <li><a href="blog-single-post-audio.html">Audio Format</a></li>
+                                                                    <li><a href="#">Video Format</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="children-menu"><a href="#">Pages</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="faqs">Frequently Questions</a></li>
+                                                            <li><a href="#">Sample Page</a></li>
+                                                            <li><a href="#">Error 404</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="/about">About Us</a></li>
+                                                    <li><a href="/contact">Contact</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <!-- Mobile Menu -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <!-- .header -->
+                <div class="clearfix"></div>

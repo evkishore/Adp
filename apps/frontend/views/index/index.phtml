@@ -1,145 +1,596 @@
-<div class="row">
-    <div class="span12">
-        <div class="row">
-            <div class="span12" data-motopress-type="static">
-                <div class="slider_off"> </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="span12" data-motopress-type="loop">
-                <div id="post-203" class="post-203 page type-page status-publish hentry">
-                    <div class="row ">
-                        <div class="span8 ">
-                            <section class="lazy-load-box effect-fade">
-                                <ul class="posts-list list_1">
-                                    <?php $i =0;?>
-                                    {% for h in hotList.items %}
-                                    
-                                    <li class="row-fluid list-item-<?php echo $i; ?>">
-                                        <figure class="featured-thumbnail thumbnail ">
-                                            <a href="/tin-tuc/{{h.menu_id}}/{{h.getSEOCate()}}/{{h.content_id}}/{{h.getSEOTitle()}}/" title="{{h.title}}">
-                                             
-                                         <img src="{{h.img_url}}" alt="{{h.title}}">
-                                   
-                                            </a>
-                                        </figure>
-                                        <div class="post_content">
-                                            <h2 class="post-title">
-                                                <a href="/tin-tuc/{{h.menu_id}}/{{h.getSEOCate()}}/{{h.content_id}}/{{h.getSEOTitle()}}/" title="{{h.title}}">{{h.title}}</a>
-                                            </h2>
-                                            <span class="post_date">
-                                                <time datetime="2014-10-03T18:18:10">{{ date("Y-m-d H:i", time(h.create_date)) }}</time>
-                                            </span>
-                                            <span class="post_comment">
-                                                <a href="/tin-tuc/{{h.menu_id}}/{{h.getSEOCate()}}/{{h.content_id}}/{{h.getSEOTitle()}}/" class="comments_link">{{h.total_view}} Views</a>
-                                            </span>
-                                        </div>
-                                    </li>
-                                    <?php $i++ ?>
-                                     {% endfor %}
-                                    
-                                   
-                                </ul>
-                            </section>
-                            <div class="clear"></div>
-                            <div class="spacer"></div>
-                            <div class="row ">
-                                <div class="span5 ">
-                                    <section class="lazy-load-box effect-fade" >
-                                        <h2>Tin tức mới</h2>
-                                        <ul class="recent-posts list_2 unstyled">
-                                             {% for n in newsList.items %}
-                                            <li class="recent-posts_li">
-                                                <figure class="thumbnail featured-thumbnail">
-                                                    <a href="/tin-tuc/{{n.menu_id}}/{{n.getSEOCate()}}/{{n.content_id}}/{{n.getSEOTitle()}}/" title="{{n.title}}">
-                                                        <img width="143" height="101" src="{{n.img_url}}" alt="{{n.title}}">
-                                                    </a>
-                                                </figure>
-                                                <div class="inner">
-                                                    <h5>
-                                                        <a href="/tin-tuc/{{n.menu_id}}/{{n.getSEOCate()}}/{{n.content_id}}/{{n.getSEOTitle()}}/" title="{{n.title}}">                                                              {{n.title}}
-                                                        </a>
-                                                    </h5>
-                                                    <div class="excerpt">
-                                                        <a href="/tin-tuc/{{n.menu_id}}/{{n.getSEOCate()}}/{{n.content_id}}/{{n.getSEOTitle()}}/" >
-                                                            {{n.description}} 
-                                                        </a>
-                                                    </div>
-                                                    <span class="meta">
-                                                        <span class="post-date">{{ date("Y-m-d H:i", time(n.create_date)) }}</span>
-                                                        <span class="post-comments">
-                                                            {{n.total_view}}
-                                                        </span>
-                                                    </span>
+<div class="main-container front-page">
+    <div class="page-content">
+        <div class="entry-content">
+            <div class="phm_row hasteck_row phm_row-fluid home-slider">
+                <div class="row-container">
+                    <div class="parvez_column parvez_column_container parvez_col-sm-12">
+                        <div class="parvez_wrapper">
+                            <div class="parvez_revslider_element parvez_content_element">
+                                <div id="rev_slider_3_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" style="margin:0px auto;background-color:#bddde5;padding:0px;margin-top:0px;margin-bottom:0px;">
+                                    <!-- START REVOLUTION SLIDER -->
+                                    <div id="rev_slider_3_1" class="rev_slider fullwidthabanner tp-overflow-hidden" style="display:none;">
+                                        <ul>
+                                            <!-- SLIDE  -->
+                                            <li data-index="rs-1" data-transition="random" data-slotamount="9" data-masterspeed="600" data-saveperformance="on" data-thumb="images/accessories/slider/banner1-100x50.jpg" data-rotate="0" data-title="Slide-1" data-description="">
+                                                <!-- MAIN IMAGE -->
+                                                <img src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2015/08/banner1.jpg" alt="" width="1170" height="418" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                                <!-- LAYERS -->
+
+                                                <!-- LAYER NR. 1 -->
+                                                <div class="tp-caption text1-1 customin lft tp-resizeme" id="slide-5-layer-1" data-x="104" data-y="114" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4000" style="z-index: 5; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">Last chance
                                                 </div>
-                                                <div class="clear"></div>
-                                            
+
+                                                <!-- LAYER NR. 2 -->
+                                                <div class="tp-caption text1-2 customin lft tp-resizeme" id="slide-5-layer-2" data-x="99" data-y="157" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4500" style="z-index: 6; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">Bigest sale
+                                                </div>
+
+                                                <!-- LAYER NR. 3 -->
+                                                <div class="tp-caption text1-3 lfb lft tp-resizeme" id="slide-5-layer-3" data-x="102" data-y="230" data-width="548" data-height="40" data-speed="1500" data-easing="Power3.easeInOut" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="5000" style="z-index: 7; min-width: 548px; max-width: 548px; max-width: 40px; max-width: 40px; white-space: normal; color: rgba(255, 255, 255, 1.00);border-color:rgba(34, 34, 34, 1.00);">Donec vitae est placerat, porttitor sem at, trum erat. Donec vitaeest placerat, porttitor sem at, rutrum erat donec vitae est placerat.
+                                                </div>
                                             </li>
-                                             {% endfor %}
+                                            <!-- SLIDE  -->
+                                            <li data-index="rs-1" data-transition="random" data-slotamount="9" data-masterspeed="600" data-saveperformance="on" data-thumb="images/accessories/slider/banner2-100x50.jpg" data-rotate="0" data-title="Slide-2" data-description="">
+                                                <!-- MAIN IMAGE -->
+                                                <img src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2015/08/banner2.jpg" alt="" width="1171" height="418" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                                <!-- LAYERS -->
+
+                                                <!-- LAYER NR. 1 -->
+                                                <div class="tp-caption text1-1 customin lft tp-resizeme" id="slide-6-layer-1" data-x="104" data-y="114" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4000" style="z-index: 5; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">Last chance
+                                                </div>
+
+                                                <!-- LAYER NR. 2 -->
+                                                <div class="tp-caption text1-2 customin lft tp-resizeme" id="slide-6-layer-2" data-x="99" data-y="157" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4500" style="z-index: 6; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">Bigest sale
+                                                </div>
+
+                                                <!-- LAYER NR. 3 -->
+                                                <div class="tp-caption text1-3 lfb lft tp-resizeme" id="slide-6-layer-3" data-x="102" data-y="230" data-width="548" data-height="40" data-speed="1500" data-easing="Power3.easeInOut" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="5000" style="z-index: 7; min-width: 548px; max-width: 548px; max-width: 40px; max-width: 40px; white-space: normal; color: rgba(255, 255, 255, 1.00);border-color:rgba(34, 34, 34, 1.00);">Donec vitae est placerat, porttitor sem at, trum erat. Donec vitaeest placerat, porttitor sem at, rutrum erat donec vitae est placerat.
+                                                </div>
+                                            </li>
                                         </ul>
-                                    </section>
-                                    <section class="lazy-load-box effect-fade" >
-                                        <a href="/tin-tuc" title="Tất cả" class="btn btn-primary btn-normal btn-inline " target="_self">Tất cả</a>
-                                    </section>
+                                    </div>
                                 </div>
-                                <div class="span3 ">
-                                     <h2>Dịch vụ</h2>
-                                     {% for r in serviceList.items %}
-                                        <section class="lazy-load-box effect-fade" >
-                                            <div class="banner-wrap ">
-                                                <figure class="featured-thumbnail">
-                                                    <a href="/dich-vu/{{r.menu_id}}/{{r.getSEOCate()}}/" title="{{r.title}}">
-                                                        <img src="{{r.img_url}}" title="{{r.title}}" alt="{{r.title}}">
-                                                    </a>
-                                                </figure>
-                                                <p>{{r.title}}</p>
+                                <!-- END REVOLUTION SLIDER -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="phm_row hasteck_row phm_row-fluid">
+                <div class="row-container">
+                    <div class="parvez_column parvez_column_container parvez_col-sm-3">
+                        <div class="parvez_wrapper">
+                            <div class="phm_row hasteck_row parvez_inner phm_row-fluid">
+                                <div class="furniture-categories parvez_column parvez_column_container parvez_col-sm-12">
+                                    <div class="parvez_wrapper">
+                                        <div class="parvez_wp_custommenu parvez_content_element">
+                                            <div class="widget widget_nav_menu">
+                                                <h2 class="widgettitle">CATEGORIES</h2>
+                                                <div class="menu-categories-container">
+                                                    <ul id="menu-categories" class="menu">
+                                                                {%- for cate_item in root_cate_items %}
+                                                                    {% set child_cate_items = cate_item.getChilds() %}
+                                                                    {% if child_cate_items|length > 0 %}
+                                                                        <li class="children-menu"><a href="#">{{cate_item.name}}</a>
+                                                                        {%- macro print_child_cate_level(cate_level_items) %}
+                                                                            {%- for child_cate_item in cate_level_items %}
+                                                                                {% if loop.first %}
+                                                                                    <ul class="sub-menu">
+                                                                                {% endif %}
+                                                                                <li class="children-menu">
+                                                                                    <a href="{{ child_cate_item.seo_url }}" >
+                                                                                        {{ child_cate_item.name }}
+                                                                                    </a>                                                                        
+                                                                                    {% set next_cate_level_items = child_cate_item.getChilds() %}
+                                                                                    {% if next_cate_level_items %}
+                                                                                        {{ print_child_cate_level(next_cate_level_items) }}
+                                                                                    {% endif %}
+                                                                                </li>
+                                                                                {% if loop.last %}
+                                                                                    </ul>
+                                                                                {% endif %}
+                                                                            {%- endfor %}
+                                                                        {%- endmacro %}
+                                                                        {{ print_child_cate_level(child_cate_items) }}             
+                                                                    {% else %}
+                                                                        <li ><a href="#">{{cate_item.name}}</a>    
+                                                                    {% endif %}  
+                                                                                   
+                                                                            
+                                                                   
+                                                                {%- endfor %}                                                        
+                                                        
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </section>
-                                    {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="phm_row hasteck_row parvez_inner phm_row-fluid parvez_custom_1439866257909">
+                                <div class="sale-products parvez_column parvez_column_container parvez_col-sm-12">
+                                    <div class="parvez_wrapper">
+                                        <div class="parvez_text_column parvez_content_element ">
+                                            <div class="parvez_wrapper">
+                                                <h3><strong>SALE OFF</strong></h3>
+                                            </div>
+                                        </div>
+                                        <div class="bootexpert columns-1">
+                                            <div class="shop-products row grid-view">
+                                                <div class="first last item-col col-xs-12 col-sm-12">
+                                                    <div class="product-wrapper">
+                                                        <span class="onsale"><span class="sale-text">Sale</span></span>
+                                                        <div class="list-col4">
+                                                            <div class="product-image">
+                                                                <a href="" title="Congue lectus">
+                                                                    <img src="images/accessories/product/06.jpg" class="primary_image" alt="06" />
+                                                                    <img src="images/accessories/product/03.png" class="secondary_image" alt="03" />
+                                                                </a>
+                                                                <div class="action clearfix">
+                                                                    <div class="quickviewbtn">
+                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
+                                                                    </div>
+                                                                    <div class="add-cart">
+                                                                        <p class="product bootexpert add_to_cart_inline">
+                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="add-to-links">
+                                                                        <div class="yith-wcwl-add-to-wishlist">
+                                                                            <div>
+                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
+                                                                            </div>
+                                                                            <div class="clear"></div>
+
+                                                                        </div>
+                                                                        <div class="clear"></div>
+                                                                        <div class="bootexpert product compare-button">
+                                                                            <a href="" class="compare button">Compare</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="count-down">
+                                                                    <div class="countbox hastime" data-time="2016/05/20"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-col8">
+                                                            <div class="gridview">
+                                                                <h2 class="product-name"><a href="">Congue lectus</a></h2>
+                                                                <div class="ratings">
+                                                                    <div class="star-rating" title="Rated 5.00 out of 5">
+                                                                        <span class="width100"><strong class="rating">5.00</strong> out of 5</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="price-box">
+                                                                    <del><span class="amount">&pound;115.00</span></del> <ins><span class="amount">&pound;105.00</span></ins>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="phm_row hasteck_row parvez_inner phm_row-fluid">
+                                <div class="bestseller parvez_column parvez_column_container parvez_col-sm-12">
+                                    <div class="parvez_wrapper">
+                                        <div class="parvez_text_column parvez_content_element ">
+                                            <div class="parvez_wrapper">
+                                                <h3><strong>BESTSELLER</strong></h3>
+                                            </div>
+                                        </div>
+                                        <div class="bootexpert columns-1">
+                                            <div class="shop-products row grid-view">
+                                                <div class="first last item-col col-xs-12 col-sm-12">
+                                                    <div class="product-wrapper">
+                                                        <div class="list-col4">
+                                                            <div class="product-image">
+                                                                <a href="" title="Aenean eu tristique">
+                                                                    <img src="images/accessories/product/051.jpg" class="primary_image" alt="05" />
+                                                                    <img src="images/accessories/product/061.jpg" class="secondary_image" alt="06" />
+                                                                </a>
+                                                                <div class="action clearfix">
+                                                                    <div class="quickviewbtn">
+                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
+                                                                    </div>
+                                                                    <div class="add-cart">
+                                                                        <p class="product bootexpert add_to_cart_inline">
+                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="add-to-links">
+                                                                        <div class="yith-wcwl-add-to-wishlist">
+                                                                            <div>
+                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
+                                                                            </div>
+                                                                            <div class="clear"></div>
+
+                                                                        </div>
+                                                                        <div class="clear"></div>
+                                                                        <div class="bootexpert product compare-button">
+                                                                            <a href="" class="compare button">Compare</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-col8">
+                                                            <div class="gridview">
+                                                                <h2 class="product-name"><a href="">Aenean eu tristique</a></h2>
+                                                                <div class="ratings">
+                                                                    <div class="star-rating" title="Rated 4.33 out of 5"><span class="width86"><strong class="rating">4.33</strong> out of 5</span></div>
+                                                                </div>
+                                                                <div class="price-box">
+                                                                    <span class="amount">&pound;80.00</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="first last  item-col col-xs-12 col-sm-12">
+                                                    <div class="product-wrapper">
+                                                        <span class="onsale"><span class="sale-text">Sale</span></span>
+                                                        <div class="list-col4">
+                                                            <div class="product-image">
+                                                                <a href="" title="Feugiat justo lacinia">
+                                                                    <img src="images/accessories/product/021.jpg" class="primary_image" alt="02" />
+                                                                    <img src="images/accessories/product/051.jpg" class="secondary_image" alt="05" />
+                                                                </a>
+                                                                <div class="action clearfix">
+                                                                    <div class="quickviewbtn">
+                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
+                                                                    </div>
+                                                                    <div class="add-cart">
+                                                                        <p class="product bootexpert add_to_cart_inline">
+                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="add-to-links">
+                                                                        <div class="yith-wcwl-add-to-wishlist">
+                                                                            <div>
+                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
+                                                                            </div>
+                                                                            <div class="clear"></div>
+
+                                                                        </div>
+                                                                        <div class="clear"></div>
+                                                                        <div class="bootexpert product compare-button">
+                                                                            <a href="" class="compare button">Compare</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="count-down">
+                                                                    <div class="countbox hastime" data-time="2016/09/28"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-col8">
+                                                            <div class="gridview">
+                                                                <h2 class="product-name"><a href="">Feugiat justo lacinia</a></h2>
+                                                                <div class="ratings">
+                                                                    <div class="star-rating" title="Rated 4.00 out of 5">
+                                                                        <span class="width80"><strong class="rating">4.00</strong> out of 5</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="price-box">
+                                                                    <del><span class="amount">&pound;80.00</span></del> <ins><span class="amount">&pound;70.00</span></ins>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="first last item-col col-xs-12 col-sm-12">
+                                                    <div class="product-wrapper">
+                                                        <span class="onsale"><span class="sale-text">Sale</span></span>
+                                                        <div class="list-col4">
+                                                            <div class="product-image">
+                                                                <a href="" title="Etiam eu neque">
+                                                                    <img src="images/accessories/product/10.jpg" class="primary_image" alt="10" />
+                                                                    <img src="images/accessories/product/091.jpg" class="secondary_image" alt="09" />
+                                                                </a>
+                                                                <div class="action clearfix">
+                                                                    <div class="quickviewbtn">
+                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
+                                                                    </div>
+                                                                    <div class="add-cart">
+                                                                        <p class="product bootexpert add_to_cart_inline">
+                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="add-to-links">
+                                                                        <div class="yith-wcwl-add-to-wishlist">
+                                                                            <div>
+                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
+                                                                            </div>
+                                                                            <div class="clear"></div>
+
+                                                                        </div>
+                                                                        <div class="clear"></div>
+                                                                        <div class="bootexpert product compare-button">
+                                                                            <a href="" class="compare button">Compare</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="count-down">
+                                                                    <div class="countbox hastime" data-time="2016/04/28"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-col8">
+                                                            <div class="gridview">
+                                                                <h2 class="product-name"><a href="">Etiam eu neque</a></h2>
+                                                                <div class="ratings">
+                                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span class="width100"><strong class="rating">5.00</strong> out of 5</span></div>
+                                                                </div>
+                                                                <div class="price-box">
+                                                                    <del><span class="amount">&pound;85.00</span></del> <ins><span class="amount">&pound;80.00</span></ins>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="first last  item-col col-xs-12 col-sm-12">
+                                                    <div class="product-wrapper">
+                                                        <span class="onsale"><span class="sale-text">Sale</span></span>
+                                                        <div class="list-col4">
+                                                            <div class="product-image">
+                                                                <a href="" title="Elementum felis">
+                                                                    <img src="images/accessories/product/03.png" class="primary_image" alt="03" />
+                                                                    <img src="images/accessories/product/07.jpg" class="secondary_image" alt="07" />
+                                                                </a>
+                                                                <div class="action clearfix">
+                                                                    <div class="quickviewbtn">
+                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
+                                                                    </div>
+                                                                    <div class="add-cart">
+                                                                        <p class="product bootexpert add_to_cart_inline">
+                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="add-to-links">
+                                                                        <div class="yith-wcwl-add-to-wishlist">
+                                                                            <div>
+                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
+                                                                            </div>
+                                                                            <div class="clear"></div>
+
+                                                                        </div>
+                                                                        <div class="clear"></div>
+                                                                        <div class="bootexpert product compare-button">
+                                                                            <a href="" class="compare button">Compare</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="count-down">
+                                                                    <div class="countbox hastime" data-time="2016/05/20"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-col8">
+                                                            <div class="gridview">
+                                                                <h2 class="product-name"><a href="">Elementum felis</a></h2>
+                                                                <div class="ratings">
+                                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span class="width80"><strong class="rating">4.00</strong> out of 5</span></div>
+                                                                </div>
+                                                                <div class="price-box">
+                                                                    <del><span class="amount">&pound;125.00</span></del>
+                                                                    <ins><span class="amount">&pound;120.00</span></ins>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="first last  item-col col-xs-12 col-sm-12">
+                                                    <div class="product-wrapper">
+                                                        <div class="list-col4">
+                                                            <div class="product-image">
+                                                                <a href="" title="Vivamus blandit">
+                                                                    <img src="images/accessories/product/12.jpg" class="primary_image" alt="12" />
+                                                                    <img src="images/accessories/product/111.jpg" class="secondary_image" alt="11" />
+                                                                </a>
+                                                                <div class="action clearfix">
+                                                                    <div class="quickviewbtn">
+                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
+                                                                    </div>
+                                                                    <div class="add-cart">
+                                                                        <p class="product bootexpert add_to_cart_inline">
+                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="add-to-links">
+                                                                        <div class="yith-wcwl-add-to-wishlist">
+                                                                            <div>
+                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
+                                                                            </div>
+                                                                            <div class="clear"></div>
+
+                                                                        </div>
+                                                                        <div class="clear"></div>
+                                                                        <div class="bootexpert product compare-button">
+                                                                            <a href="" class="compare button">Compare</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-col8">
+                                                            <div class="gridview">
+                                                                <h2 class="product-name"><a href="">Vivamus blandit</a></h2>
+                                                                <div class="ratings">
+                                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span class="width100"><strong class="rating">5.00</strong> out of 5</span></div>
+                                                                </div>
+                                                                <div class="price-box"><span class="amount">&pound;65.00</span></div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="parvez_column parvez_column_container parvez_col-sm-9">
+                        <div class="parvez_wrapper">
+                            <div class="phm_row hasteck_row parvez_inner phm_row-fluid home-banner">
+                                <div class="parvez_column parvez_column_container parvez_col-sm-12">
+                                    <div class="parvez_wrapper">
+                                        <div class="parvez_text_column parvez_content_element ">
+                                            <div class="parvez_wrapper">
+                                                <p>
+                                                    <a href="#"><img class="alignnone wp-image-5692" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2015/07/img_banner04.jpg" alt="img_banner03" width="870" height="194" /></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           {%- for cate_item in root_cate_items %}
+                            {% set products = cate_item.Product %}
+                            {% if products|length > 0 %}
+                            <div class="phm_row hasteck_row parvez_inner phm_row-fluid products-carousel2 parvez_custom_1">
+                                <div class="parvez_column parvez_column_container parvez_col-sm-12">
+                                    <div class="parvez_wrapper">
+                                        <div class="parvez_text_column parvez_content_element ">
+                                            <div class="parvez_wrapper">
+                                                <h3><span>{{cate_item.name}}</span></h3>
+                                            </div>
+                                        </div>
+                                        <div class="bootexpert columns-4">
+                                            <div id="shop-products-4-1" class="shop-products row grid-view">
+                                                {%- for product_item in products %}
+                                                <div class="item-col col-xs-12 col-sm-3">
+                                                    <div class="product-wrapper">
+                                                        <div class="list-col4">
+                                                            <div class="product-image">
+                                                                <a href="" title="Ornare sed consequat">
+                                                                    <img src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/08.png" class="primary_image" alt="02" />
+                                                                    <img src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/031.png" class="secondary_image" alt="11" />
+                                                                </a>
+                                                                <div class="action clearfix">
+                                                                    <div class="quickviewbtn">
+                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
+                                                                    </div>
+                                                                    <div class="add-cart">
+                                                                        <p class="product bootexpert add_to_cart_inline">
+                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="add-to-links">
+                                                                        <div class="yith-wcwl-add-to-wishlist">
+                                                                            <div>
+                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
+                                                                            </div>
+                                                                            <div class="clear"></div>
+
+                                                                        </div>
+                                                                        <div class="clear"></div>
+                                                                        <div class="bootexpert product compare-button">
+                                                                            <a href="" class="compare button">Compare</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-col8">
+                                                            <div class="gridview">
+                                                                <h2 class="product-name"><a href="">{{product_item.name}}</a></h2>
+                                                                <div class="ratings">
+                                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span class="width100"><strong class="rating">5.00</strong> out of 5</span></div>
+                                                                </div>
+                                                                <div class="price-box"><span class="amount">&pound;{{product_item.price}}</span></div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                                {%- endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {%- endfor %}
+
+                            <div class="phm_row hasteck_row parvez_inner phm_row-fluid">
+                                <div class="parvez_column parvez_column_container parvez_col-sm-12">
+                                    <div class="parvez_wrapper">
+                                        <div class="parvez_text_column parvez_content_element ">
+                                            <div class="parvez_wrapper">
+                                                <h3><strong>OUR BRANDS</strong></h3>
+                                            </div>
+                                        </div>
+                                        <div id="brands-carousel-5" class="brands-carousel">
+                                            <div>
+                                                <a href="" title=""><img src="images/accessories/brand/img_brand01.jpg" alt="" /></a>
+                                            </div>
+                                            <div>
+                                                <a href="" title=""><img src="images/accessories/brand/img_brand02.jpg" alt="" /></a>
+                                            </div>
+                                            <div>
+                                                <a href="" title=""><img src="images/accessories/brand/img_brand03.jpg" alt="" /></a>
+                                            </div>
+                                            <div>
+                                                <a href="" title=""><img src="images/accessories/brand/img_brand02.jpg" alt="" /></a>
+                                            </div>
+                                            <div>
+                                                <a href="" title=""><img src="images/accessories/brand/img_brand03.jpg" alt="" /></a>
+                                            </div>
+                                            <div>
+                                                <a href="" title=""><img src="images/accessories/brand/img_brand02.jpg" alt="" /></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="span4 ">
-                            <section class="lazy-load-box effect-fade" >
-                                <h2>Video nổi bật</h2>
-                            </section>
-                            <section class="lazy-load-box effect-fade" >
-                                <ul class="recent-posts list_3 unstyled">
-                                    
-                                      {% for v in videoList.items %}
-                                    <li class="recent-posts_li format-video clearfix">
-                                        <figure class="thumbnail featured-thumbnail">
-                                            <a href="/video/{{v.menu_id}}/{{v.getSEOCate()}}/{{v.content_id}}/{{v.getSEOTitle()}}/" title="{{v.title}}"><img src="{{v.img_url}}" alt="{{v.title}}"></a>
-                                        </figure>
-                                        <div class="inner">
-                                            <span class="post_category">
-                                                <a href="/video/{{v.menu_id}}/{{v.getSEOCate()}}/{{v.content_id}}/{{v.getSEOTitle()}}/" title="{{v.title}}">{{v.title}}</a>
-                                            </span>
-                                            <h5><a href="/video/{{v.menu_id}}/{{v.getSEOCate()}}/{{v.content_id}}/{{v.getSEOTitle()}}/" title="{{v.description}}">{{v.description}}</a></h5>
-                                            <div class="excerpt">
-                                                <a href="/video/{{v.menu_id}}/{{v.getSEOCate()}}/{{v.content_id}}/{{v.getSEOTitle()}}/" title="{{v.description}}"> 
-                                                    {{v.description}}
-                                                </a>
-                                            </div>
-                                            <span class="meta">
-                                                <span class="post-date">{{ date("Y-m-d H:i", time(v.create_date)) }}</span>
-                                                <span class="post-comments">
-                                                    {{v.total_view}}
-                                                </span>
-                                            </span>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </section>
-                           
+                    </div>
+                </div>
+            </div>
+            <div class="phm_row hasteck_row phm_row-fluid corporate-about parvez_custom_2">
+                <div class="row-container">
+                    <div class="parvez_column parvez_column_container parvez_col-sm-4 parvez_custom_3">
+                        <div class="parvez_wrapper">
+                            <div class="parvez_text_column parvez_content_element ">
+                                <div class="parvez_wrapper">
+                                    <p>FREE SHIPPING ON ORDER OVER $99</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="clear"></div>
+                    <div class="parvez_column parvez_column_container parvez_col-sm-4 parvez_custom_3">
+                        <div class="parvez_wrapper">
+                            <div class="parvez_text_column parvez_content_element ">
+                                <div class="parvez_wrapper">
+                                    <p>STORE ONLINE SUPPORT 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="parvez_column parvez_column_container parvez_col-sm-4 parvez_custom_4">
+                        <div class="parvez_wrapper">
+                            <div class="parvez_text_column parvez_content_element ">
+                                <div class="parvez_wrapper">
+                                    <p>30 DAYS MONEY BACK GUARANTEED !</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>

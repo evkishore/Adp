@@ -1,0 +1,134 @@
+.furniture-categories ul { list-style: none;padding: 0; }
+.furniture-categories > ul { padding: 0; }
+.furniture-categories a {
+  display: block;
+  vertical-align: middle;
+  text-decoration: none;
+  padding: 8px;
+  text-transform: capitalize;
+  margin-bottom: 1px;
+  font-size: 13px;
+}
+.furniture-categories a:hover {
+  color: #ffa200;
+}
+.furniture-categories .active > a:hover,
+.furniture-categories .selected > a,
+.furniture-categories a:hover { /*background-color: #c6cdde;*/  color: #ffa200; }
+.furniture-categories .selected > a {
+  color: #f53d3e;
+  font-weight: bold;
+  text-decoration: none;
+}
+.furniture-categories .active > a { background-color: #e1e3e9; }
+.furniture-categories .closed > a,
+.furniture-categories .opened > a {
+  padding-left: 27px;
+  background-position: 4px 14px;
+  background-repeat: no-repeat;
+}
+.furniture-categories .closed > a { background-image: url(icon-expand.png); }
+.furniture-categories .opened > a { background-image: url(icon-collapse.png); }
+.furniture-categories ul.sub-menu li a{text-transform: capitalize;color: #8e8e8e}
+.furniture-categories ul.sub-menu li a:hover{color: #ffa200}
+.furniture-categories .widgettitle{margin:0;font-size: 14px;background: #6b6b6b;color: #fff;text-transform: uppercase;padding: 12px 20px;}
+.furniture-categories .menu-categories-container{padding: 10px;border: 1px solid #eee;}
+.furniture-categories .menu-categories-container > ul > li{border-bottom: 1px solid #eee;}
+.digital-categories ul { list-style: none; margin: 0;border-bottom: 5px solid #e9e9e9;padding: 0 10px;}
+.digital-categories ul li {
+  position: relative;
+  border-bottom: 1px solid #ececf1;
+}
+.digital-categories ul.sub-menu {
+  border: none;
+  padding: 0 0 0 20px;
+}
+.digital-categories ul.sub-menu li:last-child {
+  border: none;
+}
+.digital-categories > ul { padding: 0; }
+.digital-categories a {
+  display: block;
+  vertical-align: middle;
+  text-decoration: none;
+  padding: 14px 8px 14px 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+  margin-bottom: 1px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+.digital-categories li.last {
+  border:none;
+}
+.digital-categories a:hover {
+  color: #85d565;
+}
+.digital-categories .active > a:hover,
+.digital-categories .selected > a,
+.digital-categories a:hover {color: #85d565; }
+.digital-categories .selected > a {
+  color: #f53d3e;
+  font-weight: bold;
+  text-decoration: none;
+}
+.digital-categories .active > a { background-color: #e1e3e9; }
+.digital-categories .closed > a,
+.digital-categories .opened > a {
+  padding-left: 35px;
+  background-position: 11px 18px;
+  background-repeat: no-repeat;
+}
+.digital-categories .closed > a { background-image: url(icon-expand.png); }
+.digital-categories .opened > a { background-image: url(icon-collapse.png); }
+.digital-categories .widget_nav_menu{background: #fafafa;}
+.digital-categories .widgettitle {
+  background-color: #85d565;
+  color: #fff;
+  font-size: 16px;
+  height: 55px;
+  line-height: 55px;
+  margin: 0;
+  padding-left: 20px;
+  text-transform: uppercase;
+}
+.digital-categories ul.sub-menu li a {text-transform: capitalize;color: #8e8e8e}
+.digital-categories ul.sub-menu li a:hover {color: #85d565;}
+.glass-categories ul { list-style: none;padding: 0; }
+.glass-categories > ul { padding: 0; }
+.glass-categories a {
+  display: block;
+  vertical-align: middle;
+  text-decoration: none;
+  padding: 8px;
+  font-family: Raleway, Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+  margin-bottom: 1px;
+  color: #fff;
+  font-size: 14px;
+  border-bottom: 1px solid #414141;
+}
+.glass-categories a:hover {
+  color: #68c5ec;
+}
+.glass-categories .active > a:hover,
+.glass-categories .selected > a,
+.glass-categories a:hover { /*background-color: #c6cdde;*/  color: #68c5ec; }
+.glass-categories .selected > a {
+  color: #f53d3e;
+  font-weight: bold;
+  text-decoration: none;
+}
+.glass-categories .active > a { background-color: #e1e3e9; }
+.glass-categories .closed > a,
+.glass-categories .opened > a {
+  padding-left: 27px;
+  background-position: 4px 13px;
+  background-repeat: no-repeat;
+}
+.glass-categories .closed > a { background-image: url(icon-expand.png); }
+.glass-categories .opened > a { background-image: url(icon-collapse.png); }
+.glass-categories .widget_nav_menu{background: #2b2b2b;padding: 20px;}
+.glass-categories ul.sub-menu li a{text-transform: capitalize;color: #dfdfdf}
+.glass-categories ul.sub-menu li a:hover{color: #68c5ec}
