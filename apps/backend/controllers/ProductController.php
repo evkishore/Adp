@@ -265,22 +265,6 @@ class ProductController extends ControllerBase {
         }
     }
 
-
-    /**
-     * Create Directory if not exist
-     *
-     * @param $directory
-     * @param $presmission
-     *
-     * @return bool
-     */
-    public function checkDirectoryExist($directory,$presmission = 0777){
-        if($directory && file_exists($directory) === FALSE){
-            mkdir(rtrim($directory,'/').DIRECTORY_SEPARATOR,$presmission,TRUE);
-        }
-        return TRUE;
-    }
-
     private function processUpload(){
         $flag = false;
         global $config;

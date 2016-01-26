@@ -149,6 +149,7 @@
                             <tr>
                                 <th width="30px"> NO </th>
                                 <th width="15%"> Name </th>
+                                <th > Logo </th>
                                 <th class="numeric"> Seo URL </th>
                                 <th class="numeric"> parent name </th>
                                 <th class="numeric"> status </th>
@@ -163,17 +164,20 @@
                                     <?php echo $obj["page_size"] * ($items->current - 1) + $i; ?>
                                 </td>
                                 <td>
-                                    <a href="{{base_url}}/cpanel/{{ControllerName}}/edit/{{r.cate_id}}">
+                                    <a href="{{base_url}}/cpanel/{{ControllerName}}/edit/{{r.brand_id}}">
                                         {{ r.name}}
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{base_url}}/cpanel/{{ControllerName}}/edit/{{r.cate_id}}">
+                                    {{image()}}
+                                </td>
+                                <td>
+                                    <a href="{{base_url}}/cpanel/{{ControllerName}}/edit/{{r.brand_id}}">
                                         {{ r.seo_url}}
                                     </a>
                                 </td>
                                 <td>
-                                    {{ not r.Cate is empty ?  r.Cate.name : "-- None --"}}
+                                    {{ not r.Brand is empty ?  r.Brand.name : "-- None --"}}
                                 </td>
                                 <td>
                                     <div class="btn-group">
@@ -184,7 +188,7 @@
                                         </i>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="javascript:;" onclick="Change({{r.status == 0 ? 1 : 0 }},{{r.cate_id}},'status', $(this));">
+                                                <a href="javascript:;" onclick="Change({{r.status == 0 ? 1 : 0 }},{{r.brand_id}},'status', $(this));">
                                                     {{ r.status == 0 ?
                                                     "<span class='label label-sm label-success'> Activce </span>" :
                                                     "<span class='label label-sm label-warning'> Inactive </span>" }}
