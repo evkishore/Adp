@@ -83,6 +83,26 @@
                 </li>
             </ul>
         </li>
+
+        <li class="nav-item {{ControllerName == "brand" ? "active open ":""}}">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-briefcase"></i>
+                <span class="title">Product manager</span>
+                <span class="arrow  {{ControllerName == "product" ? "open ":""}}"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item  {{ActionName == "" ? "active open":""}}">
+                    <a href="/cpanel/product/" class="nav-link ">
+                        <span class="title">List Product</span>
+                    </a>
+                </li>
+                <li class="nav-item  {{ActionName == "edit" ? "active open":""}}">
+                    <a href="/cpanel/product/edit" class="nav-link ">
+                        <span class="title">Add new product </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
     <!-- END SIDEBAR MENU -->
     <!-- END SIDEBAR MENU -->
