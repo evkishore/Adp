@@ -14,5 +14,8 @@ class IndexController extends ControllerBase {
 //        $hot = $this->getContentList('status = 1 AND is_hot = 1 AND parent_id = 4', 'content_id DESC',6);
 //        $this->view->hotList = $hot;
     }
+    private function getProduct(){
+        
+    }
 }
 ?>
