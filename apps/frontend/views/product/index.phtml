@@ -2,40 +2,26 @@
     <div class="page-content">
         <div class="shop_content">
             <br>
-
             <div class="container">
-
                 <nav class="bootexpert-breadcrumb">
-
-
-                    <a href="http://demo.roadthemes.com/saharan_accessories">Home</a>
-
-                    <span class="separator">&gt;</span> Shop
-
-
-
+                    <a href="/">Home</a>
+                    <span class="separator">&gt;</span> Products
                 </nav>
-
-
                 <div class="row">
-
-
                     <div id="secondary" class="col-xs-12 col-md-3 sidebar-category">
                         <aside id="woocommerce_product_categories-6" class="widget bootexpert widget_product_categories">
                             <h3 class="widget-title"><span>Categories</span></h3>
                             <div class="widget_content">
                                 <ul class="product-categories">
-                                    <li class="cat-item cat-item-47 cat-parent"><a href="http://demo.roadthemes.com/saharan_accessories/product-category/accessories/">Accessories</a> <span class="count">(17)</span></li>
-                                    <li class="cat-item cat-item-48 cat-parent"><a href="http://demo.roadthemes.com/saharan_accessories/product-category/digital/">Digital</a> <span class="count">(6)</span></li>
-                                    <li class="cat-item cat-item-49"><a href="http://demo.roadthemes.com/saharan_accessories/product-category/kids/">Kids</a> <span class="count">(16)</span></li>
-                                    <li class="cat-item cat-item-50"><a href="http://demo.roadthemes.com/saharan_accessories/product-category/shoes/">Shoes</a> <span class="count">(11)</span></li>
+                                    {%- for cate_item in root_cate_items %}
+                                    <li class="cat-item cat-item-47 cat-parent">
+                                        <a href="#">{{cate_item.name}}</a> 
+                                        <span class="count">({{cate_item.Product|length}})</span>
+                                    </li>
+                                   {%- endfor %}
                                 </ul>
                             </div>
                         </aside>
-                        
-                        
-                        
-                        
                         <aside id="text-10" class="widget widget_text">
                             <div class="widget_content">
                                 <div class="textwidget">
@@ -46,8 +32,6 @@
                     </div>
 
                     <div id="archive-product" class="col-xs-12 col-md-9">
-
-
                         <div class="toolbar">
                             <div class="view-mode">
                                 <a href="#" class="grid  active" title="Grid"><i class="fa fa-th-large"></i><span>Grid</span></a>
@@ -74,262 +58,136 @@
                         </div>
 
                         <div class="archive-border shop-sidebar left-sidebar">
-
-
                             <div class="row">
                             </div>
-
-
-
-
-
                             <div class="bootexpert shop-products row grid-view">
-
-
-
-
-
-                                <div class="first  item-col col-xs-12 col-sm-4 post-2266 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-kids product_cat-shoes product_tag-electronic product_tag-television featured shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-kids product-cat-shoes product-tag-electronic product-tag-television instock">
+                            {%- for pd_item in productList.items %}
+                                <div class="item-col col-xs-12 col-sm-4">
                                     <div class="product-wrapper">
+                                        {% if pd_item.price >0 %}
+                                            <span class="onsale"><span class="sale-text">Sale</span></span>
+                                        {% endif %}
                                         <div class="list-col4 ">
                                             <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-eu-tristique/" title="Aenean eu tristique">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/051.jpg" class="primary_image wp-post-image" alt="05"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/061.jpg" class="secondary_image" alt="06">
+                                                <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}">
+                                                    {% if pd_item.ProductImage|length>0 %}
+                                                        <img width="400" height="400" src="{{pd_item.ProductImage[0].img_url}}" class="primary_image" alt="05" />
+                                                    {% endif %}
+                                                    {% if pd_item.ProductImage|length>1 %}
+                                                        <img width="400" height="400" src="{{pd_item.ProductImage[1].img_url}}" class="secondary_image" alt="06" />
+                                                    {% endif %}
+                                                    
                                                 </a>
                                                 <div class="action clearfix">
                                                     <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2266" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-eu-tristique/" title="Aenean eu tristique">Quick View</a>
+                                                        <a class="detail-link quickview fa fa-eye"  href="#" title="{{pd_item.name}}">Quick View</a>
                                                     </div>
                                                     <div class="add-cart">
                                                         <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£80.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2266" rel="nofollow" data-product_id="2266" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                                            {% if pd_item.price >0 %}
+                                                                <span class="amount">£{{pd_item.price}}</span>
+                                                            {% endif %}
+                                                            <a href="#" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
                                                         </p>
                                                     </div>
                                                     <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2266">
+                                                        <div class="yith-wcwl-add-to-wishlist ">
                                                             <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2266" rel="nofollow" data-product-id="2266" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
+                                                                <a href="#" rel="nofollow"  data-product-type="simple" class="add_to_wishlist">Add to Wishlist</a>
                                                             </div>
-
                                                             <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
                                                                 <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
+                                                                <a href="#">Browse Wishlist</a>
                                                             </div>
-
                                                             <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
                                                                 <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
+                                                                <a href="#">Browse Wishlist</a>
                                                             </div>
-
                                                             <div style="clear:both"></div>
                                                             <div class="yith-wcwl-wishlistaddresponse"></div>
-
                                                         </div>
-
                                                         <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2266&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2266">Compare</a></div>
+                                                        <div class="bootexpert product compare-button">
+                                                            <a href="#" class="compare button" >Compare</a></div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="list-col8 ">
                                             <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-eu-tristique/">Aenean eu tristique</a></h2>
+                                                <h2 class="product-name">
+                                                    <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}">                                                           {{pd_item.name}}
+                                                    </a>
+                                                </h2>
                                                 <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.33 out of 5"><span style="width:86.6%"><strong class="rating">4.33</strong> out of 5</span></div>
+                                                    <div class="star-rating" title="Rated 4.33 out of 5">
+                                                        <span style="width:86.6%"><strong class="rating">4.33</strong> out of 5</span>
+                                                    </div>
+                                                </div>                                             
+                                                <div class="price-box">
+                                                    {% if pd_item.price >0 %}
+                                                    <del><span class="amount">£{{pd_item.original_price}}</span></del> 
+                                                    <ins><span class="amount">£{{pd_item.price}}</span></ins>
+                                                    {% else %}
+                                                        <span class="amount">£{{pd_item.price}}</span>
+                                                    {% endif %}
                                                 </div>
-                                                <div class="price-box"><span class="amount">£80.00</span></div>
 
                                             </div>
                                             <div class="listview">
                                                 <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-eu-tristique/">Aenean eu tristique</a>
-				</h2>
+                                                    <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}">                                                           {{pd_item.name}}
+                                                    </a>
+                                                </h2>
                                                 <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.33 out of 5"><span style="width:86.6%"><strong class="rating">4.33</strong> out of 5</span></div>
+                                                    <div class="star-rating" title="Rated 4.33 out of 5">
+                                                        <span style="width:86.6%"><strong class="rating">4.33</strong> out of 5</span>
+                                                    </div>
                                                 </div>
-                                                <div class="price-box"><span class="amount">£80.00</span></div>
+                                                 <div class="price-box">
+                                                    {% if pd_item.price >0 %}
+                                                    <del><span class="amount">£{{pd_item.original_price}}</span></del> 
+                                                    <ins><span class="amount">£{{pd_item.price}}</span></ins>
+                                                    {% else %}
+                                                        <span class="amount">£{{pd_item.price}}</span>
+                                                    {% endif %}
+                                                </div>
                                                 <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£80.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2266" rel="nofollow" data-product_id="2266" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2266" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-eu-tristique/" title="Aenean eu tristique">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2266">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2266" rel="nofollow" data-product-id="2266" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2266&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2266">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class=" item-col col-xs-12 col-sm-4 post-2299 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-digital product_cat-kids product_cat-shoes product_tag-electronic product_tag-tablet shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-digital product-cat-kids product-cat-shoes product-tag-electronic product-tag-tablet instock">
-                                    <div class="product-wrapper">
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-sagittis/" title="Aenean sagittis">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/17.png" class="primary_image wp-post-image" alt="17"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/031.png" class="secondary_image" alt="03">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2299" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-sagittis/" title="Aenean sagittis">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£75.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2299" rel="nofollow" data-product_id="2299" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2299">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2299" rel="nofollow" data-product-id="2299" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2299&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2299">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-sagittis/">Aenean sagittis</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£75.00</span></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-sagittis/">Aenean sagittis</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£75.00</span></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+                                                    {{pd_item.description}}
                                                 </div>
                                                 <div class="action clearfix">
                                                     <div class="add-cart">
                                                         <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£75.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2299" rel="nofollow" data-product_id="2299" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                                            {% if pd_item.price >0 %}
+                                                                <span class="amount">£{{pd_item.price}}</span>
+                                                            {% endif %}
+                                                            <a href="#" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
                                                         </p>
                                                     </div>
                                                     <div class="add-to-links">
                                                         <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2299" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/aenean-sagittis/" title="Aenean sagittis">Quick View</a>
+                                                            <a class="detail-link quickview fa fa-eye" href="#" title="Aenean eu tristique">Quick View</a>
                                                         </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2299">
+                                                        <div class="yith-wcwl-add-to-wishlist ">
                                                             <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2299" rel="nofollow" data-product-id="2299" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
+                                                                <a href="#" class="add_to_wishlist">Add to Wishlist</a>
                                                             </div>
-
                                                             <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
                                                                 <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
+                                                                <a href="#">Browse Wishlist</a>
                                                             </div>
-
                                                             <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
                                                                 <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
+                                                                <a href="#">Browse Wishlist</a>
                                                             </div>
-
                                                             <div style="clear:both"></div>
                                                             <div class="yith-wcwl-wishlistaddresponse"></div>
-
                                                         </div>
 
                                                         <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2299&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2299">Compare</a></div>
+                                                        <div class="bootexpert product compare-button">
+                                                            <a href="#" class="compare button" >Compare</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -337,1273 +195,7 @@
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
-
-
-
-
-                                <div class="last  item-col col-xs-12 col-sm-4 post-319 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-kids product_cat-shoes product_tag-blouse product_tag-fashion featured shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-kids product-cat-shoes product-tag-blouse product-tag-fashion instock">
-                                    <div class="product-wrapper">
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/n-sport-bag/" title="Aliquam lobortis est">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/03.jpg" class="primary_image wp-post-image" alt="03"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/08.jpg" class="secondary_image" alt="08">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="319" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/n-sport-bag/" title="Aliquam lobortis est">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£80.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=319" rel="nofollow" data-product_id="319" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-319">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=319" rel="nofollow" data-product-id="319" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=319&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="319">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/n-sport-bag/">Aliquam lobortis est</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£80.00</span></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/n-sport-bag/">Aliquam lobortis est</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£80.00</span></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco,Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£80.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=319" rel="nofollow" data-product_id="319" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="319" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/n-sport-bag/" title="Aliquam lobortis est">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-319">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=319" rel="nofollow" data-product-id="319" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=319&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="319">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="first  item-col col-xs-12 col-sm-4 post-2204 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-kids product_cat-shoes product_tag-blouse product_tag-fashion featured shipping-taxable product-type-grouped product-cat-accessories product-cat-kids product-cat-shoes product-tag-blouse product-tag-fashion instock">
-                                    <div class="product-wrapper">
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/buscipit-at-magna/" title="Buscipit at magna">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/15.jpg" class="primary_image wp-post-image" alt="15"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/14.jpg" class="secondary_image" alt="14">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2204" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/buscipit-at-magna/" title="Buscipit at magna">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£65.00</span>–<span class="amount">£115.00</span>
-                                                            <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/buscipit-at-magna/" rel="nofollow" data-product_id="2204" data-product_sku="" data-quantity="1" class="button  product_type_grouped">View products</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2204">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2204" rel="nofollow" data-product-id="2204" data-product-type="grouped" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2204&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2204">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/buscipit-at-magna/">Buscipit at magna</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£65.00</span>–<span class="amount">£115.00</span></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/buscipit-at-magna/">Buscipit at magna</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£65.00</span>–<span class="amount">£115.00</span></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco,Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£65.00</span>–<span class="amount">£115.00</span>
-                                                            <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/buscipit-at-magna/" rel="nofollow" data-product_id="2204" data-product_sku="" data-quantity="1" class="button  product_type_grouped">View products</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2204" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/buscipit-at-magna/" title="Buscipit at magna">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2204">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2204" rel="nofollow" data-product-id="2204" data-product-type="grouped" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2204&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2204">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class=" item-col col-xs-12 col-sm-4 post-615 product type-product status-publish product_cat-accessories product_cat-kids product_tag-electronic product_tag-laptop shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-kids product-tag-electronic product-tag-laptop instock">
-                                    <div class="product-wrapper">
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/condimentum-posuere/" title="Buscipit at magna → Condimentum posuere">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/15.jpg" class="primary_image wp-post-image" alt="15">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="615" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/condimentum-posuere/" title="Condimentum posuere">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£115.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=615" rel="nofollow" data-product_id="615" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-615">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=615" rel="nofollow" data-product-id="615" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=615&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="615">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/condimentum-posuere/">Condimentum posuere</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£115.00</span></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/condimentum-posuere/">Condimentum posuere</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£115.00</span></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco,Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£115.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=615" rel="nofollow" data-product_id="615" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="615" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/condimentum-posuere/" title="Condimentum posuere">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-615">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=615" rel="nofollow" data-product-id="615" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=615&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="615">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="last  item-col col-xs-12 col-sm-4 post-2229 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-digital product_cat-kids product_tag-fashion sale shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-digital product-cat-kids product-tag-fashion instock">
-                                    <div class="product-wrapper">
-                                        <span class="onsale"><span class="sale-text">Sale</span></span>
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/congue-lectus/" title="Congue lectus">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/06.jpg" class="primary_image wp-post-image" alt="06"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/03.png" class="secondary_image" alt="03">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2229" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/congue-lectus/" title="Congue lectus">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£115.00</span></del> <ins><span class="amount">£105.00</span></ins>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2229" rel="nofollow" data-product_id="2229" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2229">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2229" rel="nofollow" data-product-id="2229" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2229&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2229">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/congue-lectus/">Congue lectus</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£115.00</span></del> <ins><span class="amount">£105.00</span></ins></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/congue-lectus/">Congue lectus</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£115.00</span></del> <ins><span class="amount">£105.00</span></ins></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco,Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£115.00</span></del> <ins><span class="amount">£105.00</span></ins>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2229" rel="nofollow" data-product_id="2229" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2229" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/congue-lectus/" title="Congue lectus">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2229">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2229" rel="nofollow" data-product-id="2229" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2229&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2229">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="first  item-col col-xs-12 col-sm-4 post-320 product type-product status-publish has-post-thumbnail product_cat-kids product_cat-shoes product_tag-blouse product_tag-fashion shipping-taxable purchasable product-type-simple product-cat-kids product-cat-shoes product-tag-blouse product-tag-fashion instock">
-                                    <div class="product-wrapper">
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/kids/sport-t-shirt/" title="Dignissim venenatis">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/14.jpg" class="primary_image wp-post-image" alt="14">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="320" href="http://demo.roadthemes.com/saharan_accessories/shop/kids/sport-t-shirt/" title="Dignissim venenatis">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£80.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=320" rel="nofollow" data-product_id="320" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-320">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=320" rel="nofollow" data-product-id="320" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=320&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="320">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/kids/sport-t-shirt/">Dignissim venenatis</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£80.00</span></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/kids/sport-t-shirt/">Dignissim venenatis</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£80.00</span></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco,Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£80.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=320" rel="nofollow" data-product_id="320" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="320" href="http://demo.roadthemes.com/saharan_accessories/shop/kids/sport-t-shirt/" title="Dignissim venenatis">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-320">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=320" rel="nofollow" data-product-id="320" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=320&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="320">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class=" item-col col-xs-12 col-sm-4 post-2234 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-kids shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-kids instock">
-                                    <div class="product-wrapper">
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/eleifend-arcu/" title="Eleifend arcu">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/08.png" class="primary_image wp-post-image" alt="08"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/09.png" class="secondary_image" alt="09">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2234" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/eleifend-arcu/" title="Eleifend arcu">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£120.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2234" rel="nofollow" data-product_id="2234" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2234">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2234" rel="nofollow" data-product-id="2234" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2234&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2234">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/eleifend-arcu/">Eleifend arcu</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£120.00</span></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/eleifend-arcu/">Eleifend arcu</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><span class="amount">£120.00</span></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco,Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <span class="amount">£120.00</span>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2234" rel="nofollow" data-product_id="2234" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2234" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/eleifend-arcu/" title="Eleifend arcu">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2234">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2234" rel="nofollow" data-product-id="2234" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2234&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2234">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="last  item-col col-xs-12 col-sm-4 post-2277 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-camera product_cat-digital product_cat-refrigerator product_cat-smartphone product_tag-electronic product_tag-television sale virtual shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-camera product-cat-digital product-cat-refrigerator product-cat-smartphone product-tag-electronic product-tag-television instock">
-                                    <div class="product-wrapper">
-                                        <span class="onsale"><span class="sale-text">Sale</span></span>
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/elementum-felis/" title="Elementum felis">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/03.png" class="primary_image wp-post-image" alt="03"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/07.jpg" class="secondary_image" alt="07">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2277" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/elementum-felis/" title="Elementum felis">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£125.00</span></del> <ins><span class="amount">£120.00</span></ins>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2277" rel="nofollow" data-product_id="2277" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2277">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2277" rel="nofollow" data-product-id="2277" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2277&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2277">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/elementum-felis/">Elementum felis</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£125.00</span></del> <ins><span class="amount">£120.00</span></ins></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/elementum-felis/">Elementum felis</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£125.00</span></del> <ins><span class="amount">£120.00</span></ins></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£125.00</span></del> <ins><span class="amount">£120.00</span></ins>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2277" rel="nofollow" data-product_id="2277" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2277" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/elementum-felis/" title="Elementum felis">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2277">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2277" rel="nofollow" data-product-id="2277" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2277&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2277">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="first  item-col col-xs-12 col-sm-4 post-2287 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-kids product_tag-electronic product_tag-television sale downloadable shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-kids product-tag-electronic product-tag-television instock">
-                                    <div class="product-wrapper">
-                                        <span class="onsale"><span class="sale-text">Sale</span></span>
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-eu-neque/" title="Etiam eu neque">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/10.jpg" class="primary_image wp-post-image" alt="10"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/091.jpg" class="secondary_image" alt="09">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2287" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-eu-neque/" title="Etiam eu neque">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£85.00</span></del> <ins><span class="amount">£80.00</span></ins>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2287" rel="nofollow" data-product_id="2287" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2287">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2287" rel="nofollow" data-product-id="2287" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2287&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2287">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-eu-neque/">Etiam eu neque</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£85.00</span></del> <ins><span class="amount">£80.00</span></ins></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-eu-neque/">Etiam eu neque</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span style="width:100%"><strong class="rating">5.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£85.00</span></del> <ins><span class="amount">£80.00</span></ins></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£85.00</span></del> <ins><span class="amount">£80.00</span></ins>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2287" rel="nofollow" data-product_id="2287" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2287" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-eu-neque/" title="Etiam eu neque">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2287">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2287" rel="nofollow" data-product-id="2287" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2287&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2287">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class=" item-col col-xs-12 col-sm-4 post-2304 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-digital product_cat-kids product_tag-fashion sale shipping-taxable purchasable product-type-variable product-cat-accessories product-cat-digital product-cat-kids product-tag-fashion instock">
-                                    <div class="product-wrapper">
-                                        <span class="onsale"><span class="sale-text">Sale</span></span>
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-molestie/" title="Etiam molestie">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/131.png" class="primary_image wp-post-image" alt="13"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/08.png" class="secondary_image" alt="08">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2304" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-molestie/" title="Etiam molestie">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£230.00</span>–<span class="amount">£450.00</span></del> <ins><span class="amount">£220.00</span>–<span class="amount">£420.00</span></ins>
-                                                            <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-molestie/" rel="nofollow" data-product_id="2304" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_variable">Select options</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2304">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2304" rel="nofollow" data-product-id="2304" data-product-type="variable" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2304&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2304">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-molestie/">Etiam molestie</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£230.00</span>–<span class="amount">£450.00</span></del> <ins><span class="amount">£220.00</span>–<span class="amount">£420.00</span></ins></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-molestie/">Etiam molestie</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£230.00</span>–<span class="amount">£450.00</span></del> <ins><span class="amount">£220.00</span>–<span class="amount">£420.00</span></ins></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£230.00</span>–<span class="amount">£450.00</span></del> <ins><span class="amount">£220.00</span>–<span class="amount">£420.00</span></ins>
-                                                            <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-molestie/" rel="nofollow" data-product_id="2304" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_variable">Select options</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2304" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/etiam-molestie/" title="Etiam molestie">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2304">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2304" rel="nofollow" data-product-id="2304" data-product-type="variable" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2304&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2304">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <div class="last  item-col col-xs-12 col-sm-4 post-2249 product type-product status-publish has-post-thumbnail product_cat-accessories product_cat-kids product_cat-shoes product_tag-electronic product_tag-laptop sale shipping-taxable purchasable product-type-simple product-cat-accessories product-cat-kids product-cat-shoes product-tag-electronic product-tag-laptop instock">
-                                    <div class="product-wrapper">
-                                        <span class="onsale"><span class="sale-text">Sale</span></span>
-                                        <div class="list-col4 ">
-                                            <div class="product-image">
-                                                <a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/feugiat-justo-lacinia/" title="Feugiat justo lacinia">
-                                                    <img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/021.jpg" class="primary_image wp-post-image" alt="02"><img width="400" height="400" src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2014/12/051.jpg" class="secondary_image" alt="05">
-                                                </a>
-                                                <div class="action clearfix">
-                                                    <div class="quickviewbtn">
-                                                        <a class="detail-link quickview fa fa-eye" data-quick-id="2249" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/feugiat-justo-lacinia/" title="Feugiat justo lacinia">Quick View</a>
-                                                    </div>
-                                                    <div class="add-cart">
-                                                        <p class="product woocommerce add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£80.00</span></del> <ins><span class="amount">£70.00</span></ins>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2249" rel="nofollow" data-product_id="2249" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2249">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2249" rel="nofollow" data-product-id="2249" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="woocommerce product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2249&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2249">Compare</a></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="list-col8 ">
-                                            <div class="gridview">
-                                                <h2 class="product-name"><a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/feugiat-justo-lacinia/">Feugiat justo lacinia</a></h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£80.00</span></del> <ins><span class="amount">£70.00</span></ins></div>
-
-                                            </div>
-                                            <div class="listview">
-                                                <h2 class="product-name">
-					<a href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/feugiat-justo-lacinia/">Feugiat justo lacinia</a>
-				</h2>
-                                                <div class="ratings">
-                                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div>
-                                                </div>
-                                                <div class="price-box"><del><span class="amount">£80.00</span></del> <ins><span class="amount">£70.00</span></ins></div>
-                                                <div class="product-desc">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                </div>
-                                                <div class="action clearfix">
-                                                    <div class="add-cart">
-                                                        <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-
-                                                            <del><span class="amount">£80.00</span></del> <ins><span class="amount">£70.00</span></ins>
-                                                            <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add-to-cart=2249" rel="nofollow" data-product_id="2249" data-product_sku="" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="quickviewbtn">
-                                                            <a class="detail-link quickview fa fa-eye" data-quick-id="2249" href="http://demo.roadthemes.com/saharan_accessories/shop/accessories/feugiat-justo-lacinia/" title="Feugiat justo lacinia">Quick View</a>
-                                                        </div>
-
-
-                                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-2249">
-                                                            <div class="yith-wcwl-add-button show" style="display:block">
-
-
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;add_to_wishlist=2249" rel="nofollow" data-product-id="2249" data-product-type="simple" class="add_to_wishlist">
-        Add to Wishlist</a>
-
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                                                <span class="feedback">Product added!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                                                <span class="feedback">The product is already in the wishlist!</span>
-                                                                <a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;wishlist-action=view">
-	            Browse Wishlist	        </a>
-                                                            </div>
-
-                                                            <div style="clear:both"></div>
-                                                            <div class="yith-wcwl-wishlistaddresponse"></div>
-
-                                                        </div>
-
-                                                        <div class="clear"></div>
-                                                        <div class="bootexpert product compare-button"><a href="/saharan_accessories/shop/?min_price=45&amp;max_price=515&amp;action=yith-woocompare-add-product&amp;id=2249&amp;_wpnonce=7001978ed4" class="compare button" data-product_id="2249">Compare</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-
-
+                            {%- endfor %}
                             </div>
                             <div class="toolbar tb-bottom">
                                 <nav class="bootexpert-pagination">
@@ -1615,9 +207,6 @@
                                 </nav>
                                 <div class="clearfix"></div>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>

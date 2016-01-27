@@ -118,7 +118,7 @@
                                                     <div class="product-wrapper">
                                                         <div class="list-col4">
                                                             <div class="product-image">
-                                                                <a href="" title="Aenean eu tristique">
+                                                                <a href="/product/{{p_item.cate_id}}/{{p_item.getSEOCate()}}/{{p_item.product_id}}/{{p_item.getSEOTitle()}}" title="{{p_item.name}}">
                                                                     {% if p_item.ProductImage|length>0 %}
                                                                         <img src="{{p_item.ProductImage[0].img_url}}" class="primary_image" alt="05" />
                                                                     {% endif %}
@@ -153,7 +153,7 @@
                                                         </div>
                                                         <div class="list-col8">
                                                             <div class="gridview">
-                                                                <h2 class="product-name"><a href="">{{p_item.name}}</a></h2>
+                                                                <h2 class="product-name"><a href="/product/{{p_item.cate_id}}/{{p_item.getSEOCate()}}/{{p_item.product_id}}/{{p_item.getSEOTitle()}}">{{p_item.name}}</a></h2>
                                                                 <div class="ratings">
                                                                     <div class="star-rating" title="Rated 4.33 out of 5"><span class="width86"><strong class="rating">4.33</strong> out of 5</span></div>
                                                                 </div>
@@ -205,9 +205,12 @@
                                                 {%- for product_item in products %}
                                                 <div class="item-col col-xs-12 col-sm-3">
                                                     <div class="product-wrapper">
+                                                        {% if product_item.price >0 %}
+                                                            <span class="onsale"><span class="sale-text">Sale</span></span>
+                                                        {% endif %}
                                                         <div class="list-col4">
                                                             <div class="product-image">
-                                                                <a href="" title="Ornare sed consequat">
+                                                                <a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}" title="Ornare sed consequat">
                                                                     {% if product_item.ProductImage|length>0 %}
                                                                         <img src="{{product_item.ProductImage[0].img_url}}" class="primary_image" alt="05" />
                                                                     {% endif %}
@@ -222,20 +225,20 @@
                                                                     </div>
                                                                     <div class="add-cart">
                                                                         <p class="product bootexpert add_to_cart_inline">
-                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
+                                                                            <a href="#" class="button add_to_cart_button">Add to cart</a>
                                                                         </p>
                                                                     </div>
                                                                     <div class="add-to-links">
                                                                         <div class="yith-wcwl-add-to-wishlist">
                                                                             <div>
-                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
+                                                                                <a href="#" class="add_to_wishlist">Add to Wishlist</a>
                                                                             </div>
                                                                             <div class="clear"></div>
 
                                                                         </div>
                                                                         <div class="clear"></div>
                                                                         <div class="bootexpert product compare-button">
-                                                                            <a href="" class="compare button">Compare</a>
+                                                                            <a href="#" class="compare button">Compare</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -243,11 +246,20 @@
                                                         </div>
                                                         <div class="list-col8">
                                                             <div class="gridview">
-                                                                <h2 class="product-name"><a href="">{{product_item.name}}</a></h2>
+                                                                <h2 class="product-name"><a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}">{{product_item.name}}</a></h2>
                                                                 <div class="ratings">
-                                                                    <div class="star-rating" title="Rated 5.00 out of 5"><span class="width100"><strong class="rating">5.00</strong> out of 5</span></div>
+                                                                    <div class="star-rating" title="Rated 5.00 out of 5">
+                                                                        <span class="width100"><strong class="rating">5.00</strong> out of 5</span>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="price-box"><span class="amount">&pound;{{product_item.price}}</span></div>
+                                                                <div class="price-box">
+                                                                    {% if product_item.price >0 %}
+                                                                    <del><span class="amount">£{{product_item.original_price}}</span></del> 
+                                                                    <ins><span class="amount">£{{product_item.price}}</span></ins>
+                                                                    {% else %}
+                                                                        <span class="amount">£{{product_item.price}}</span>
+                                                                    {% endif %}
+                                                                </div>
 
                                                             </div>
                                                         </div>

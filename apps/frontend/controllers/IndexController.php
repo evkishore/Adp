@@ -6,7 +6,6 @@ use Multiple\Frontend\Models\Product as Product;
 class IndexController extends ControllerBase {
     public function indexAction() {
         $parentCate = $this->getParentCategory();
-        $this->view->setVar('root_cate_items', $parentCate);
         $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "brand"        => $this->getBrand(),
                                    "product"        => $this->getProduct()

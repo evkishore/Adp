@@ -56,6 +56,21 @@ $di->set('router', function () {
     });
 
     $router->add(
+        "/product/([0-9]+)/([a-zA-Z0-9\_\-]+)/([0-9]+)/([a-zA-Z0-9\_\-]+)",
+        array(
+           'module'  => 'frontend',
+           "controller" => "product",
+           "action"     => "detail",
+           "cateId"       => 1,
+           "cateName"      => 2,
+           "productId"       => 3,
+           "productName"      => 4
+        ))
+        ->convert('controller', function($controller) {
+            return str_replace('-', '', $controller);
+    });
+    
+    $router->add(
         '/cpanel',
         array(
             'module' => 'backend',
