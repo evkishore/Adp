@@ -71,6 +71,34 @@ $di->set('router', function () {
     });
     
     $router->add(
+        "/product/([0-9]+)/([a-zA-Z0-9\_\-]+)/([0-9]+)",
+        array(
+           'module'  => 'frontend',
+           "controller" => "product",
+           "action"     => "list",
+           "cateId"       => 1,
+           "cateName"      => 2,
+           "page"  => 3
+        ))
+        ->convert('controller', function($controller) {
+            return str_replace('-', '', $controller);
+    });
+    
+    $router->add(
+        "/brand/([0-9]+)/([a-zA-Z0-9\_\-]+)/([0-9]+)",
+        array(
+           'module'  => 'frontend',
+           "controller" => "brand",
+           "action"     => "index",
+           "id"       => 1,
+           "name"      => 2,
+           "page"  => 3
+        ))
+        ->convert('controller', function($controller) {
+            return str_replace('-', '', $controller);
+    });
+    
+    $router->add(
         '/cpanel',
         array(
             'module' => 'backend',

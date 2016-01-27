@@ -1,0 +1,199 @@
+<div id="secondary" class="col-xs-12 col-md-3 sidebar-category">
+    <aside id="woocommerce_product_categories-6" class="widget bootexpert widget_product_categories">
+        <h3 class="widget-title"><span>Categories</span></h3>
+        <div class="widget_content">
+            <ul class="product-categories">
+                {%- for cate_item in root_cate_items %}
+                <li class="cat-item cat-item-47 cat-parent">
+                    <a href="/product/{{cate_item.cate_id}}/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>
+                    <span class="count">({{cate_item.Product|length}})</span>
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </aside>
+    <aside id="text-10" class="widget widget_text">
+        <div class="widget_content">
+            <div class="textwidget">
+                <a href="#"><img src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2015/08/banner_right.jpg " alt=""></a>
+            </div>
+        </div>
+    </aside>
+</div>
+
+<div id="archive-product" class="col-xs-12 col-md-9">
+    <div class="toolbar">
+        <div class="view-mode">
+            <a href="#" class="grid  active" title="Grid"><i class="fa fa-th-large"></i><span>Grid</span></a>
+            <a href="#" class="list " title="List"><i class="fa fa-th-list"></i><span>List</span></a>
+        </div>
+        {% if productList.items|length >0 %}
+        <p class="bootexpert-result-count">
+            Showing 1–10 of {{productList.total_pages}} results</p>
+        {% endif %}
+        <form class="bootexpert-ordering hidden-xs" method="get">
+            <div class="orderby-wrapper">
+                <label>Sort By</label>
+                <select name="orderby" class="orderby" style="display: none;">
+                    <option value="menu_order" selected="selected">Default sorting</option>
+                    <option value="popularity">Sort by popularity</option>
+                    <option value="rating">Sort by average rating</option>
+                    <option value="date">Sort by newness</option>
+                    <option value="price">Sort by price: low to high</option>
+                    <option value="price-desc">Sort by price: high to low</option>
+                </select>
+            </div>
+            <input type="hidden" name="min_price" value="45">
+            <input type="hidden" name="max_price" value="515">
+        </form>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="archive-border shop-sidebar left-sidebar">
+        <div class="row">
+        </div>
+        <div class="bootexpert shop-products row grid-view">
+            {%- for pd_item in productList.items %}
+            <div class="item-col col-xs-12 col-sm-4">
+                <div class="product-wrapper">
+                    {% if pd_item.price >0 %}
+                    <span class="onsale"><span class="sale-text">Sale</span></span>
+                    {% endif %}
+                    <div class="list-col4 ">
+                        <div class="product-image">
+                            <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}">
+                                                    {% if pd_item.ProductImage|length>0 %}
+                                                        <img width="400" height="400" src="{{pd_item.ProductImage[0].img_url}}" class="primary_image" alt="05" />
+                                                    {% endif %}
+                                                    {% if pd_item.ProductImage|length>1 %}
+                                                        <img width="400" height="400" src="{{pd_item.ProductImage[1].img_url}}" class="secondary_image" alt="06" />
+                                                    {% endif %}
+                                                    
+                                                </a>
+                            <div class="action clearfix">
+                                <div class="quickviewbtn">
+                                    <a class="detail-link quickview fa fa-eye" href="#" title="{{pd_item.name}}">Quick View</a>
+                                </div>
+                                <div class="add-cart">
+                                    <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
+                                        {% if pd_item.price >0 %}
+                                        <span class="amount">£{{pd_item.price}}</span> {% endif %}
+                                        <a href="#" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                    </p>
+                                </div>
+                                <div class="add-to-links">
+                                    <div class="yith-wcwl-add-to-wishlist ">
+                                        <div class="yith-wcwl-add-button show" style="display:block">
+                                            <a href="#" rel="nofollow" data-product-type="simple" class="add_to_wishlist">Add to Wishlist</a>
+                                        </div>
+                                        <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
+                                            <span class="feedback">Product added!</span>
+                                            <a href="#">Browse Wishlist</a>
+                                        </div>
+                                        <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
+                                            <span class="feedback">The product is already in the wishlist!</span>
+                                            <a href="#">Browse Wishlist</a>
+                                        </div>
+                                        <div style="clear:both"></div>
+                                        <div class="yith-wcwl-wishlistaddresponse"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="bootexpert product compare-button">
+                                        <a href="#" class="compare button">Compare</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-col8 ">
+                        <div class="gridview">
+                            <h2 class="product-name">
+                                                    <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}">                                                           {{pd_item.name}}
+                                                    </a>
+                                                </h2>
+                            <div class="ratings">
+                                <div class="star-rating" title="Rated 4.33 out of 5">
+                                    <span style="width:86.6%"><strong class="rating">4.33</strong> out of 5</span>
+                                </div>
+                            </div>
+                            <div class="price-box">
+                                {% if pd_item.price >0 %}
+                                <del><span class="amount">£{{pd_item.original_price}}</span></del>
+                                <ins><span class="amount">£{{pd_item.price}}</span></ins> {% else %}
+                                <span class="amount">£{{pd_item.price}}</span> {% endif %}
+                            </div>
+
+                        </div>
+                        <div class="listview">
+                            <h2 class="product-name">
+                                                    <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}">                                                           {{pd_item.name}}
+                                                    </a>
+                                                </h2>
+                            <div class="ratings">
+                                <div class="star-rating" title="Rated 4.33 out of 5">
+                                    <span style="width:86.6%"><strong class="rating">4.33</strong> out of 5</span>
+                                </div>
+                            </div>
+                            <div class="price-box">
+                                {% if pd_item.price >0 %}
+                                <del><span class="amount">£{{pd_item.original_price}}</span></del>
+                                <ins><span class="amount">£{{pd_item.price}}</span></ins> {% else %}
+                                <span class="amount">£{{pd_item.price}}</span> {% endif %}
+                            </div>
+                            <div class="product-desc">
+                                {{pd_item.description}}
+                            </div>
+                            <div class="action clearfix">
+                                <div class="add-cart">
+                                    <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
+                                        {% if pd_item.price >0 %}
+                                        <span class="amount">£{{pd_item.price}}</span> {% endif %}
+                                        <a href="#" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                    </p>
+                                </div>
+                                <div class="add-to-links">
+                                    <div class="quickviewbtn">
+                                        <a class="detail-link quickview fa fa-eye" href="#" title="Aenean eu tristique">Quick View</a>
+                                    </div>
+                                    <div class="yith-wcwl-add-to-wishlist ">
+                                        <div class="yith-wcwl-add-button show" style="display:block">
+                                            <a href="#" class="add_to_wishlist">Add to Wishlist</a>
+                                        </div>
+                                        <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
+                                            <span class="feedback">Product added!</span>
+                                            <a href="#">Browse Wishlist</a>
+                                        </div>
+                                        <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
+                                            <span class="feedback">The product is already in the wishlist!</span>
+                                            <a href="#">Browse Wishlist</a>
+                                        </div>
+                                        <div style="clear:both"></div>
+                                        <div class="yith-wcwl-wishlistaddresponse"></div>
+                                    </div>
+
+                                    <div class="clear"></div>
+                                    <div class="bootexpert product compare-button">
+                                        <a href="#" class="compare button">Compare</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            {%- endfor %}
+        </div>
+        {% if productList.items|length >0 %}
+        <div class="toolbar tb-bottom">
+            <nav class="bootexpert-pagination">
+                <ul class="page-numbers">
+                    <li><span class="page-numbers current">1</span></li>
+                    <li><a class="page-numbers" href="#">2</a></li>
+                    <li><a class="next page-numbers" href="#">→</a></li>
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+        </div>
+        {% endif %}
+    </div>
+</div>

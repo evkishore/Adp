@@ -4,6 +4,7 @@ namespace Multiple\Frontend\Controllers;
 use Phalcon\Mvc\Controller;
 use Multiple\Frontend\Models\Category as Category;
 use Multiple\Frontend\Models\Product as Product;
+use Multiple\Frontend\Models\Brand as Brand;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 class ControllerBase extends Controller {
@@ -92,9 +93,14 @@ class ControllerBase extends Controller {
     }    
      
     public function getProductDetailById($product_id) {      
-       
         $product = Product::findFirst("product_id={$product_id}");
         return $product;
+    }
+    
+    public function getBrandDetailById($brand_id) {      
+       
+        $brand = Brand::findFirst("brand_id={$brand_id}");
+        return $brand;
     }
     
     public function getCategoryDetail($cate_id) {      

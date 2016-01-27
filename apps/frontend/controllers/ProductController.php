@@ -22,11 +22,13 @@ class ProductController extends ControllerBase {
     public function listAction($cateId,$cateName,$pageNum=1)
     {
         $parentCate = $this->getParentCategory();
-        $this->view->setVar('root_cate_items', $parentCate);
-        $list = $this->getProductList('status = 1 AND cate_id ='.$cateId, 'product_id DESC',10,1);        
-        $this->view->productList = $list;
-        $this->view->seoUrl = '';
-        $this->view->current=$pageNum;      
+        $list = $this->getProductList('status = 1 AND cate_id ='.$cateId, 'product_id DESC',10,$pageNum);    
+        $cate = $this->getCategoryDetail($cateId);
+        $this->view->setVars(array("root_cate_items"    => $parentCate,
+                                   "productList"        => $list,
+                                   "category"          => $cate,
+                                   "curentPage" => $pageNum
+                                  ));   
     }
      private function getProductRelated($cate_id){
         $conditions = "status = 1 AND cate_id = " + $cate_id;

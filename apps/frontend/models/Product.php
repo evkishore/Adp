@@ -7,8 +7,9 @@ use Phalcon\Mvc\Model\Query;
 class Product extends Model{
     public function initialize(){
         $this->setSource("tbl_product");     
-         $this->hasMany("product_id", "\Multiple\Frontend\Models\ProductImage", "product_id", array('alias' => 'ProductImage'));
+        $this->hasMany("product_id", "\Multiple\Frontend\Models\ProductImage", "product_id", array('alias' => 'ProductImage'));
         $this->belongsTo("cate_id", "\Multiple\Frontend\Models\Category", "cate_id", array('alias' => 'Category'));
+        $this->belongsTo("brand_id", "\Multiple\Frontend\Models\Brand", "brand_id", array('alias' => 'Brand'));
     }   
     public function getSEOCate()
     {

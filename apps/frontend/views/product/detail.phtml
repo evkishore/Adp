@@ -19,15 +19,15 @@
                                 <div class="single-product-image">
                                     <div class="images single-images gallery">
                                         {%- for image in product.ProductImage %}
-                                        <a href="{{image.img_url}}" class="bootexpert-main-image zoom" title="13" data-gal="prettyPhoto[gallery1]">
-                                            <img src="{{image.img_url}}" class="attachment-shop_single" alt="13" title="13" />
+                                        <a href="{{image.img_url}}" class="bootexpert-main-image zoom" data-gal="prettyPhoto[gallery1]">
+                                            <img src="{{image.img_url}}" class="attachment-shop_single"/>
                                         </a>
                                         {%- endfor %}
                                     </div>
                                     <div class="thumbnails single-thumbnails columns-3">
                                         {%- for image in product.ProductImage %}
                                          <div>
-                                            <img src="{{image.img_url}}" alt="13" />
+                                            <img src="{{image.img_url}}"  />
                                         </div>
                                         {%- endfor %}
                                     </div>
@@ -73,7 +73,7 @@
                                                 <div class="product-wrapper">
                                                     <div class="list-col4">
                                                         <div class="product-image">
-                                                            <a href="/product/{{product.cate_id}}/{{product.getSEOCate()}}/{{product.product_id}}/{{product.getSEOTitle()}}" title="Phasellus vel hendrerit">                                                               
+                                                            <a href="/product/{{product.cate_id}}/{{product.getSEOCate()}}/{{product.product_id}}/{{product.getSEOTitle()}}">                                                               
                                                                 {% if related_item.ProductImage|length>0 %}
                                                                     <img  src="{{related_item.ProductImage[0].img_url}}" class="primary_image"  />
                                                                 {% endif %}

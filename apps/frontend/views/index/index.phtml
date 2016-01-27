@@ -70,14 +70,14 @@
                                                                 {%- for cate_item in root_cate_items %}
                                                                     {% set child_cate_items = cate_item.getChilds() %}
                                                                     {% if child_cate_items|length > 0 %}
-                                                                        <li class="children-menu"><a href="#">{{cate_item.name}}</a>
+                                                                        <li class="children-menu"><a href="/product/{{cate_item.cate_id}}/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>
                                                                         {%- macro print_child_cate_level(cate_level_items) %}
                                                                             {%- for child_cate_item in cate_level_items %}
                                                                                 {% if loop.first %}
                                                                                     <ul class="sub-menu">
                                                                                 {% endif %}
                                                                                 <li class="children-menu">
-                                                                                    <a href="{{ child_cate_item.seo_url }}" >
+                                                                                    <a href="/product/{{child_cate_item.cate_id}}/{{child_cate_item.getSEOName()}}/1" >
                                                                                         {{ child_cate_item.name }}
                                                                                     </a>                                                                        
                                                                                     {% set next_cate_level_items = child_cate_item.getChilds() %}
@@ -92,7 +92,7 @@
                                                                         {%- endmacro %}
                                                                         {{ print_child_cate_level(child_cate_items) }}             
                                                                     {% else %}
-                                                                        <li ><a href="#">{{cate_item.name}}</a>    
+                                                                        <li ><a href="/product/{{cate_item.cate_id}}/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>    
                                                                     {% endif %}  
                                                                 {%- endfor %}                                                        
                                                         
@@ -286,7 +286,7 @@
                                         <div id="brands-carousel-5" class="brands-carousel">
                                             {%- for brand_item in brand %}
                                             <div>
-                                                <a href="/brand/{{brand_item.brand_id}}" title=""><img src="{{brand_item.logo}}" alt="{{brand_item.name}}" /></a>
+                                                <a href="/brand/{{brand_item.brand_id}}/adfd/1" title=""><img src="{{brand_item.logo}}" alt="{{brand_item.name}}" /></a>
                                             </div>
                                             {%- endfor %}
                                             
