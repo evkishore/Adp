@@ -246,7 +246,11 @@
                                                         </div>
                                                         <div class="list-col8">
                                                             <div class="gridview">
-                                                                <h2 class="product-name"><a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}">{{product_item.name}}</a></h2>
+                                                                <h2 class="product-name">
+                                                                    <a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}">
+                                                                        {{product_item.name}}
+                                                                    </a>
+                                                                </h2>
                                                                 <div class="ratings">
                                                                     <div class="star-rating" title="Rated 5.00 out of 5">
                                                                         <span class="width100"><strong class="rating">5.00</strong> out of 5</span>
@@ -286,7 +290,9 @@
                                         <div id="brands-carousel-5" class="brands-carousel">
                                             {%- for brand_item in brand %}
                                             <div>
-                                                <a href="/brand/{{brand_item.brand_id}}/adfd/1" title=""><img src="{{brand_item.logo}}" alt="{{brand_item.name}}" /></a>
+                                                <a href="/brand/{{brand_item.brand_id}}/{{brand_item.getSEOName()}}/1" title="">
+                                                    <img src="{{brand_item.logo}}" alt="{{brand_item.name}}" />
+                                                </a>
                                             </div>
                                             {%- endfor %}
                                             

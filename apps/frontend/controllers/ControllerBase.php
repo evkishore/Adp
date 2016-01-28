@@ -61,6 +61,17 @@ class ControllerBase extends Controller {
         return $cate;
     }
     
+    public function getCategoryByParentId($parent_id) {
+        $conditions = "status = 1 AND parent_id = ". $parent_id;
+        $cate = Category::find(
+                array(
+                    $conditions,
+                    "order" => "order_id ASC"
+                )
+            );
+        return $cate;
+    }
+    
     public function getProductList($conditions,$order,$page_size=10,$page=0) {      
         if($page > 0){
             $paginator   = new PaginatorModel(

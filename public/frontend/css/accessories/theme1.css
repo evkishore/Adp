@@ -2527,6 +2527,45 @@ legend {
 .main-container .toolbar .bootexpert-ordering .orderby-wrapper .chosen-container .chosen-drop ul li.highlighted {
   background: #25b696;
 }
+
+nav.bootexpert-pagination {
+    text-align: center
+}
+nav.bootexpert-pagination ul {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0;
+    border: 1px solid #d3ced2;
+    border-right: 0;
+    margin: 1px
+}
+nav.bootexpert-pagination ul li {
+    border-right: 1px solid #d3ced2;
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: inline;
+    overflow: hidden
+}
+nav.bootexpert-pagination ul li a,
+nav.bootexpert-pagination ul li span {
+    margin: 0;
+    text-decoration: none;
+    line-height: 1;
+    font-size: 1em;
+    font-weight: 400;
+    padding: .5em;
+    min-width: 1em;
+    display: block
+}
+nav.bootexpert-pagination ul li a:focus,
+nav.bootexpert-pagination ul li a:hover,
+nav.bootexpert-pagination ul li span.current {
+    background: #ebe9eb;
+    color: #8a7e88
+}
+
+
 .main-container .toolbar .bootexpert-pagination ul.page-numbers {
   border: none;
   float: left;

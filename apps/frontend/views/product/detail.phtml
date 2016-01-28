@@ -7,7 +7,7 @@
                     <span class="separator">&gt;</span>
                     <a href="/product">Products</a>
                     <span class="separator">&gt;</span>
-                    <a href="">{{product.Category.name}}</a>
+                    <a href="/product/{{product.Category.cate_id}}/{{product.Category.getSEOName()}}/1">{{product.Category.name}}</a>
                     <span class="separator">&gt;</span>{{product.name}}
                 </nav>
             </div>
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
                                 <div class="summary entry-summary single-product-info">
-                                    <h1 class="product_title entry-title">{{product.name}}</h1>
+                                    <h2 class="product_title entry-title">{{product.name}}</h2>
                                     <div class="bootexpert-product-rating">
                                         <div class="star-rating" title="Rated 4.00 out of 5">
                                             <span class="width80">
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="short-description">
                                         <p>
-                                        {{product.description}}
+                                        {{product.short_description}}
                                         </p>
                                     </div>
                                     <div class="price-box">

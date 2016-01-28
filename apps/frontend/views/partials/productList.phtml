@@ -3,10 +3,10 @@
         <h3 class="widget-title"><span>Categories</span></h3>
         <div class="widget_content">
             <ul class="product-categories">
-                {%- for cate_item in root_cate_items %}
+                {%- for cate_item in childCate %}
                 <li class="cat-item cat-item-47 cat-parent">
                     <a href="/product/{{cate_item.cate_id}}/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>
-                    <span class="count">({{cate_item.Product|length}})</span>
+                    <span class="count">({{cate_item.Product|length + cate_item.Products|length}})</span>
                 </li>
                 {%- endfor %}
             </ul>
@@ -27,7 +27,7 @@
             <a href="#" class="grid  active" title="Grid"><i class="fa fa-th-large"></i><span>Grid</span></a>
             <a href="#" class="list " title="List"><i class="fa fa-th-list"></i><span>List</span></a>
         </div>
-        {% if productList.items|length >0 %}
+        {% if productList.total_pages|length >1 %}
         <p class="bootexpert-result-count">
             Showing 1–10 of {{productList.total_pages}} results</p>
         {% endif %}
@@ -50,8 +50,7 @@
     </div>
 
     <div class="archive-border shop-sidebar left-sidebar">
-        <div class="row">
-        </div>
+       
         <div class="bootexpert shop-products row grid-view">
             {%- for pd_item in productList.items %}
             <div class="item-col col-xs-12 col-sm-4">
@@ -140,7 +139,7 @@
                                 <span class="amount">£{{pd_item.price}}</span> {% endif %}
                             </div>
                             <div class="product-desc">
-                                {{pd_item.description}}
+                                {{pd_item.short_description}}
                             </div>
                             <div class="action clearfix">
                                 <div class="add-cart">
@@ -183,17 +182,30 @@
             </div>
             {%- endfor %}
         </div>
-        {% if productList.items|length >0 %}
+        {% if productList.total_pages >1 %}
         <div class="toolbar tb-bottom">
             <nav class="bootexpert-pagination">
-                <ul class="page-numbers">
-                    <li><span class="page-numbers current">1</span></li>
-                    <li><a class="page-numbers" href="#">2</a></li>
-                    <li><a class="next page-numbers" href="#">→</a></li>
+                <ul class='page-numbers'>
+                    {% for i in 1..productList.total_pages %}
+                         {% if curentPage == i %}
+                            <li><span class='page-numbers current'>{{i}}</span></li>
+                        {% else %}
+                            {% if type == 1 %}
+                                <li><a class="page-numbers" href="/product/{{i}}">{{i}}</a></li>
+                            {% endif %}
+                            {% if type == 2 %}
+                                <li><a class="page-numbers" href="/product/{{category.cate_id}}/{{category.getSEOName()}}/{{i}}">{{i}}</a></li>
+                            {% endif %}
+                            {% if type == 3 %}
+                                <li><a class="page-numbers" href="/brand/{{brand.brand_id}}/{{brand.getSEOName()}}/{{i}}">{{i}}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}               
                 </ul>
             </nav>
             <div class="clearfix"></div>
         </div>
+      
         {% endif %}
     </div>
 </div>

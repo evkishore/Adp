@@ -8,7 +8,8 @@ use Phalcon\Mvc\Model\Query;
 class Category extends Model{
     public function initialize(){
         $this->setSource("tbl_category");
-        $this->hasMany("cate_id", "\Multiple\Frontend\Models\Product", "cate_id", array('alias' => 'Product'));
+        $this->hasMany("cate_id", "\Multiple\Frontend\Models\Product", "cate_parent_id", array('alias' => 'Product'));
+        $this->hasMany("cate_id", "\Multiple\Frontend\Models\Product", "cate_id", array('alias' => 'Products'));
     }
     
     public function getChilds()
