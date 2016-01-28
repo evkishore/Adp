@@ -2,6 +2,8 @@
 namespace Multiple\Backend\Controllers;
 
 use Multiple\Backend\Models\Product as Product;
+
+use Multiple\Backend\Models\Category as Cate;
 use Multiple\Backend\Models\ProductImage as ProductImage;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Phalcon\Tag as Tag;
@@ -256,8 +258,8 @@ class ProductController extends ControllerBase {
 
                 $detail = Cate::findFirst("cate_id={$id}");
                 $result = array();
-                if($menu != null){
-                    $result = array('data' => $detail->cate_id ,'result' => 1 , 'message'=> "Successfull!");
+                if($detail != null){
+                    $result = array('data' => $detail->parent_id ,'result' => 1 , 'message'=> "Successfull!");
                 }else{
                     $result = array('data' => 0 ,'result'=>0 , 'message'=> "Category is not exists!!");
                 }
