@@ -158,12 +158,21 @@ use Multiple\Backend\Models\Brand as Brand;
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2">Description
-                            <span class="required"> * </span>
+                        <label class="control-label col-md-2">Short description
                         </label>
                         <div class="col-md-10">
-                            {{ text_area("description", "This is the Description","class" :"form-control", "rows": 8,
-                            "value": not detail is empty ? detail.description : "" ) }}
+                            {{ text_area("short_description", "This is the Short description","class" :"form-control", "rows": 8,
+                            "value": not detail is empty ? detail.short_description : "" ) }}
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Description
+                            <!--<span class="required"> * </span>-->
+                        </label>
+                        <div class="col-md-10">
+                            <div name="div_description" id="div_description"> {{not detail is empty ? detail.description : ""}}</div>
+                            {{ hidden_field("description", "value": not detail is empty ? detail.description : "") }}
                         </div>
                     </div>
 
@@ -209,9 +218,6 @@ use Multiple\Backend\Models\Brand as Brand;
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2">
-                            {% if not obj['images'] is empty %}
-                                Product Images
-                            {% endif %}
                         </label>
                         <div class="col-md-10">
                             <div id="uploadAvatar" class="dropzone dropzone-file-area dz-clickable">
@@ -282,7 +288,19 @@ use Multiple\Backend\Models\Brand as Brand;
                 });
             },
         });
+
+        handleSummernote();
+        $( "form" ).submit(function( event ) {
+            var sHTML = $('#div_description').code(); // get code
+            $('#description').val(sHTML);
+            $('#description').attr('value',sHTML);
+            return;
+        });
     });
+
+     function handleSummernote  () {
+        $('#div_description').summernote({height: 300});
+    }
 
     function ajaxGetParentId(_obj){
         var _id = $(_obj).find(":selected").val();

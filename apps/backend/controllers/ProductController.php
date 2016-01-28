@@ -144,8 +144,8 @@ class ProductController extends ControllerBase {
                 $dataPost['modify_date'] = date('Y-m-d H:i');
             }
             // Get list Images upload for product
-            $arr_images = explode(self::slag,trim($this->request->getPost("himages")));
-
+            $arr_images = trim($this->request->getPost("himages")) !== "" ?
+                                explode(self::slag,trim($this->request->getPost("himages"))): array();
             if ($object->save($dataPost) == false) {
                 $this->flashSession->error("too bad! Save data unSuccessful");
             } else {
@@ -182,13 +182,11 @@ class ProductController extends ControllerBase {
             }
         }
         $detail         = Product::findFirst("product_id={$id}");
-//        echo "<pre>";
-//        echo var_dump($detail);exit;
         $this->view->setVars(array(
             "id"            => $id,
             'detail'        => $detail,
             'baseImageURL'  => $config->app->image->baseURL,
-            'obj'           => array('images' => $detail ? $detail->ProductImage : array()),
+            'obj'           => array('images' => $detail && count($detail->ProductImage) > 0 ? $detail->ProductImage : array()),
             'slag'          => self::slag
         ));
     }
