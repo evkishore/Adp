@@ -145,7 +145,6 @@ class ProductController extends ControllerBase {
             }
             // Get list Images upload for product
             $arr_images = explode(self::slag,trim($this->request->getPost("himages")));
-            $arr_images_old = explode(self::slag,trim($this->request->getPost("himages_old")));
 
             if ($object->save($dataPost) == false) {
                 $this->flashSession->error("too bad! Save data unSuccessful");
@@ -175,7 +174,10 @@ class ProductController extends ControllerBase {
                     $index ++;
                 }
                 //unlink old image
-                $this->deleteImages(array_merge($arr_images_old,$arr_images));
+                if(!empty( $arr_images)){
+                    $arr_images_old = explode(self::slag,trim($this->request->getPost("himages_old")));
+                    $this->deleteImages(array_merge($arr_images_old,$arr_images));
+                }
                 $this->flashSession->success("yes!, Save Product successful - {$c_success} Images product effected!");
             }
         }
