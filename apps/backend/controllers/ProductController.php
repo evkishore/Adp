@@ -133,7 +133,7 @@ class ProductController extends ControllerBase {
 
     public function editAction($id = 0) {
         global $config;
-        $this->tag->prependTitle("Edit of content - ");
+        $this->tag->prependTitle("Edit of product - ");
         if ($this->request->isPost() == true) {
             $dataPost = $this->request->getPost();
             if($id == 0){
@@ -149,36 +149,40 @@ class ProductController extends ControllerBase {
             if ($object->save($dataPost) == false) {
                 $this->flashSession->error("too bad! Save data unSuccessful");
             } else {
-                 // Save Image for productImages
-                //Deleting Product Image olde before inser New
-                if($object->ProductImage->delete() == false){
-                    $this->flashSession->error("too bad! Delete product Images fail.");
-                }
 
-                $c_success = 0;
-                $index = 0;
-                foreach($arr_images as $img){
-                    if($img !=""){
-                        $p_img = new ProductImage();
-                        $arr_basic = array(
-                            'img_url'       => $img,
-                            'status'        => 1,
-                            'order_id'      => $index,
-                            'product_id'    => $object->product_id,
-                        );
-                        if($p_img->save($arr_basic) == true){
-                            $c_success ++ ;
-                            unset($arr_images[$index]);
-                        }
-                    }
-                    $index ++;
-                }
-                //unlink old image
                 if(!empty( $arr_images)){
+                     // Save Image for productImages
+                    //Deleting Product Image olde before inser New
+                    if($object->ProductImage->delete() == false){
+                        $this->flashSession->error("too bad! Delete product Images fail.");
+                    }
+
+                    $c_success = 0;
+                    $index = 0;
+                    foreach($arr_images as $img){
+                        if($img !=""){
+                            $p_img = new ProductImage();
+                            $arr_basic = array(
+                                'img_url'       => $img,
+                                'status'        => 1,
+                                'order_id'      => $index,
+                                'product_id'    => $object->product_id,
+                            );
+                            if($p_img->save($arr_basic) == true){
+                                $c_success ++ ;
+                                unset($arr_images[$index]);
+                            }
+                        }
+                        $index ++;
+                    }
+                    //unlink old image
                     $arr_images_old = explode(self::slag,trim($this->request->getPost("himages_old")));
                     $this->deleteImages(array_merge($arr_images_old,$arr_images));
+
+                    $this->flashSession->success("yes!, Save Product successful - {$c_success} Images product effected!");
+                }else{
+                    $this->flashSession->success("yes!, Save Product successful ");
                 }
-                $this->flashSession->success("yes!, Save Product successful - {$c_success} Images product effected!");
             }
         }
         $detail         = Product::findFirst("product_id={$id}");
