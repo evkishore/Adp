@@ -178,11 +178,13 @@ class ProductController extends ControllerBase {
             }
         }
         $detail         = Product::findFirst("product_id={$id}");
+//        echo "<pre>";
+//        echo var_dump($detail);exit;
         $this->view->setVars(array(
             "id"            => $id,
             'detail'        => $detail,
             'baseImageURL'  => $config->app->image->baseURL,
-            'obj'           => array('images' => $detail->ProductImage),
+            'obj'           => array('images' => $detail ? $detail->ProductImage : array()),
             'slag'          => self::slag
         ));
     }
