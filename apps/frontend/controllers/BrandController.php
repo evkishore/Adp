@@ -3,9 +3,9 @@ namespace Multiple\Frontend\Controllers;
 use Multiple\Frontend\Models\Product as Product;
 
 class BrandController extends ControllerBase {
-    public function indexAction($id,$name,$page) {
+    public function indexAction($id,$name,$page=1,$order='date') {
         $parentCate = $this->getParentCategory();
-        $list = $this->getProductList('status = 1 AND brand_id = '. $id , 'product_id DESC ',10,$page);  
+        $list = $this->getProductList('status = 1 AND brand_id = '. $id , $this->buildOrderby($order),10,$page);  
         $brand = $this->getBrandDetailById($id);
         $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "productList"        => $list,
@@ -13,7 +13,8 @@ class BrandController extends ControllerBase {
                                    "curentPage" => $page,
                                    "childCate" => $parentCate,
                                    "type"   => 3,
-                                   "brandList"   => $this->getBrand()
+                                   "brandList"   => $this->getBrand(),
+                                   "order"   => $order
                                   ));      
     }
    

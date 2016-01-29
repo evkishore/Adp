@@ -18,7 +18,7 @@
             <ul class="product-categories">
                 {%- for brand_item in brandList %}
                 <li class="cat-item cat-item-47 cat-parent">
-                    <a href="/brand/{{brand_item.brand_id}}/{{brand_item.getSEOName()}}/1">{{brand_item.name}}</a>
+                    <a href="/brand/{{brand_item.brand_id}}/{{brand_item.getSEOName()}}/1/date">{{brand_item.name}}</a>
                     <span class="count">({{brand_item.Product|length}})</span>
                 </li>
                 {%- endfor %}
@@ -47,14 +47,12 @@
         <form class="bootexpert-ordering hidden-xs" method="get">
             <div class="orderby-wrapper">
                 <label>Sort By</label>
-                <select name="orderby" class="orderby" style="display: none;">      
+                <select name="orderby" id="orderby" class="orderby" style="display: none;">      
                     <option value="date">Sort by newness</option>
                     <option value="price">Sort by price: low to high</option>
                     <option value="price-desc">Sort by price: high to low</option>
                 </select>
             </div>
-            <input type="hidden" name="min_price" value="45">
-            <input type="hidden" name="max_price" value="515">
         </form>
         <div class="clearfix"></div>
     </div>
@@ -129,13 +127,13 @@
                             <li><span class='page-numbers current'>{{i}}</span></li>
                         {% else %}
                             {% if type == 1 %}
-                                <li><a class="page-numbers" href="/product/{{i}}">{{i}}</a></li>
+                                <li><a class="page-numbers" href="/product/{{i}}/{{order}}">{{i}}</a></li>
                             {% endif %}
                             {% if type == 2 %}
                                 <li><a class="page-numbers" href="/product/{{category.cate_id}}/date/{{category.getSEOName()}}/{{i}}">{{i}}</a></li>
                             {% endif %}
                             {% if type == 3 %}
-                                <li><a class="page-numbers" href="/brand/{{brand.brand_id}}/{{brand.getSEOName()}}/{{i}}">{{i}}</a></li>
+                                <li><a class="page-numbers" href="/brand/{{brand.brand_id}}/{{brand.getSEOName()}}/{{i}}/{{order}}">{{i}}</a></li>
                             {% endif %}
                         {% endif %}
                     {% endfor %}               
@@ -147,3 +145,25 @@
         {% endif %}
     </div>
 </div>
+
+<script>
+        $('#orderby').on('change', function (e) {
+            var optionSelected = $("option:selected", this);
+            var valueSelected = this.value;
+            {% if type == 2 %}
+                var link = '/product/{{category.cate_id}}/'+ valueSelected +'/{{category.getSEOName()}}/1' ;
+                window.location.href = link;
+            {% endif %}
+            {% if type == 1 %}
+                var link = '/product/1/'+ valueSelected ;
+                window.location.href = link;
+            {% endif %}
+            {% if type == 3 %}
+                var link = '/brand/{{brand.brand_id}}/{{brand.getSEOName()}}/1/'+ valueSelected ;
+                window.location.href = link;
+            {% endif %}
+          
+        });
+        $('#orderby').val('{{order}}')
+        $('#orderby').trigger('chosen:updated');
+    </script>

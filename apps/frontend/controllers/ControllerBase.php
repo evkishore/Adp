@@ -30,11 +30,15 @@ class ControllerBase extends Controller {
           ->addCss('frontend/css/accessories/accessories.css')
           ;
             
-      $this->assets
-          ->collection('js')
+    $this->assets
+          ->collection('js-header')
             ->addJs('frontend/js/jquery-2.1.1.min.js')
             ->addJs('frontend/lib/jquary-ui/jquery-ui.js')
             ->addJs('frontend/js/bootstrap.min.js')
+              ;   
+        
+      $this->assets
+          ->collection('js')
             ->addJs('frontend/lib/styleswitch/styleswitcher.js')
             ->addJs('frontend/lib/styleswitch/styleswitch_custom.js')
             ->addJs('frontend/lib/slick/slick.min.js')
@@ -129,6 +133,16 @@ class ControllerBase extends Controller {
        
         $cate = Category::findFirst("cate_id={$cate_id}");
         return $cate;
+    }
+    public function buildOrderby($type) {
+       $order_by = 'product_id DESC';
+        if($type=='price'){
+            $order_by = 'original_price ASC';
+        }
+        if($type=='price-desc'){
+            $order_by = 'original_price DESC';
+        }
+        return $order_by;
     }
     
 }

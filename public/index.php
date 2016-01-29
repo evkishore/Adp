@@ -56,12 +56,13 @@ $di->set('router', function () {
     });
 
     $router->add(
-        "/product/([0-9]+)",
+        "/product/([0-9]+)/([a-zA-Z0-9\_\-]+)",
         array(
            'module'  => 'frontend',
            "controller" => "product",
            "action"     => "index",
-           "pageNum"       => 1
+           "pageNum"       => 1,
+            "order"     => 2
         ))
         ->convert('controller', function($controller) {
             return str_replace('-', '', $controller);
@@ -98,14 +99,15 @@ $di->set('router', function () {
     });
     
     $router->add(
-        "/brand/([0-9]+)/([a-zA-Z0-9\_\-]+)/([0-9]+)",
+        "/brand/([0-9]+)/([a-zA-Z0-9\_\-]+)/([0-9]+)/([a-zA-Z0-9\_\-]+)",
         array(
            'module'  => 'frontend',
            "controller" => "brand",
            "action"     => "index",
            "id"       => 1,
            "name"      => 2,
-           "page"  => 3
+           "page"  => 3,
+            "order" => 4
         ))
         ->convert('controller', function($controller) {
             return str_replace('-', '', $controller);

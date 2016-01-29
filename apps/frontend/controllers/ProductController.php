@@ -4,15 +4,17 @@ use Multiple\Frontend\Models\Product as Product;
 use Multiple\Frontend\Models\Brand as Brand;
 
 class ProductController extends ControllerBase {
-    public function indexAction($pageNum=1) {
+    public function indexAction($pageNum=1,$order='date') {
         $parentCate = $this->getParentCategory();
-        $list = $this->getProductList('status = 1 ', 'product_id DESC ',10,$pageNum);        
+        
+        $list = $this->getProductList('status = 1 ', $this->buildOrderby($order),2,$pageNum);        
         $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "productList"        => $list,
                                    "curentPage" => $pageNum,
                                     "childCate" => $parentCate,
                                    "type"   => 1,
-                                   "brandList"   => $this->getBrand()
+                                   "brandList"   => $this->getBrand(),
+                                   "order"   => $order
                                   ));      
     }
     public function detailAction($cateId,$cateName,$productId,$productName) {
@@ -28,19 +30,13 @@ class ProductController extends ControllerBase {
     {
         $parentCate = $this->getParentCategory();
         $cate = $this->getCategoryDetail($cateId);
-        $order_by = 'product_id DESC';
-        if($order=='price'){
-            $order_by = 'original_price ASC';
-        }
-        if($order=='price-desc'){
-            $order_by = 'original_price DESC';
-        }
+       
         if($cate->parent_id>0){
-            $list = $this->getProductList('status = 1 AND cate_id ='.$cateId, $order_by,10,$pageNum);  
+            $list = $this->getProductList('status = 1 AND cate_id ='.$cateId, $this->buildOrderby($order),10,$pageNum);  
              $childCate = $this->getCategoryByParentId($cate->parent_id);  
         }            
         else{
-            $list = $this->getProductList('status = 1 AND cate_parent_id ='.$cateId, $order_by,10,$pageNum);  
+            $list = $this->getProductList('status = 1 AND cate_parent_id ='.$cateId, $this->buildOrderby($order),10,$pageNum);  
            $childCate = $this->getCategoryByParentId($cate->cate_id);  
         }
           
@@ -50,7 +46,8 @@ class ProductController extends ControllerBase {
                                    "curentPage" => $pageNum,
                                    "childCate" => $childCate,
                                    "type"   => 2,
-                                   "brandList"   => $this->getBrand()
+                                   "brandList"   => $this->getBrand(),
+                                   "order"   => $order
                                   ));   
     }
     public function searchAction(){
@@ -65,7 +62,8 @@ class ProductController extends ControllerBase {
                                    "curentPage" => 1,
                                     "childCate" => $parentCate,
                                    "type"   => 1,
-                                   "brandList"   => $this->getBrand()
+                                   "brandList"   => $this->getBrand(),
+                                   "order"   => 'date'
                                   ));   
             
             
