@@ -7,7 +7,7 @@ class ProductController extends ControllerBase {
     public function indexAction($pageNum=1,$order='date') {
         $parentCate = $this->getParentCategory();
         
-        $list = $this->getProductList('status = 1 ', $this->buildOrderby($order),2,$pageNum);        
+        $list = $this->getProductList('status = 1 ', $this->buildOrderby($order),10,$pageNum);        
         $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "productList"        => $list,
                                    "curentPage" => $pageNum,
