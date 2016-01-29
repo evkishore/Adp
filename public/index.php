@@ -83,14 +83,15 @@ $di->set('router', function () {
     });
     
     $router->add(
-        "/product/([0-9]+)/([a-zA-Z0-9\_\-]+)/([0-9]+)",
+        "/product/([0-9]+)/([a-zA-Z0-9\_\-]+)/([a-zA-Z0-9\_\-]+)/([0-9]+)",
         array(
            'module'  => 'frontend',
            "controller" => "product",
            "action"     => "list",
            "cateId"       => 1,
-           "cateName"      => 2,
-           "page"  => 3
+           "order" => 2,
+           "cateName"      => 3,
+           "page"  => 4
         ))
         ->convert('controller', function($controller) {
             return str_replace('-', '', $controller);

@@ -7,6 +7,7 @@ use Phalcon\Mvc\Model\Query;
 class Brand extends Model{
     public function initialize(){
         $this->setSource("tbl_brand");       
+        $this->hasMany("brand_id", "\Multiple\Frontend\Models\Product", "brand_id", array('alias' => 'Product'));
     }
      public function getSEOName()
     {  

@@ -10,17 +10,7 @@ class IndexController extends ControllerBase {
                                    "brand"        => $this->getBrand(),
                                    "product"        => $this->getProduct()
                                   ));
-    }
-    private function getBrand(){
-        $conditions = "status = 1";
-        $brand = Brand::find(
-                array(
-                    $conditions,
-                    "order" => "order_id ASC"
-                )
-            );
-        return $brand;
-    }
+    }   
      
     private function getProduct(){
         $conditions = "status = 1 AND price >0 ";

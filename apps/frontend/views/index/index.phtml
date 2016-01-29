@@ -70,14 +70,14 @@
                                                                 {%- for cate_item in root_cate_items %}
                                                                     {% set child_cate_items = cate_item.getChilds() %}
                                                                     {% if child_cate_items|length > 0 %}
-                                                                        <li class="children-menu"><a href="/product/{{cate_item.cate_id}}/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>
+                                                                        <li class="children-menu"><a href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>
                                                                         {%- macro print_child_cate_level(cate_level_items) %}
                                                                             {%- for child_cate_item in cate_level_items %}
                                                                                 {% if loop.first %}
                                                                                     <ul class="sub-menu">
                                                                                 {% endif %}
                                                                                 <li class="children-menu">
-                                                                                    <a href="/product/{{child_cate_item.cate_id}}/{{child_cate_item.getSEOName()}}/1" >
+                                                                                    <a href="/product/{{child_cate_item.cate_id}}/date/{{child_cate_item.getSEOName()}}/1" >
                                                                                         {{ child_cate_item.name }}
                                                                                     </a>                                                                        
                                                                                     {% set next_cate_level_items = child_cate_item.getChilds() %}
@@ -92,7 +92,7 @@
                                                                         {%- endmacro %}
                                                                         {{ print_child_cate_level(child_cate_items) }}             
                                                                     {% else %}
-                                                                        <li ><a href="/product/{{cate_item.cate_id}}/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>    
+                                                                        <li ><a href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>    
                                                                     {% endif %}  
                                                                 {%- endfor %}                                                        
                                                         
@@ -126,37 +126,13 @@
                                                                         <img src="{{p_item.ProductImage[1].img_url}}" class="secondary_image" alt="06" />
                                                                     {% endif %}
                                                                 </a>
-                                                                <div class="action clearfix">
-                                                                    <div class="quickviewbtn">
-                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
-                                                                    </div>
-                                                                    <div class="add-cart">
-                                                                        <p class="product bootexpert add_to_cart_inline">
-                                                                            <a href="" class="button add_to_cart_button">Add to cart</a>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div class="add-to-links">
-                                                                        <div class="yith-wcwl-add-to-wishlist">
-                                                                            <div>
-                                                                                <a href="" class="add_to_wishlist">Add to Wishlist</a>
-                                                                            </div>
-                                                                            <div class="clear"></div>
-
-                                                                        </div>
-                                                                        <div class="clear"></div>
-                                                                        <div class="bootexpert product compare-button">
-                                                                            <a href="" class="compare button">Compare</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                               
                                                             </div>
                                                         </div>
                                                         <div class="list-col8">
                                                             <div class="gridview">
                                                                 <h2 class="product-name"><a href="/product/{{p_item.cate_id}}/{{p_item.getSEOCate()}}/{{p_item.product_id}}/{{p_item.getSEOTitle()}}">{{p_item.name}}</a></h2>
-                                                                <div class="ratings">
-                                                                    <div class="star-rating" title="Rated 4.33 out of 5"><span class="width86"><strong class="rating">4.33</strong> out of 5</span></div>
-                                                                </div>
+                                                              
                                                                <div class="price-box">
 																					<del><span class="amount">&pound;{{p_item.original_price}}</span></del> <ins><span class="amount">&pound;{{p_item.price}}</span></ins>
 																				</div>
@@ -218,30 +194,7 @@
                                                                         <img src="{{product_item.ProductImage[1].img_url}}" class="secondary_image" alt="06" />
                                                                     {% endif %}
                                                                    
-                                                                </a>
-                                                                <div class="action clearfix">
-                                                                    <div class="quickviewbtn">
-                                                                        <a data-target="#productModal" data-toggle="modal" href="" class="detail-link quickview fa fa-eye" tabindex="0">Quick View</a>
-                                                                    </div>
-                                                                    <div class="add-cart">
-                                                                        <p class="product bootexpert add_to_cart_inline">
-                                                                            <a href="#" class="button add_to_cart_button">Add to cart</a>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div class="add-to-links">
-                                                                        <div class="yith-wcwl-add-to-wishlist">
-                                                                            <div>
-                                                                                <a href="#" class="add_to_wishlist">Add to Wishlist</a>
-                                                                            </div>
-                                                                            <div class="clear"></div>
-
-                                                                        </div>
-                                                                        <div class="clear"></div>
-                                                                        <div class="bootexpert product compare-button">
-                                                                            <a href="#" class="compare button">Compare</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                </a>                                                               
                                                             </div>
                                                         </div>
                                                         <div class="list-col8">
@@ -250,12 +203,7 @@
                                                                     <a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}">
                                                                         {{product_item.name}}
                                                                     </a>
-                                                                </h2>
-                                                                <div class="ratings">
-                                                                    <div class="star-rating" title="Rated 5.00 out of 5">
-                                                                        <span class="width100"><strong class="rating">5.00</strong> out of 5</span>
-                                                                    </div>
-                                                                </div>
+                                                                </h2>                                                               
                                                                 <div class="price-box">
                                                                     {% if product_item.price >0 %}
                                                                     <del><span class="amount">£{{product_item.original_price}}</span></del> 

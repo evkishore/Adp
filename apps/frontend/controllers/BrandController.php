@@ -12,9 +12,10 @@ class BrandController extends ControllerBase {
                                    "brand"          => $brand,
                                    "curentPage" => $page,
                                    "childCate" => $parentCate,
-                                   "type"   => 3
+                                   "type"   => 3,
+                                   "brandList"   => $this->getBrand()
                                   ));      
     }
-      
+   
 }
 ?>

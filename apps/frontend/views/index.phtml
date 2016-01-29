@@ -210,6 +210,23 @@
 				}]
 			});
 		</script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {            
+            $(function () {
+                var url = location.pathname;
+                var aUrl = url.split('/')[1];
+                
+                if (aUrl == '') {
+                    $('.menu_inner li').removeClass('active-menu-item');
+                    $('.menu_inner li:first').addClass('active-menu-item');
+                } else {
+                    $('.menu_inner li').removeClass('active-menu-item');
+                    $('.menu_inner li a[href="/' + aUrl + '"]').parent().addClass('active-menu-item');
+                    
+                }
+            });
+        })
+    </script>
 
 </body>
 

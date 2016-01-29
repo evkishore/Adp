@@ -5,8 +5,21 @@
             <ul class="product-categories">
                 {%- for cate_item in childCate %}
                 <li class="cat-item cat-item-47 cat-parent">
-                    <a href="/product/{{cate_item.cate_id}}/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>
+                    <a href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>
                     <span class="count">({{cate_item.Product|length + cate_item.Products|length}})</span>
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </aside>
+     <aside id="woocommerce_product_categories-6" class="widget bootexpert widget_product_categories">
+        <h3 class="widget-title"><span>Brand</span></h3>
+        <div class="widget_content">
+            <ul class="product-categories">
+                {%- for brand_item in brandList %}
+                <li class="cat-item cat-item-47 cat-parent">
+                    <a href="/brand/{{brand_item.brand_id}}/{{brand_item.getSEOName()}}/1">{{brand_item.name}}</a>
+                    <span class="count">({{brand_item.Product|length}})</span>
                 </li>
                 {%- endfor %}
             </ul>
@@ -34,10 +47,7 @@
         <form class="bootexpert-ordering hidden-xs" method="get">
             <div class="orderby-wrapper">
                 <label>Sort By</label>
-                <select name="orderby" class="orderby" style="display: none;">
-                    <option value="menu_order" selected="selected">Default sorting</option>
-                    <option value="popularity">Sort by popularity</option>
-                    <option value="rating">Sort by average rating</option>
+                <select name="orderby" class="orderby" style="display: none;">      
                     <option value="date">Sort by newness</option>
                     <option value="price">Sort by price: low to high</option>
                     <option value="price-desc">Sort by price: high to low</option>
@@ -68,39 +78,8 @@
                                                         <img width="400" height="400" src="{{pd_item.ProductImage[1].img_url}}" class="secondary_image" alt="06" />
                                                     {% endif %}
                                                     
-                                                </a>
-                            <div class="action clearfix">
-                                <div class="quickviewbtn">
-                                    <a class="detail-link quickview fa fa-eye" href="#" title="{{pd_item.name}}">Quick View</a>
-                                </div>
-                                <div class="add-cart">
-                                    <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-                                        {% if pd_item.price >0 %}
-                                        <span class="amount">£{{pd_item.price}}</span> {% endif %}
-                                        <a href="#" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                    </p>
-                                </div>
-                                <div class="add-to-links">
-                                    <div class="yith-wcwl-add-to-wishlist ">
-                                        <div class="yith-wcwl-add-button show" style="display:block">
-                                            <a href="#" rel="nofollow" data-product-type="simple" class="add_to_wishlist">Add to Wishlist</a>
-                                        </div>
-                                        <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                            <span class="feedback">Product added!</span>
-                                            <a href="#">Browse Wishlist</a>
-                                        </div>
-                                        <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                            <span class="feedback">The product is already in the wishlist!</span>
-                                            <a href="#">Browse Wishlist</a>
-                                        </div>
-                                        <div style="clear:both"></div>
-                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="bootexpert product compare-button">
-                                        <a href="#" class="compare button">Compare</a></div>
-                                </div>
-                            </div>
+                            </a>
+                           
                         </div>
                     </div>
                     <div class="list-col8 ">
@@ -109,11 +88,7 @@
                                                     <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}">                                                           {{pd_item.name}}
                                                     </a>
                                                 </h2>
-                            <div class="ratings">
-                                <div class="star-rating" title="Rated 4.33 out of 5">
-                                    <span style="width:86.6%"><strong class="rating">4.33</strong> out of 5</span>
-                                </div>
-                            </div>
+                           
                             <div class="price-box">
                                 {% if pd_item.price >0 %}
                                 <del><span class="amount">£{{pd_item.original_price}}</span></del>
@@ -127,11 +102,7 @@
                                                     <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}">                                                           {{pd_item.name}}
                                                     </a>
                                                 </h2>
-                            <div class="ratings">
-                                <div class="star-rating" title="Rated 4.33 out of 5">
-                                    <span style="width:86.6%"><strong class="rating">4.33</strong> out of 5</span>
-                                </div>
-                            </div>
+                          
                             <div class="price-box">
                                 {% if pd_item.price >0 %}
                                 <del><span class="amount">£{{pd_item.original_price}}</span></del>
@@ -141,40 +112,7 @@
                             <div class="product-desc">
                                 {{pd_item.short_description}}
                             </div>
-                            <div class="action clearfix">
-                                <div class="add-cart">
-                                    <p class="product bootexpert add_to_cart_inline " style="border:4px solid #ccc; padding: 12px;">
-                                        {% if pd_item.price >0 %}
-                                        <span class="amount">£{{pd_item.price}}</span> {% endif %}
-                                        <a href="#" data-quantity="1" class="button add_to_cart_button product_type_simple">Add to cart</a>
-                                    </p>
-                                </div>
-                                <div class="add-to-links">
-                                    <div class="quickviewbtn">
-                                        <a class="detail-link quickview fa fa-eye" href="#" title="Aenean eu tristique">Quick View</a>
-                                    </div>
-                                    <div class="yith-wcwl-add-to-wishlist ">
-                                        <div class="yith-wcwl-add-button show" style="display:block">
-                                            <a href="#" class="add_to_wishlist">Add to Wishlist</a>
-                                        </div>
-                                        <div class="yith-wcwl-wishlistaddedbrowse hide" style="display:none;">
-                                            <span class="feedback">Product added!</span>
-                                            <a href="#">Browse Wishlist</a>
-                                        </div>
-                                        <div class="yith-wcwl-wishlistexistsbrowse hide" style="display:none">
-                                            <span class="feedback">The product is already in the wishlist!</span>
-                                            <a href="#">Browse Wishlist</a>
-                                        </div>
-                                        <div style="clear:both"></div>
-                                        <div class="yith-wcwl-wishlistaddresponse"></div>
-                                    </div>
-
-                                    <div class="clear"></div>
-                                    <div class="bootexpert product compare-button">
-                                        <a href="#" class="compare button">Compare</a>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -194,7 +132,7 @@
                                 <li><a class="page-numbers" href="/product/{{i}}">{{i}}</a></li>
                             {% endif %}
                             {% if type == 2 %}
-                                <li><a class="page-numbers" href="/product/{{category.cate_id}}/{{category.getSEOName()}}/{{i}}">{{i}}</a></li>
+                                <li><a class="page-numbers" href="/product/{{category.cate_id}}/date/{{category.getSEOName()}}/{{i}}">{{i}}</a></li>
                             {% endif %}
                             {% if type == 3 %}
                                 <li><a class="page-numbers" href="/brand/{{brand.brand_id}}/{{brand.getSEOName()}}/{{i}}">{{i}}</a></li>

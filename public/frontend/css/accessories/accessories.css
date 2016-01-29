@@ -731,6 +731,7 @@ body {
 }
 .main-container .shop-products .item-col .product-wrapper .list-col8 {
   position: relative;
+    height: 100px;
 }
 .main-container .shop-products.grid-view .item-col .product-wrapper {
   padding: 0 10px 20px 10px;

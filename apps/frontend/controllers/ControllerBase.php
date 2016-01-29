@@ -72,6 +72,17 @@ class ControllerBase extends Controller {
         return $cate;
     }
     
+     public function getBrand(){
+        $conditions = "status = 1";
+        $brand = Brand::find(
+                array(
+                    $conditions,
+                    "order" => "order_id ASC"
+                )
+            );
+        return $brand;
+    }  
+    
     public function getProductList($conditions,$order,$page_size=10,$page=0) {      
         if($page > 0){
             $paginator   = new PaginatorModel(
