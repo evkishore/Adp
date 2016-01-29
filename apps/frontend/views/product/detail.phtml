@@ -42,8 +42,11 @@
                                     </div>
                                     <div class="price-box">
                                         <p class="price">
-                                            <del><span class="amount">&pound;80.00</span></del>
-                                            <ins><span class="amount">&pound;70.00</span></ins>
+                                             {% if product.price >0 %}
+                                                <del><span class="amount">£{{product.original_price}}</span></del>
+                                                <ins><span class="amount">£{{product.price}}</span></ins> {% else %}
+                                                <span class="amount">£{{product.price}}</span> 
+                                            {% endif %}
                                         </p>
                                     </div>
                                 </div>
