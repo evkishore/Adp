@@ -64,11 +64,7 @@ class ProductController extends ControllerBase {
                                    "type"   => 1,
                                    "brandList"   => $this->getBrand(),
                                    "order"   => 'date'
-                                  ));   
-            
-            
-        
-        
+                                  ));
 
     }
      private function getProductRelated($cate_id){
