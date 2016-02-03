@@ -10,42 +10,26 @@
                                     <!-- START REVOLUTION SLIDER -->
                                     <div id="rev_slider_3_1" class="rev_slider fullwidthabanner tp-overflow-hidden" style="display:none;">
                                         <ul>
+                                             {%- for adv_item in adv %}
                                             <!-- SLIDE  -->
-                                            <li data-index="rs-1" data-transition="random" data-slotamount="9" data-masterspeed="600" data-saveperformance="on" data-thumb="images/accessories/slider/banner1-100x50.jpg" data-rotate="0" data-title="Slide-1" data-description="">
+                                            <li data-index="rs-1" data-transition="random" data-slotamount="9" data-masterspeed="600" data-saveperformance="on" data-rotate="0" data-title="Slide-1" data-description="">
                                                 <!-- MAIN IMAGE -->
-                                                <img src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2015/08/banner1.jpg" alt="" width="1170" height="418" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                                <img src="{{adv_item.img_url}}" alt="" width="1170" height="418" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                                                 <!-- LAYERS -->
 
                                                 <!-- LAYER NR. 1 -->
-                                                <div class="tp-caption text1-1 customin lft tp-resizeme" id="slide-5-layer-1" data-x="104" data-y="114" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4000" style="z-index: 5; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">Last chance
+                                                <div class="tp-caption text1-1 customin lft tp-resizeme" id="slide-5-layer-1" data-x="104" data-y="114" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4000" style="z-index: 5; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">{{adv_item.name}}
                                                 </div>
 
                                                 <!-- LAYER NR. 2 -->
-                                                <div class="tp-caption text1-2 customin lft tp-resizeme" id="slide-5-layer-2" data-x="99" data-y="157" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4500" style="z-index: 6; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">Bigest sale
+                                                <div class="tp-caption text1-2 customin lft tp-resizeme" id="slide-5-layer-2" data-x="99" data-y="157" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4500" style="z-index: 6; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">{{adv_item.title}}
                                                 </div>
 
                                                 <!-- LAYER NR. 3 -->
-                                                <div class="tp-caption text1-3 lfb lft tp-resizeme" id="slide-5-layer-3" data-x="102" data-y="230" data-width="548" data-height="40" data-speed="1500" data-easing="Power3.easeInOut" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="5000" style="z-index: 7; min-width: 548px; max-width: 548px; max-width: 40px; max-width: 40px; white-space: normal; color: rgba(255, 255, 255, 1.00);border-color:rgba(34, 34, 34, 1.00);">Donec vitae est placerat, porttitor sem at, trum erat. Donec vitaeest placerat, porttitor sem at, rutrum erat donec vitae est placerat.
+                                                <div class="tp-caption text1-3 lfb lft tp-resizeme" id="slide-5-layer-3" data-x="102" data-y="230" data-width="548" data-height="40" data-speed="1500" data-easing="Power3.easeInOut" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="5000" style="z-index: 7; min-width: 548px; max-width: 548px; max-width: 40px; max-width: 40px; white-space: normal; color: rgba(255, 255, 255, 1.00);border-color:rgba(34, 34, 34, 1.00);">{{adv_item.description}}
                                                 </div>
                                             </li>
-                                            <!-- SLIDE  -->
-                                            <li data-index="rs-1" data-transition="random" data-slotamount="9" data-masterspeed="600" data-saveperformance="on" data-thumb="images/accessories/slider/banner2-100x50.jpg" data-rotate="0" data-title="Slide-2" data-description="">
-                                                <!-- MAIN IMAGE -->
-                                                <img src="http://demo.roadthemes.com/saharan_accessories/wp-content/uploads/2015/08/banner2.jpg" alt="" width="1171" height="418" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                                                <!-- LAYERS -->
-
-                                                <!-- LAYER NR. 1 -->
-                                                <div class="tp-caption text1-1 customin lft tp-resizeme" id="slide-6-layer-1" data-x="104" data-y="114" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4000" style="z-index: 5; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">Last chance
-                                                </div>
-
-                                                <!-- LAYER NR. 2 -->
-                                                <div class="tp-caption text1-2 customin lft tp-resizeme" id="slide-6-layer-2" data-x="99" data-y="157" data-width="auto" data-height="auto" data-speed="1500" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Power3.easeInOut" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="4500" style="z-index: 6; white-space: nowrap; color: rgba(255, 255, 255, 1.00);padding:0px 0px 0px 0px;border-color:rgba(255, 255, 255, 1.00);">Bigest sale
-                                                </div>
-
-                                                <!-- LAYER NR. 3 -->
-                                                <div class="tp-caption text1-3 lfb lft tp-resizeme" id="slide-6-layer-3" data-x="102" data-y="230" data-width="548" data-height="40" data-speed="1500" data-easing="Power3.easeInOut" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="5000" style="z-index: 7; min-width: 548px; max-width: 548px; max-width: 40px; max-width: 40px; white-space: normal; color: rgba(255, 255, 255, 1.00);border-color:rgba(34, 34, 34, 1.00);">Donec vitae est placerat, porttitor sem at, trum erat. Donec vitaeest placerat, porttitor sem at, rutrum erat donec vitae est placerat.
-                                                </div>
-                                            </li>
+                                            {%- endfor %}                                            
                                         </ul>
                                     </div>
                                 </div>
