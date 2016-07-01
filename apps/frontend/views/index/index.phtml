@@ -51,8 +51,8 @@
                                                 <h2 class="widgettitle">CATEGORIES</h2>
                                                 <div class="menu-categories-container">
                                                     <ul id="menu-categories" class="menu">
-                                                        {%- for cate_item in root_cate_items %} {% set child_cate_items = cate_item.getChilds() %} {% if child_cate_items|length > 0 %}
-                                                        <li class="children-menu"><a href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a> {%- macro print_child_cate_level(cate_level_items) %} {%- for child_cate_item in cate_level_items %} {% if loop.first %}
+                                                    {%- macro print_child_cate_level(cate_level_items) %}
+                                                         {%- for child_cate_item in cate_level_items %} {% if loop.first %}
                                                             <ul class="sub-menu">
                                                                 {% endif %}
                                                                 <li class="children-menu">
@@ -62,7 +62,14 @@
                                                                 </li>
                                                                 {% if loop.last %}
                                                             </ul>
-                                                            {% endif %} {%- endfor %} {%- endmacro %} {{ print_child_cate_level(child_cate_items) }} {% else %}
+                                                            {% endif %}
+                                                             {%- endfor %} 
+
+                                                            {%- endmacro %} 
+                                                        {%- for cate_item in root_cate_items %} {% set child_cate_items = cate_item.getChilds() %} {% if child_cate_items|length > 0 %}
+                                                        <li class="children-menu"><a href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a> 
+
+                                                            {{ print_child_cate_level(child_cate_items) }} {% else %}
                                                             <li><a href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a> {% endif %} {%- endfor %}
 
                                                     </ul>
