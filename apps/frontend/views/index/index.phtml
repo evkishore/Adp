@@ -146,7 +146,7 @@
                                                         {% endif %}
                                                         <div class="list-col4">
                                                             <div class="product-image">
-                                                                <a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}" title="Ornare sed consequat">
+                                                                <!-- <a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}" title="Ornare sed consequat">
                                                                     {% if product_item.ProductImage|length>0 %}
                                                                         <img src="{{product_item.ProductImage[0].img_url}}" class="primary_image" alt="05" />
                                                                     {% endif %}
@@ -154,7 +154,15 @@
                                                                         <img src="{{product_item.ProductImage[1].img_url}}" class="secondary_image" alt="06" />
                                                                     {% endif %}
                                                                    
+                                                                </a> -->
+                                                                {% if product_item.ProductImage|length>0 %}
+                                                                <a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}" title="Ornare sed consequat" style="background-image: url('{{product_item.ProductImage[0].img_url}}')" class="primary-image">
                                                                 </a>
+                                                                {% endif %}
+                                                                {% if product_item.ProductImage|length>1 %}
+                                                                    <a href="/product/{{product_item.cate_id}}/{{product_item.getSEOCate()}}/{{product_item.product_id}}/{{product_item.getSEOTitle()}}" title="Ornare sed consequat" style="background-image: url('{{product_item.ProductImage[1].img_url}}')" class="secondary-image">
+                                                                    </a>
+                                                                {% endif %}
                                                             </div>
                                                         </div>
                                                         <div class="list-col8">

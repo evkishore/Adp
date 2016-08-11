@@ -81,3 +81,43 @@ a img.aligncenter {
     margin-left: auto;
     margin-right: auto
 }
+
+.product-image > a.primary-image, .product-image > a.secondary-image {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.product-image > a.primary-image:before, .product-image > a.secondary-image:before {
+	content: "";
+	width: 100%;
+	padding-top: 100%;
+	display: block;
+}
+
+.product-image .secondary-image {
+	position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+
+.product-image:hover .secondary-image {
+	opacity: 1;
+}
+
+.product-image .primary-image {
+	-webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.product-image:hover .primary-image {
+	opacity: 0;
+}
+
+.product-wrapper:hover .product-image a img.primary_image {
+  	opacity: 0 !important;
+}

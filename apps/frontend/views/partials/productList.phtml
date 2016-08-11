@@ -68,7 +68,7 @@
                     {% endif %}
                     <div class="list-col4 ">
                         <div class="product-image">
-                            <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}">
+                            <!-- <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}">
                                                     {% if pd_item.ProductImage|length>0 %}
                                                         <img width="400" height="400" src="{{pd_item.ProductImage[0].img_url}}" class="primary_image" alt="05" />
                                                     {% endif %}
@@ -76,7 +76,15 @@
                                                         <img width="400" height="400" src="{{pd_item.ProductImage[1].img_url}}" class="secondary_image" alt="06" />
                                                     {% endif %}
                                                     
-                            </a>
+                            </a> -->
+                            {% if pd_item.ProductImage|length>0 %}
+                                                                <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}" style="background-image: url('{{pd_item.ProductImage[0].img_url}}')" class="primary-image">
+                                                                </a>
+                                                                {% endif %}
+                                                    {% if pd_item.ProductImage|length>1 %}
+                                                                    <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}" style="background-image: url('{{pd_item.ProductImage[1].img_url}}')" class="secondary-image">
+                                                                    </a>
+                                                                {% endif %}
                            
                         </div>
                     </div>
