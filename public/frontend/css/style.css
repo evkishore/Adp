@@ -115,7 +115,6 @@ a img.aligncenter {
 }
 
 .product-image:hover .primary-image {
-	opacity: 0;
 }
 
 .product-wrapper:hover .product-image a img.primary_image {
