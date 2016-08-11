@@ -151,24 +151,24 @@ body {
     transform: scale(0.4);
 }
 
-.parvez_custom_2 {
+/*.parvez_custom_2 {
     background-color: #25b696 !important;
     margin-bottom: 0 !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-}
+}*/
 .parvez_custom_1 {
     margin-bottom: 20px !important;
 }
 .parvez_custom_3 {
-    background-color: #25b696 !important;
+    /*background-color: #25b696 !important;*/
     border-right: 1px solid #ffffff !important;
     padding: 35px 0 !important;
 }
 .parvez_custom_4 {
-    background-color: #25b696 !important;
+    /*background-color: #25b696 !important;*/
     padding: 35px 0 !important;
 }
 
@@ -177,12 +177,13 @@ body {
     margin-top: 30px !important;
 }
 .parvez_custom_2 {
-    background-color: #25b696 !important;
+    /*background-color: #25b696 !important;*/
     margin-bottom: 0 !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+    background-color: #f08383;
 }
 .parvez_custom_0 {
   margin-bottom: 0 !important;
@@ -204,7 +205,7 @@ body {
   color: #ffffff;
   left: 10px;
   top: 10px;
-  background: #25b696;
+  /*background: #25b696;*/
   border-radius: 100%;
 }
 .bootexpert .product-wrapper .onsale:after,
@@ -260,7 +261,7 @@ body {
   font-size: 11px;
 }
 .header-container.accessories .phone-number span {
-  color: #25b696;
+  /*color: #25b696;*/
 }
 .header-container.accessories .header-search {
   width: 70%;
@@ -321,7 +322,7 @@ body {
 .header-container.accessories .horizontal-menu {
   float: left;
   border: 0;
-  background: #25b696;
+  /*background: #25b696;*/
 }
 .header-container.accessories .horizontal-menu div.nav-menu > ul li a {
   padding: 16px 20px;
@@ -362,7 +363,8 @@ body {
 }
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li:hover > a.item_link .link_content .link_text {
   color: #fff;
-  background: #1c8c73;
+  /*background: #1c8c73;*/
+  background-color: #f4524d;
 }
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li:hover > a.item_link .link_content .link_text:after,
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li:hover > a.item_link .link_content .link_text:before {
@@ -371,7 +373,8 @@ body {
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.current-menu-ancestor > a.item_link .link_content .link_text,
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.active-menu-item > a.item_link .link_content .link_text {
   color: #fff;
-  background: #1c8c73;
+  /*background: #1c8c73;*/
+  background-color: #f4524d;
 }
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.current-menu-ancestor > a.item_link .link_content .link_text:after,
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.current-menu-ancestor > a.item_link .link_content .link_text:before,
@@ -384,6 +387,7 @@ body {
   border-right: 1px solid #51c5ab;
   text-transform: uppercase;
   color: #ffffff;
+  border-right-color: #f4ccc6;
 }
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.default_dropdown ul.mega_dropdown {
   border-radius: 0 0 5px 5px;
@@ -528,12 +532,13 @@ body {
 .footer.accessories .footer-top .widget_wysija_cont form .wysija-submit {
   display: block;
   border: 0;
-  background: #25b696;
+  /*background: #25b696;*/
   color: #fff;
   padding: 5px 15px;
 }
 .footer.accessories .footer-top .widget_wysija_cont form .wysija-submit:hover {
-  background: #38d6b3;
+  /*background: #38d6b3;*/
+  background-color: #f4524d;
 }
 .widget_wysija_cont .wysija-submit {
   margin-top: 20px;
@@ -736,7 +741,7 @@ body {
 .main-container .shop-products.grid-view .item-col .product-wrapper {
   padding: 0 10px 20px 10px;
   border: 1px solid #e5e5e5;
-  background-color: #f5f5f5;
+  /*background-color: #f5f5f5;*/
 }
 .main-container .shop-products.grid-view .item-col .product-wrapper .list-col4 {
   background: #fff;
@@ -975,9 +980,10 @@ body {
 }
 .main-container .bestseller div.parvez_content_element h3 {
   padding: 10px;
-  background: #25b696;
+  /*background: #25b696;*/
   color: #fff;
   margin: 0 0 30px;
+  background-color: #f08383;
 }
 .main-container .bestseller div.parvez_content_element h3:after {
   display: none;
@@ -1174,13 +1180,15 @@ body {
 .main-container .bootexpert-breadcrumb {
   margin: 0 0 20px;
   font-size: 13px;
-  color: #25b696;
+  /*color: #25b696;*/
+  color: #f4524d;
 }
 .main-container .bootexpert-breadcrumb a {
   color: #404040;
 }
 .main-container .bootexpert-breadcrumb a:hover {
-  color: #25b696;
+  /*color: #25b696;*/
+  color: #f4524d;
 }
 .main-container .shop-products .item-col .product-wrapper .add-cart .add_to_cart_inline .amount {
   display: none;
@@ -1368,7 +1376,7 @@ body {
 }
 #secondary .widget .widget-title {
   padding: 15px 20px;
-  background: #25b696;
+  /*background: #25b696;*/
   border: 0;
   letter-spacing: 0;
 }
@@ -1452,7 +1460,8 @@ body {
   border-radius: 0;
   color: #fff;
   border: 1px solid transparent;
-  background: #25b696;
+  /*background: #25b696;*/
+  background-color: #f08383;
 }
 #back-top:hover {
   background: #999999;
@@ -1498,4 +1507,84 @@ body {
     float: left;
     clear: both;
   }
+}
+
+.main-container .contact-page p.phone {
+  color: #f08383;
+}
+
+.main-container .contact-page p.phone:before {
+  color: #f08383;
+}
+
+.footer .footer-bottom .copyright-info a {
+  color: #f08383;
+}
+
+.main-container .shop-products .item-col .product-wrapper .price-box {
+  color: #f08383;
+}
+
+.header-container.accessories .horizontal-menu {
+  background-color: #f08383;
+}
+#secondary .widget .widget-title {
+  background-color: #f08383;
+}
+.bootexpert .product-wrapper .onsale, .bootexpert .single-product-image .onsale {
+  background-color: #f08383;
+}
+.main-container .toolbar .view-mode a:hover, .main-container .toolbar .view-mode a.active {
+  color: #f08383;
+}
+a:hover, a:focus {
+  color: #f08383;
+}
+.main-container .toolbar .bootexpert-ordering .orderby-wrapper .chosen-container .chosen-drop ul li.highlighted {
+  background-color: #f08383;
+}
+.footer.accessories .footer-top .widget_menu li a:hover {
+  color: #f08383;
+}
+.parveztip {
+  background-color: #f08383;
+}
+.parveztip:after {
+  border-top-color: #f08383;
+}
+.main-container .shop-products .item-col .product-wrapper h2.product-name a:hover {
+  color: #f08383;
+}
+.main-container.about-page .content-about1 .parvez_content_element h2 {
+  color: #f08383;
+}
+@media screen and (max-width: 992px) {
+  .nav-container .mbmenu-toggler {
+    background-color: #f08383;
+  }
+  .nav-container .mobile-menu-container ul.nav-menu > li > a:hover {
+    color: #f08383;
+  }
+  .nav-container .mobile-menu-container ul.nav-menu > li .fa:hover {
+    color: #f08383;
+  }
+  .nav-container .mobile-menu-container ul.nav-menu > li > ul.sub-menu > li > a:hover {
+    color: #f08383;
+  }
+}
+.header-container.accessories .phone-number span {
+  color: #f08383;
+}
+.footer.accessories .footer-top .widget_wysija_cont form .wysija-submit {
+  background-color: #f08383;
+  outline: none;
+}
+.header-container .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.multicolumn_dropdown > ul.mega_dropdown > li > a:hover .link_text {
+  color: #f08383;
+}
+.header-container .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.multicolumn_dropdown > ul.mega_dropdown > li a:hover .link_text {
+  color: #f08383;
+}
+.main-container .shop-products.list-view .item-col .product-wrapper {
+  width: 100%;
 }
