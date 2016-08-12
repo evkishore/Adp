@@ -85,7 +85,7 @@ a img.aligncenter {
 .product-image > a.primary-image, .product-image > a.secondary-image {
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: cover;
+	background-size: contain;
 }
 
 .product-image > a.primary-image:before, .product-image > a.secondary-image:before {
