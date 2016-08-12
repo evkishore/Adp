@@ -1588,3 +1588,6 @@ a:hover, a:focus {
 .main-container .shop-products.list-view .item-col .product-wrapper {
   width: 100%;
 }
+.main-container .products-carousel2 .shop-products .slick-list .item-col {
+  outline: none;
+}
