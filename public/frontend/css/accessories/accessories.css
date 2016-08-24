@@ -183,7 +183,7 @@ body {
     margin-right: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    background-color: #f08383;
+    background-color: #c8102e;
 }
 .parvez_custom_0 {
   margin-bottom: 0 !important;
@@ -226,16 +226,21 @@ body {
   height: 30px;
   line-height: 30px;
   border-radius: 0;
-  border-color: #2f2f2f;
+  /*border-color: #2f2f2f;*/
   top: 0;
   right: 15px;
-  margin-top: -45px;
+  margin-top: -15px;
+  border: none;
+  background-color: rgba(240,131,131,.5);
+}
+.wrapper .slick-slider button:hover {
+  background-color: rgba(240,131,131,1);
 }
 .wrapper .slick-slider button:before {
   content: "\f105";
   font-size: 20px;
   line-height: 30px;
-  color: #2f2f2f;
+  color: #ffffff;
 }
 .wrapper .slick-slider button.slick-prev {
   left: auto;
@@ -364,7 +369,7 @@ body {
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li:hover > a.item_link .link_content .link_text {
   color: #fff;
   /*background: #1c8c73;*/
-  background-color: #f4524d;
+  background-color: #9d1c32;
 }
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li:hover > a.item_link .link_content .link_text:after,
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li:hover > a.item_link .link_content .link_text:before {
@@ -374,7 +379,7 @@ body {
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.active-menu-item > a.item_link .link_content .link_text {
   color: #fff;
   /*background: #1c8c73;*/
-  background-color: #f4524d;
+  background-color: #9d1c32;
 }
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.current-menu-ancestor > a.item_link .link_content .link_text:after,
 .header-container.accessories .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.current-menu-ancestor > a.item_link .link_content .link_text:before,
@@ -538,7 +543,7 @@ body {
 }
 .footer.accessories .footer-top .widget_wysija_cont form .wysija-submit:hover {
   /*background: #38d6b3;*/
-  background-color: #f4524d;
+  background-color: #9d1c32;
 }
 .widget_wysija_cont .wysija-submit {
   margin-top: 20px;
@@ -983,7 +988,7 @@ body {
   /*background: #25b696;*/
   color: #fff;
   margin: 0 0 30px;
-  background-color: #f08383;
+  background-color: #c8102e;
 }
 .main-container .bestseller div.parvez_content_element h3:after {
   display: none;
@@ -1181,14 +1186,14 @@ body {
   margin: 0 0 20px;
   font-size: 13px;
   /*color: #25b696;*/
-  color: #f4524d;
+  color: #9d1c32;
 }
 .main-container .bootexpert-breadcrumb a {
   color: #404040;
 }
 .main-container .bootexpert-breadcrumb a:hover {
   /*color: #25b696;*/
-  color: #f4524d;
+  color: #9d1c32;
 }
 .main-container .shop-products .item-col .product-wrapper .add-cart .add_to_cart_inline .amount {
   display: none;
@@ -1460,7 +1465,7 @@ body {
   color: #fff;
   border: 1px solid transparent;
   /*background: #25b696;*/
-  background-color: #f08383;
+  background-color: #c8102e;
 }
 #back-top:hover {
   background: #999999;
@@ -1509,84 +1514,93 @@ body {
 }
 
 .main-container .contact-page p.phone {
-  color: #f08383;
+  color: #c8102e;
 }
 
 .main-container .contact-page p.phone:before {
-  color: #f08383;
+  color: #c8102e;
 }
 
 .footer .footer-bottom .copyright-info a {
-  color: #f08383;
+  color: #c8102e;
 }
 
 .main-container .shop-products .item-col .product-wrapper .price-box {
-  color: #f08383;
+  color: #c8102e;
 }
 
 .header-container.accessories .horizontal-menu {
-  background-color: #f08383;
+  background-color: #c8102e;
 }
 #secondary .widget .widget-title {
-  background-color: #f08383;
+  background-color: #c8102e;
 }
 .bootexpert .product-wrapper .onsale, .bootexpert .single-product-image .onsale {
-  background-color: #f08383;
+  background-color: #c8102e;
 }
 .main-container .toolbar .view-mode a:hover, .main-container .toolbar .view-mode a.active {
-  color: #f08383;
+  color: #c8102e;
 }
 a:hover, a:focus {
-  color: #f08383;
+  color: #c8102e;
 }
 .main-container .toolbar .bootexpert-ordering .orderby-wrapper .chosen-container .chosen-drop ul li.highlighted {
-  background-color: #f08383;
+  background-color: #c8102e;
 }
 .footer.accessories .footer-top .widget_menu li a:hover {
-  color: #f08383;
+  color: #c8102e;
 }
 .parveztip {
-  background-color: #f08383;
+  background-color: #c8102e;
 }
 .parveztip:after {
-  border-top-color: #f08383;
+  border-top-color: #c8102e;
 }
 .main-container .shop-products .item-col .product-wrapper h2.product-name a:hover {
-  color: #f08383;
+  color: #c8102e;
 }
 .main-container.about-page .content-about1 .parvez_content_element h2 {
-  color: #f08383;
+  color: #c8102e;
 }
 @media screen and (max-width: 992px) {
   .nav-container .mbmenu-toggler {
-    background-color: #f08383;
+    background-color: #c8102e;
   }
   .nav-container .mobile-menu-container ul.nav-menu > li > a:hover {
-    color: #f08383;
+    color: #c8102e;
   }
   .nav-container .mobile-menu-container ul.nav-menu > li .fa:hover {
-    color: #f08383;
+    color: #c8102e;
   }
   .nav-container .mobile-menu-container ul.nav-menu > li > ul.sub-menu > li > a:hover {
-    color: #f08383;
+    color: #c8102e;
   }
 }
 .header-container.accessories .phone-number span {
-  color: #f08383;
+  color: #c8102e;
 }
 .footer.accessories .footer-top .widget_wysija_cont form .wysija-submit {
-  background-color: #f08383;
+  background-color: #c8102e;
   outline: none;
 }
 .header-container .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.multicolumn_dropdown > ul.mega_dropdown > li > a:hover .link_text {
-  color: #f08383;
+  color: #c8102e;
 }
 .header-container .horizontal-menu #saharan_mega_main_menu > .menu_holder .menu_inner > ul > li.multicolumn_dropdown > ul.mega_dropdown > li a:hover .link_text {
-  color: #f08383;
+  color: #c8102e;
 }
 .main-container .shop-products.list-view .item-col .product-wrapper {
   width: 100%;
 }
 .main-container .products-carousel2 .shop-products .slick-list .item-col {
   outline: none;
+}
+.main-container .product-view .single-product-image .thumbnails .slick-list .slick-slide.slick-current {
+  border-color: #c8102e;
+}
+.main-container .product-view .single-product-image .thumbnails .slick-list .slick-slide {
+  outline: none;
+}
+.main-container .product-view .summary.single-product-info .price-box .price {
+  color: #c8102e;
 }
