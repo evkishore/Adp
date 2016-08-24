@@ -97,9 +97,9 @@
                            
                             <div class="price-box">
                                 {% if pd_item.price >0 %}
-                                <del><span class="amount">£{{pd_item.original_price}}</span></del>
-                                <ins><span class="amount">£{{pd_item.price}}</span></ins> {% else %}
-                                <span class="amount">£{{pd_item.price}}</span> {% endif %}
+                                <del><span class="amount">${{pd_item.original_price}}</span></del>
+                                <ins><span class="amount">${{pd_item.price}}</span></ins> {% else %}
+                                <span class="amount">${{pd_item.original_price}}</span> {% endif %}
                             </div>
 
                         </div>
@@ -111,9 +111,9 @@
                           
                             <div class="price-box">
                                 {% if pd_item.price >0 %}
-                                <del><span class="amount">£{{pd_item.original_price}}</span></del>
-                                <ins><span class="amount">£{{pd_item.price}}</span></ins> {% else %}
-                                <span class="amount">£{{pd_item.price}}</span> {% endif %}
+                                <del><span class="amount">${{pd_item.original_price}}</span></del>
+                                <ins><span class="amount">${{pd_item.price}}</span></ins> {% else %}
+                                <span class="amount">${{pd_item.original_price}}</span> {% endif %}
                             </div>
                             <div class="product-desc">
                                 {{pd_item.short_description}}

@@ -752,7 +752,7 @@ body {
   padding: 10px 0 0;
 }
 .main-container .shop-products.grid-view .item-col .product-wrapper .list-col8 .gridview .product-name {
-  text-transform: uppercase;
+  
   font-family: Open Sans, Arial, Helvetica, sans-serif;
   font-size: 13px;
 }
@@ -1223,8 +1223,7 @@ body {
 .main-container .product-view .summary.single-product-info h2.product_title {
   border: 0;
   padding: 0;
-  margin: 0 0 10px;
-  text-transform: uppercase;
+  margin: 0 0 10px;  
 }
 .main-container .product-view .summary.single-product-info .short-description {
   padding: 0;

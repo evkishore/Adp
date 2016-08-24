@@ -37,15 +37,15 @@
                                    
                                     <div class="short-description">
                                         <p>
-                                        {{product.short_description}}
+                                        <b>Size: </b>{{product.size}}
                                         </p>
                                     </div>
                                     <div class="price-box">
                                         <p class="price">
                                              {% if product.price >0 %}
-                                                <del><span class="amount">£{{product.original_price}}</span></del>
-                                                <ins><span class="amount">£{{product.price}}</span></ins> {% else %}
-                                                <span class="amount">£{{product.price}}</span> 
+                                                <del><span class="amount">${{product.original_price}}</span></del>
+                                                <ins><span class="amount">${{product.price}}</span></ins> {% else %}
+                                                <span class="amount">${{product.original_price}}</span> 
                                             {% endif %}
                                         </p>
                                     </div>
@@ -76,12 +76,13 @@
                                                     <div class="list-col8">
                                                         <div class="gridview">
                                                             <h2 class="product-name"><a href="/product/{{product.cate_id}}/{{product.getSEOCate()}}/{{product.product_id}}/{{product.getSEOTitle()}}">{{related_item.name}}</a></h2> 
+                                                            
                                                            <div class="price-box">
                                                                 <p class="price">
                                                                      {% if related_item.price >0 %}
-                                                                        <del><span class="amount">£{{related_item.original_price}}</span></del>
-                                                                        <ins><span class="amount">£{{related_item.price}}</span></ins> {% else %}
-                                                                        <span class="amount">£{{related_item.price}}</span> 
+                                                                        <del><span class="amount">${{related_item.original_price}}</span></del>
+                                                                        <ins><span class="amount">${{related_item.price}}</span></ins> {% else %}
+                                                                        <span class="amount">${{related_item.original_price}}</span> 
                                                                     {% endif %}
                                                                 </p>
                                                             </div>

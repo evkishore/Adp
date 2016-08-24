@@ -15,7 +15,7 @@ class IndexController extends ControllerBase {
     }   
      
     private function getProduct(){
-        $conditions = "status = 1 AND price >0 ";
+        $conditions = "status = 1 AND price > 0 ";
         $product = Product::find(
                 array(
                     $conditions,

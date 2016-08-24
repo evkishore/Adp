@@ -174,9 +174,9 @@
                                                                 </h2>
                                                                 <div class="price-box">
                                                                     {% if product_item.price >0 %}
-                                                                    <del><span class="amount">£{{product_item.original_price}}</span></del>
-                                                                    <ins><span class="amount">£{{product_item.price}}</span></ins> {% else %}
-                                                                    <span class="amount">£{{product_item.price}}</span> {% endif %}
+                                                                    <del><span class="amount">${{product_item.original_price}}</span></del>
+                                                                    <ins><span class="amount">${{product_item.price}}</span></ins> {% else %}
+                                                                    <span class="amount">${{product_item.original_price}}</span> {% endif %}
                                                                 </div>
 
                                                             </div>
