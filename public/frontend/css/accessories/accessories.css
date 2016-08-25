@@ -1596,11 +1596,19 @@ a:hover, a:focus {
   outline: none;
 }
 .main-container .product-view .single-product-image .thumbnails .slick-list .slick-slide.slick-current {
-  border-color: #c8102e;
+  /*border-color: #c8102e;*/
 }
 .main-container .product-view .single-product-image .thumbnails .slick-list .slick-slide {
   outline: none;
 }
 .main-container .product-view .summary.single-product-info .price-box .price {
   color: #c8102e;
+}
+.main-container .product-view .single-product-image .thumbnails button {
+  top: 50%;
+  margin-top: -15px;
+  border: 1px solid #ffffff;
+}
+.main-container .page-content .button:hover, .main-container .page-content .button.alt:hover, .main-container .page-content #submit:hover {
+  background-color: #c8102e;
 }
