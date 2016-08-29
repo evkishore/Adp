@@ -1612,3 +1612,7 @@ a:hover, a:focus {
 .main-container .page-content .button:hover, .main-container .page-content .button.alt:hover, .main-container .page-content #submit:hover {
   background-color: #c8102e;
 }
+
+.wrapper .slick-slider.shop-products button {
+  margin-top: -45px;
+}
