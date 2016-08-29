@@ -1616,3 +1616,32 @@ a:hover, a:focus {
 .wrapper .slick-slider.shop-products button {
   margin-top: -45px;
 }
+.main-container .product-view .summary.single-product-info .price-box .price ins {
+  display: inline-block;
+  margin: 0;
+  margin-right: 10px;
+  font-size: 16px;
+}
+.main-container .product-view .summary.single-product-info .price-box .price del {
+  display: inline-block;
+  margin: 0;
+  font-size: 16px;
+}
+.main-container .product-view .summary.single-product-info .price-box {
+  margin: 0;
+}
+.single-product-info table {
+  border: none;
+}
+.single-product-info table th, .single-product-info table td, .single-product-info .table th {
+  border: none;
+}
+.single-product-info .product-size {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 767px) {
+.main-container .product-view .summary.single-product-info {
+  width: 100%;
+}
+}

@@ -34,28 +34,53 @@
                                 </div>
                                 <div class="summary entry-summary single-product-info">
                                     <h2 class="product_title entry-title">{{product.name}}</h2>
-                                    <p>
-                                    {{product.description}}
-                                    </p>
-                                   
+
+                                    <table class="table">
+                                        <tr>
+                                            <th width="40%">Size</th>
+                                            <th>Price</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            <span class="product-size">{{product.size}}</span>
+                                            </td>
+                                            <td>
+                                            <div class="price-box">
+                                                <span class="price">
+                                                    {% if product.price >0 %}
+                                                    <ins><span class="amount">${{product.price}}</span></ins> 
+                                                    <del><span class="amount">${{product.original_price}}</span></del>
+                                                    {% else %}
+                                                    <span class="amount">${{product.original_price}}</span>
+                                                    {% endif %}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- <div class="price-block">                                   
                                     <div class="short-description">
-                                        <p>
                                         <b>Size: </b>{{product.size}}
-                                        </p>
                                     </div>
                                     <div class="price-box">
                                         <p class="price">
-                                             {% if product.price >0 %}
+                                            {% if product.price >0 %}
+                                                <ins><span class="amount">${{product.price}}</span></ins> 
                                                 <del><span class="amount">${{product.original_price}}</span></del>
-                                                <ins><span class="amount">${{product.price}}</span></ins> {% else %}
-                                                <span class="amount">${{product.original_price}}</span> 
+                                            {% else %}
+                                                <span class="amount">${{product.original_price}}</span>
                                             {% endif %}
                                         </p>
                                     </div>
+                                    </div> -->
+                                    <p>
+                                    {{product.description}}
+                                    </p>
                                 </div>
                                 <!-- .summary -->
                             </div>
                             <div class="col-xs-12 col-md-3">
+                                {% if productRelated|length > 0 %}
                                 <div class="widget related_products_widget">
                                     <h3 class="widget-title"><span>Related</span></h3>
                                     <div class="related products">
@@ -65,7 +90,7 @@
                                                 <div class="product-wrapper">
                                                     <div class="list-col4">
                                                         <div class="product-image">
-                                                            <a href="/product/{{product.cate_id}}/{{product.getSEOCate()}}/{{product.product_id}}/{{product.getSEOTitle()}}">                                                               
+                                                            <a href="/product/{{product.cate_id}}/{{related_item.getSEOCate()}}/{{related_item.product_id}}/{{related_item.getSEOTitle()}}">                                                               
                                                                 {% if related_item.ProductImage|length>0 %}
                                                                     <img  src="{{related_item.ProductImage[0].img_url}}" class="primary_image"  />
                                                                 {% endif %}
@@ -78,7 +103,7 @@
                                                     </div>
                                                     <div class="list-col8">
                                                         <div class="gridview">
-                                                            <h2 class="product-name"><a href="/product/{{product.cate_id}}/{{product.getSEOCate()}}/{{product.product_id}}/{{product.getSEOTitle()}}">{{related_item.name}}</a></h2> 
+                                                            <h2 class="product-name"><a href="/product/{{product.cate_id}}/{{related_item.getSEOCate()}}/{{related_item.product_id}}/{{related_item.getSEOTitle()}}">{{related_item.name}}</a></h2> 
                                                             
                                                            <div class="price-box">
                                                                 <p class="price">
@@ -98,6 +123,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
                             </div>
                             <!-- <div class="bootexpert-tabs wc-tabs-wrapper">
                                 <ul class="tabs parveztabs">
