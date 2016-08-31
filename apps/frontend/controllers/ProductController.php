@@ -7,7 +7,7 @@ class ProductController extends ControllerBase {
     public function indexAction($pageNum=1,$order='date') {
         $parentCate = $this->getParentCategory();
         
-        $list = $this->getProductList('status = 1 ', $this->buildOrderby($order),10,$pageNum);        
+        $list = $this->getProductList('status = 1', $this->buildOrderby($order),12,$pageNum);        
         $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "productList"        => $list,
                                    "curentPage" => $pageNum,
@@ -32,11 +32,11 @@ class ProductController extends ControllerBase {
         $cate = $this->getCategoryDetail($cateId);
        
         if($cate->parent_id>0){
-            $list = $this->getProductList('status = 1 AND cate_id ='.$cateId, $this->buildOrderby($order),10,$pageNum);  
+            $list = $this->getProductList('status = 1 AND cate_id ='.$cateId, $this->buildOrderby($order),12,$pageNum);  
              $childCate = $this->getCategoryByParentId($cate->parent_id);  
         }            
         else{
-            $list = $this->getProductList('status = 1 AND cate_parent_id ='.$cateId, $this->buildOrderby($order),10,$pageNum);  
+            $list = $this->getProductList('status = 1 AND cate_parent_id ='.$cateId, $this->buildOrderby($order),12,$pageNum);  
            $childCate = $this->getCategoryByParentId($cate->cate_id);  
         }
           
@@ -55,7 +55,7 @@ class ProductController extends ControllerBase {
         $key = trim($this->request->getQuery("key","string"));           
         $conditions = "status = 1 AND name LIKE '%". $key . "%'";
        
-        $list = $this->getProductList($conditions, 'product_id DESC ',10,$pageNum); 
+        $list = $this->getProductList($conditions, 'product_id DESC ',12,$pageNum); 
         
             $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "productList"        => $list,
