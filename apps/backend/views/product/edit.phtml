@@ -74,6 +74,15 @@ use Multiple\Backend\Models\Brand as Brand;
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-md-2">Add Category</label>
+                        <div class="col-md-9">
+                            <a class="btn btn-lg green ajax-modal" href="javascript:;" data-url="{{base_url}}/cpanel/product/showmodal/1">
+                                <i class="fa fa-plus"></i>
+                                Add category 
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label col-md-2">Brand
                             <span class="required"> * </span>
                         </label>
@@ -112,13 +121,51 @@ use Multiple\Backend\Models\Brand as Brand;
                         </div>
                     </div>
                      <div class="form-group">
-                        <label class="control-label col-md-2">Original price
+                        <label class="control-label col-md-2">Size 1
+                         <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-10">
+                            {{ text_field("size","class":"form-control Number","data-required":"1" , "value" : not detail is empty  ? detail.size :'') }}
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-2">Price 1
                             <span class="required"> * </span>
                         </label>
                         <div class="col-md-10">
                             {{ text_field("original_price","class":"form-control Number","data-required":"1" , "value" : not detail is empty  ? detail.original_price :'0.0') }}
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Size 2                         
+                        </label>
+                        <div class="col-md-10">
+                            {{ text_field("size_1","class":"form-control Number","value" : not detail is empty  ? detail.size_1 :'') }}
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-2">Price 2                            
+                        </label>
+                        <div class="col-md-10">
+                            {{ text_field("original_price_1","class":"form-control Number", "value" : not detail is empty  ? detail.original_price_1 :'0.0') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Size 3
+                         
+                        </label>
+                        <div class="col-md-10">
+                            {{ text_field("size_2","class":"form-control Number", "value" : not detail is empty  ? detail.size_2 :'') }}
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label col-md-2">Price 3                          
+                        </label>
+                        <div class="col-md-10">
+                            {{ text_field("original_price_2","class":"form-control Number", "value" : not detail is empty  ? detail.original_price_2 :'0.0') }}
+                        </div>
+                    </div>
+<!--
                      <div class="form-group">
                         <label class="control-label col-md-2">Price                            
                         </label>
@@ -126,6 +173,7 @@ use Multiple\Backend\Models\Brand as Brand;
                             {{ text_field("price","class":"form-control Number", "value" : not detail is empty  ? detail.price :'0.0') }}
                         </div>
                     </div>
+-->
                      <div class="form-group">
                         <label class="control-label col-md-2">Model number
                         </label>
@@ -149,14 +197,7 @@ use Multiple\Backend\Models\Brand as Brand;
                         </div>
                     </div>
 
-                     <div class="form-group">
-                        <label class="control-label col-md-2">Size
-                         <span class="required"> * </span>
-                        </label>
-                        <div class="col-md-10">
-                            {{ text_field("size","class":"form-control Number","data-required":"1" , "value" : not detail is empty  ? detail.size :'') }}
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <label class="control-label col-md-2">Short description
                         </label>
@@ -296,6 +337,35 @@ use Multiple\Backend\Models\Brand as Brand;
             $('#description').attr('value',sHTML);
             return;
         });
+        
+        
+        //ajax demo:
+            var $modal = $('#ajax');
+            $('a.ajax-modal').on('click', function(){
+                // create the backdrop and wait for next modal to be triggered
+                $('body').modalmanager('loading');
+                var _type = 1;//$("#cate_type").val() *1;
+                var el = $(this);
+                setTimeout(function(){
+                    $modal.load(el.attr('data-url') + "/" +_type , '', function(){
+                        $modal.modal();
+                    });
+
+                }, 300);
+            });
+
+            $modal.on('click', '.update', function(){
+                $modal.modal('loading');
+                // POST DATA TO SERVER TO SAVE
+                setTimeout(function(){
+                    $modal
+                        .modal('loading')
+                        .find('.modal-body')
+                        .prepend('<div class="alert alert-info fade in">' +
+                                 'Updated!<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                                 '</div>');
+                }, 1000);
+            });
     });
 
      function handleSummernote  () {

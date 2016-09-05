@@ -54,8 +54,37 @@
                                                     <span class="amount">${{product.original_price}}</span>
                                                     {% endif %}
                                                 </span>
+                                                </div>
                                             </td>
                                         </tr>
+                                           {% if product.original_price_1 >0 %}
+                                           <tr>
+                                            <td>
+                                            <span class="product-size">{{product.size_1}}</span>
+                                            </td>
+                                            <td>
+                                            <div class="price-box">
+                                                <span class="price">
+                                                   <span class="amount">${{product.original_price_1}}</span>
+                                                </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                           {% endif %}
+                                           {% if product.original_price_2 >0 %}
+                                           <tr>
+                                            <td>
+                                            <span class="product-size">{{product.size_2}}</span>
+                                            </td>
+                                            <td>
+                                            <div class="price-box">
+                                                <span class="price">
+                                                   <span class="amount">${{product.original_price_2}}</span>
+                                                </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                           {% endif %}
                                     </table>
 
                                     <!-- <div class="price-block">                                   
