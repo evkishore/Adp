@@ -76,7 +76,7 @@ use Multiple\Backend\Models\Brand as Brand;
                     <div class="form-group">
                         <label class="control-label col-md-2">Add Category</label>
                         <div class="col-md-9">
-                            <a class="btn btn-lg green ajax-modal" href="javascript:;" data-url="{{base_url}}/cpanel/product/showmodal/1">
+                            <a class="btn btn-lg green ajax-modal" href="javascript:;" data-url="{{base_url}}/cpanel/product/showmodal/{{id}}">
                                 <i class="fa fa-plus"></i>
                                 Add category 
                             </a>
@@ -279,6 +279,7 @@ use Multiple\Backend\Models\Brand as Brand;
                           {{ hidden_field("himages", "value":"") }}
                     </div>
                 </div>
+                {{ hidden_field("child_list","value" :"" ) }}
                 <div class="form-actions right">
                     <div class="row">
                         <div class="col-md-offset-3 col-md-9">
@@ -343,11 +344,10 @@ use Multiple\Backend\Models\Brand as Brand;
             var $modal = $('#ajax');
             $('a.ajax-modal').on('click', function(){
                 // create the backdrop and wait for next modal to be triggered
-                $('body').modalmanager('loading');
-                var _type = 1;//$("#cate_type").val() *1;
+                $('body').modalmanager('loading');                
                 var el = $(this);
                 setTimeout(function(){
-                    $modal.load(el.attr('data-url') + "/" +_type , '', function(){
+                    $modal.load(el.attr('data-url') , '', function(){
                         $modal.modal();
                     });
 

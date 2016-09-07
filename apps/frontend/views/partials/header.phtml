@@ -62,13 +62,8 @@
                                                                 </span>
                                                             </a>
                                                         </li>
-                                                        <li class="multicolumn_dropdown drop_to_right children-menu">
-                                                            <a href="/product" class="item_link">
-                                                                <span class="link_content">
-																		<span class="link_text">Products</span>
-                                                                </span>
-                                                            </a>
-                                                             {%- macro print_cate_level(cate_level_items) %}
+                                                        
+                                                        {%- macro print_cate_level(cate_level_items) %}
                                                                 {%- for cate_item in cate_level_items %}
                                                                     {% if loop.first %}
                                                                          <ul class="mega_dropdown">
@@ -89,23 +84,17 @@
                                                                     {% endif %}
                                                                 {%- endfor %}
                                                             {%- endmacro %}
-                                                            {{ print_cate_level(root_cate_items) }}        
-                                                            <!-- /.mega_dropdown -->
-                                                        </li>
-                                                        <li class="default_dropdown drop_to_right children-menu">
-                                                            <a href="/about" class="item_link ">
-                                                                <span class="link_content">
-																		<span class="link_text">About Us</span>
+                                                                                                           
+                                                        
+                                                        {%- for cate_item in root_cate_items %} {% set child_cate_items = cate_item.getChilds() %} {% if child_cate_items|length > 0 %}
+                                                        <li class="multicolumn_dropdown drop_to_right children-menu"><a class="item_link" href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">
+                                                            <span class="link_content">
+																		<span class="link_text">{{cate_item.name}}
                                                                 </span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="default_dropdown drop_to_right children-menu">
-                                                            <a href="/contact" class="item_link ">
-                                                                <span class="link_content">
-																		<span class="link_text">Contact</span>
-                                                                </span>
-                                                            </a>
-                                                        </li>
+                                                            </span></a> 
+
+                                                            {{ print_cate_level(child_cate_items) }} {% else %}
+                                                        <li class="default_dropdown drop_to_right children-menu"><a class="item_link" href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1"> <span class="link_content"><span class="link_text">{{cate_item.name}}</span></span></a> {% endif %} {%- endfor %}                                                        
                                                     </ul>
                                                 </nav>
                                                 <!-- /class="menu_inner" -->

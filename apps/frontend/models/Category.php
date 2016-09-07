@@ -7,9 +7,20 @@ use Phalcon\Mvc\Model\Query;
 
 class Category extends Model{
     public function initialize(){
-        $this->setSource("tbl_category");
-        $this->hasMany("cate_id", "\Multiple\Frontend\Models\Product", "cate_parent_id", array('alias' => 'Product','params' => ['conditions' => 'status = 1']));
-        $this->hasMany("cate_id", "\Multiple\Frontend\Models\Product", "cate_id", array('alias' => 'Products','params' => ['conditions' => 'status = 1']));
+        $this->setSource("tbl_category");       
+         $this->hasManyToMany(
+            "cate_id",
+            "\Multiple\Frontend\Models\ProductCate",
+            "cate_id",
+            "product_id",
+            "\Multiple\Frontend\Models\Product",
+            "product_id",
+            array(
+                "alias"     => "Products",
+                "params"    => array(                   
+                )
+            )
+        );
     }
     
     public function getChilds()

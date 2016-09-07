@@ -6,7 +6,7 @@
                 {%- for cate_item in childCate %}
                 <li class="cat-item cat-item-47 cat-parent">
                     <a href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">{{cate_item.name}}</a>
-                    <span class="count">({{cate_item.Product|length + cate_item.Products|length}})</span>
+                    <span class="count">({{cate_item.Products|length}})</span>
                 </li>
                 {%- endfor %}
             </ul>

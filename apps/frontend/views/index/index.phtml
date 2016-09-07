@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="phm_row">
-                              <video class="parvez_col-sm-12" height="150" controls>
+                              <video class="parvez_col-sm-12" height="150" controls autoplay>
                                   <source src="http://itvhomeshopping.com/public/images/Shiseido.mp4" type="video/mp4">                                  
                                 </video>
                             </div>
@@ -133,7 +133,7 @@
                     </div>
                     <div class="parvez_column parvez_column_container parvez_col-sm-9">
                         <div class="parvez_wrapper">
-                            {%- for cate_item in root_cate_items %} {% set products = cate_item.Product %} {% if products|length > 0 %}
+                            {%- for cate_item in root_cate_items %} {% set products = cate_item.Products %} {% if products|length > 0 %}
                             <div class="phm_row hasteck_row parvez_inner phm_row-fluid products-carousel2 parvez_custom_1">
                                 <div class="parvez_column parvez_column_container parvez_col-sm-12">
                                     <div class="parvez_wrapper">

@@ -1,7 +1,7 @@
 <?php
 namespace Multiple\Backend\Controllers;
 
-use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Controller, Phalcon\Mvc\View;
 
 class ControllerBase extends Controller {
 
@@ -48,6 +48,13 @@ class ControllerBase extends Controller {
             ->addCss('backend/assets/global/plugins/bootstrap-summernote/summernote.css')
             ->addCss('backend/assets/global/plugins/jquery-notific8/jquery.notific8.min.css')
             ->addCss('backend/assets/global/plugins/dropzone/dropzone.min.css')
+            ->addCss('backend/assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css')
+            ->addCss('backend/assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css')
+            ->addCss('backend/assets/global/plugins/select2/css/select2.min.css')
+            ->addCss('backend/assets/global/plugins/select2/css/select2-bootstrap.min.css')
+            ->addCss('backend/assets/global/plugins/jquery-multi-select/css/multi-select.css')
+            ->addCss('backend/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css')
+
             //->addCss('backend/assets/global/plugins/dropzone/basic.min.css')
             ;
 
@@ -83,6 +90,8 @@ class ControllerBase extends Controller {
             ->addJs('backend/assets/global/scripts/app.min.js')
             ->addJs('backend/assets/global/plugins/jquery-validation/js/jquery.validate.min.js')
             ->addJs('backend/assets/global/plugins/jquery-validation/js/additional-methods.min.js')
+            ->addJs('backend/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js')
+            ->addJs('backend/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js')
             ->addJs('backend/assets/global/plugins/select2/js/select2.full.min.js');
 
 
@@ -108,6 +117,8 @@ class ControllerBase extends Controller {
             ->addJs('backend/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')
             ->addJs('backend/assets/global/plugins/jquery-notific8/jquery.notific8.min.js')
             ->addJs('backend/assets/pages/scripts/form-dropzone.js')
+            ->addJs('backend/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js')
+            ->addJs('backend/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js')
             ;
 
         // Load common Js and css validation form
@@ -279,6 +290,17 @@ class ControllerBase extends Controller {
 
     private function isAuthorized() {
         return $this->session->has("auth");
+    }
+    
+    public function getTemplate($controller = "", $name, $params){       
+        $controller = empty($controller)? "ajax" : $controller;
+        return $this->view->getRender($controller, $name, $params, function ($view) {
+            global $config;
+            $view->setViewsDir($config->backend->viewsDir);
+            $view->setRenderLevel(View::LEVEL_ACTION_VIEW);
+        });
+
+        return $this->view->getContent();
     }
 }
 ?>

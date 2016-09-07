@@ -9,6 +9,7 @@ class Product extends Model{
         $this->setSource("tbl_product");
         $this->hasMany("product_id", "\Multiple\Backend\Models\ProductColor", "product_id", array('alias' => 'ProductColor'));
         $this->hasMany("product_id", "\Multiple\Backend\Models\ProductImage", "product_id", array('alias' => 'ProductImage'));
+        $this->hasMany("product_id", "\Multiple\Backend\Models\ProductCate", "product_id", array('alias' => 'ProductCate'));
 
         $this->belongsTo("cate_id", "\Multiple\Backend\Models\Category", "cate_id", array('alias' => 'Cate'));
         $this->belongsTo("brand_id", "\Multiple\Backend\Models\Brand", "brand_id", array('alias' => 'Brand'));

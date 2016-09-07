@@ -67,7 +67,7 @@ use Phalcon\Tag as Tag;
                             echo $this->tag->select(
                                 array(
                                     'parent_id',
-                                    Cate::find("parent_id = 0 and cate_id != {$id}"),
+                                    Cate::find("cate_id != {$id}"),
                                     'using'         => array('cate_id', 'name'),
                                     'useEmpty'      => true,
                                     'emptyText'     => '-- None --',

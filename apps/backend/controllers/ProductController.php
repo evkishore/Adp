@@ -4,6 +4,7 @@ namespace Multiple\Backend\Controllers;
 use Multiple\Backend\Models\Product as Product;
 
 use Multiple\Backend\Models\Category as Cate;
+use Multiple\Backend\Models\ProductCate as ProductCate;
 use Multiple\Backend\Models\ProductImage as ProductImage;
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Phalcon\Tag as Tag;
@@ -52,7 +53,7 @@ class ProductController extends ControllerBase {
         if($cate_id != -1){
             $conditions .= (!empty($conditions)? " AND " : "").  "cate_id = :cate_id:";
             $parameter['cate_id'] = "{$cate_id}" ;
-        }
+        }      
 
         if($brand_id != -1){
             $conditions .= (!empty($conditions)? " AND " : "").  "brand_id = :brand_id:";
@@ -93,7 +94,7 @@ class ProductController extends ControllerBase {
         if($status != -1){
             $conditions .= (!empty($conditions)? " AND " : "").  "status = :status:";
             $parameter['status'] = $status;
-        }
+        }       
         if($page_size > 0){
             $paginator   = new PaginatorModel(
                 array(
@@ -131,6 +132,26 @@ class ProductController extends ControllerBase {
 
     }
 
+    public function showmodalAction($productID = 0){
+        $lst_cate       = Cate::find("status=1")->toArray();
+        $lst_product_cate       = ProductCate::find("product_id=".$productID)->toArray();
+        foreach($lst_cate as &$val){
+            foreach($lst_product_cate as $valc){
+                if($val['cate_id'] == $valc['cate_id']){
+                    $val['selected'] = "selected";
+                    break;
+                }
+            }
+            $val['selected'] = !empty( $val['selected'])? $val['selected']:"";
+        }
+        $params         = array(
+            "lstparent" => $lst_cate
+        );
+        $content        = $this->getTemplate("ajax", "category_modal", $params);
+        $this->response->setContent($content);
+        return $this->response;
+    }
+    
     public function editAction($id = 0) {
         global $config;
         $this->tag->prependTitle("Edit of product - ");
@@ -146,9 +167,31 @@ class ProductController extends ControllerBase {
             // Get list Images upload for product
             $arr_images = trim($this->request->getPost("himages")) !== "" ?
                                 explode(self::slag,trim($this->request->getPost("himages"))): array();
+            
+            
+            $lst_child =  explode('@@',$dataPost['child_list']);
+            unset($dataPost['child_list']);
+            
+            
+            
             if ($object->save($dataPost) == false) {
                 $this->flashSession->error("too bad! Save data unSuccessful");
             } else {
+                
+                    if(count($lst_child) > 0){
+                        if($object->ProductCate->delete() == false){}
+
+                    }
+                    //Save child node for category
+                    foreach($lst_child as  $index => $item){
+                        $child = new ProductCate();
+                        $child->save(array(
+                            "product_id"     => $object->product_id,
+                            "cate_id"       => $item,
+                            "status"     => 1
+                        ));
+                    }
+                
 
                 if(!empty( $arr_images)){
                      // Save Image for productImages
@@ -304,5 +347,6 @@ class ProductController extends ControllerBase {
             unlink("../public/".$img);
         }
     }
+    
 }
 ?>

@@ -1,5 +1,7 @@
 <?php
 namespace Multiple\Frontend\Controllers;
+
+use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Multiple\Frontend\Models\Product as Product;
 use Multiple\Frontend\Models\Brand as Brand;
 
@@ -27,18 +29,19 @@ class ProductController extends ControllerBase {
                                   ));   
     }
     public function listAction($cateId,$order,$cateName,$pageNum=1)
-    {
+    {        
         $parentCate = $this->getParentCategory();
         $cate = $this->getCategoryDetail($cateId);
        
-        if($cate->parent_id>0){
-            $list = $this->getProductList('status = 1 AND cate_id ='.$cateId, $this->buildOrderby($order),12,$pageNum);  
-             $childCate = $this->getCategoryByParentId($cate->parent_id);  
-        }            
-        else{
-            $list = $this->getProductList('status = 1 AND cate_parent_id ='.$cateId, $this->buildOrderby($order),12,$pageNum);  
-           $childCate = $this->getCategoryByParentId($cate->cate_id);  
-        }
+        $paginator   = new PaginatorModel(
+                array(
+                    'data' => $cate->getProducts(),
+                     "order" => $order,
+                    'limit' => 12
+                )
+            );
+        $list = $paginator->getPaginate();           
+        $childCate = $this->getCategoryByParentId($cate->parent_id);  
           
         $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "productList"        => $list,
