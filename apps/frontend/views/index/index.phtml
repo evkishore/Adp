@@ -13,6 +13,7 @@
                                              {%- for adv_item in adv %}
                                             <!-- SLIDE  -->
                                             <li data-index="rs-1" data-transition="random" data-slotamount="9" data-masterspeed="600" data-saveperformance="on" data-rotate="0" data-title="Slide-1" data-description="">
+                                               <a href="{{adv_item.link}}">
                                                 <!-- MAIN IMAGE -->
                                                 <img src="{{adv_item.img_url}}" alt="" width="1170" height="418" data-bgposition="right bottom" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                                                 <!-- LAYERS -->
@@ -28,6 +29,7 @@
                                                 <!-- LAYER NR. 3 -->
                                                 <div class="tp-caption text1-3 lfb lft tp-resizeme" id="slide-5-layer-3" data-x="102" data-y="230" data-width="548" data-height="40" data-speed="1500" data-easing="Power3.easeInOut" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" data-end="5000" style="z-index: 7; min-width: 548px; max-width: 548px; max-width: 40px; max-width: 40px; white-space: normal; color: rgba(255, 255, 255, 1.00);border-color:rgba(34, 34, 34, 1.00);">{{adv_item.description}}
                                                 </div>
+                                                </a>
                                             </li>
                                             {%- endfor %}                                            
                                         </ul>

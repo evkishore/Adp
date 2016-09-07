@@ -169,18 +169,21 @@ class ProductController extends ControllerBase {
                                 explode(self::slag,trim($this->request->getPost("himages"))): array();
             
             
-            $lst_child =  explode('@@',$dataPost['child_list']);
+                        
+            $lst_child = trim($dataPost['child_list']) !== "" ?
+                                explode('@@',trim($dataPost['child_list'], '@@')): array();
+            
             unset($dataPost['child_list']);
             
             
             
             if ($object->save($dataPost) == false) {
                 $this->flashSession->error("too bad! Save data unSuccessful");
-            } else {
+            } else {               
                 
-                    if(count($lst_child) > 0){
-                        if($object->ProductCate->delete() == false){}
-
+                    if(!empty($lst_child) && count($lst_child) > 0)
+                    {
+                        $object->ProductCate->delete();
                     }
                     //Save child node for category
                     foreach($lst_child as  $index => $item){

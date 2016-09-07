@@ -20,23 +20,27 @@
 	<button type="button" data-dismiss="modal" class="btn green" onclick="SaveChildCategory()">OK</button>
 </div>
 <script type="text/javascript">
-	$(function(){
-		$('#list_parent').multiSelect();
-	});
-
-	function SaveChildCategory(){
+    function SaveChildCategory(){
         var _returnChild  = "";
         $("#ms-list_parent div.ms-selection li").each(function(_index, _val){
             $_this = $(this);
             if($_this.is(":visible")){
-                var _textSelected = $_this.children("span").html().trim();
+                var _textSelected = $_this.children("span").text().trim();
+                //console.log('DK_'+ _textSelected);
                 $("#list_parent option").each(function(_indexs,_select){
+                    //console.log($(_select).text().trim());
                     if( _textSelected != "" && _textSelected == $(_select).text().trim() ){
+                        
                         _returnChild += $(_select).val() + "@@";
                     }
-                })
+                });
             }
         });
         $("#child_list").val(_returnChild);
     }
+	$(function(){
+		$('#list_parent').multiSelect();
+	});
+
+	
 </script>

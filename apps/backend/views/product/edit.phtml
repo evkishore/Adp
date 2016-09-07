@@ -49,30 +49,7 @@ use Multiple\Backend\Models\Brand as Brand;
                         <div class="col-md-10">
                             {{ text_field("name","class":"form-control","data-required":"1" , "value" : not detail is empty  ? detail.name :'') }}
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Category
-                            <span class="required"> * </span>
-                        </label>
-                        <div class="col-md-10">
-                             {{ hidden_field("cate_parent_id", "id" : "cate_parent_id", "value": not  detail is empty and not detail.Cate is empty ? detail.Cate.parent_id : 0 ) }}
-                            <?php
-                            // Creating a Select Tag with an empty option
-                            echo $this->tag->select(
-                                array(
-                                    'cate_id',
-                                    Cate::find(),
-                                    'using'         => array('cate_id', 'name'),
-                                    'useEmpty'      => true,
-                                    'emptyText'     => 'Please, choose one...',
-                                    'emptyValue'    => '',
-                                    'class'         => 'form-control',
-                                    'value'         => !empty($detail) ? $detail->cate_id : '',
-                                    'onchange'      => "ajaxGetParentId(this); "
-                                ));
-                            ?>
-                        </div>
-                    </div>
+                    </div>                    
                     <div class="form-group">
                         <label class="control-label col-md-2">Add Category</label>
                         <div class="col-md-9">
