@@ -37,11 +37,16 @@ class ProductController extends ControllerBase {
                 array(
                     'data' => $cate->getProducts(),
                      "order" => $order,
+                    'page'  => $pageNum,
                     'limit' => 12
                 )
             );
         $list = $paginator->getPaginate();           
-        $childCate = $this->getCategoryByParentId($cate->parent_id);  
+        $childCate = $this->getCategoryByParentId($cate->cate_id);  
+        
+        if (count($childCate)==0) {
+            $childCate = $this->getCategoryByParentId($cate->parent_id); 
+        }
           
         $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "productList"        => $list,

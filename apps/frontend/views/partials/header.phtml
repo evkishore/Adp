@@ -87,7 +87,7 @@
                                                                                                            
                                                         
                                                         {%- for cate_item in root_cate_items %} {% set child_cate_items = cate_item.getChilds() %} {% if child_cate_items|length > 0 %}
-                                                        <li class="default_dropdown drop_to_right children-menu"><a class="item_link" href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">
+                                                        <li class="multicolumn_dropdown drop_to_right children-menu"><a class="item_link" href="/product/{{cate_item.cate_id}}/date/{{cate_item.getSEOName()}}/1">
                                                             <span class="link_content">
 																		<span class="link_text">{{cate_item.name}}
                                                                 </span>
