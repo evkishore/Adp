@@ -78,11 +78,11 @@
                                                     
                             </a> -->
                             {% if pd_item.ProductImage|length>0 %}
-                                                                <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}" style="background-image: url('{{pd_item.ProductImage[0].img_url}}')" class="primary-image">
+                                                                <a href="/product/{{pd_item.getCateId()}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}" style="background-image: url('{{pd_item.ProductImage[0].img_url}}')" class="primary-image">
                                                                 </a>
                                                                 {% endif %}
                                                     {% if pd_item.ProductImage|length>1 %}
-                                                                    <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}" style="background-image: url('{{pd_item.ProductImage[1].img_url}}')" class="secondary-image">
+                                                                    <a href="/product/{{pd_item.getCateId()}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}" title="{{pd_item.name}}" style="background-image: url('{{pd_item.ProductImage[1].img_url}}')" class="secondary-image">
                                                                     </a>
                                                                 {% endif %}
                            
@@ -105,7 +105,7 @@
                         </div>
                         <div class="listview">
                             <h2 class="product-name">
-                                                    <a href="/product/{{pd_item.cate_id}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}">                                                           {{pd_item.name}}
+                                                    <a href="/product/{{pd_item.getCateId()}}/{{pd_item.getSEOCate()}}/{{pd_item.product_id}}/{{pd_item.getSEOTitle()}}">                                                           {{pd_item.name}}
                                                     </a>
                                                 </h2>
                           

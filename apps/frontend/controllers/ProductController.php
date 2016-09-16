@@ -22,7 +22,7 @@ class ProductController extends ControllerBase {
     public function detailAction($cateId,$cateName,$productId,$productName) {
         $parentCate = $this->getParentCategory();
         $product = $this->getProductDetailById($productId);
-        $productRelated = $this->getProductRelated($product->cate_id);
+        $productRelated = $this->getProductRelated($cateId);
         $this->view->setVars(array("root_cate_items"    => $parentCate,
                                    "product"            => $product,
                                    "productRelated"     => $productRelated
