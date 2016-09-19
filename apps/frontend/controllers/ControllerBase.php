@@ -9,7 +9,13 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
 class ControllerBase extends Controller {
     public function initialize() {
-      $this->assets
+        global $config;
+        $this->view->setVars(array(
+            "controllerName"    => $this->controllerName,
+            "actionName"        => $this->actionName,
+            "base_url"          => $config->app->fullUri
+        ));
+        $this->assets
           ->collection('css')
           ->addCss('frontend/lib/slick/slick.css')
           ->addCss('frontend/lib/slick/slick-theme.css')
@@ -29,15 +35,15 @@ class ControllerBase extends Controller {
           ->addCss('frontend/css/css/accessories/theme1.css')
           ->addCss('frontend/css/accessories/accessories.css')
           ;
-            
-    $this->assets
+
+        $this->assets
           ->collection('js-header')
             ->addJs('frontend/js/jquery-2.1.1.min.js')
             ->addJs('frontend/lib/jquary-ui/jquery-ui.js')
             ->addJs('frontend/js/bootstrap.min.js')
-              ;   
-        
-      $this->assets
+              ;
+
+        $this->assets
           ->collection('js')
             ->addJs('frontend/lib/styleswitch/styleswitcher.js')
             ->addJs('frontend/lib/styleswitch/styleswitch_custom.js')
@@ -51,9 +57,9 @@ class ControllerBase extends Controller {
             ->addJs('frontend/lib/countdown/jquery.countdown.min.js')
             ->addJs('frontend/lib/ntm/jquery.ntm.js')
             ->addJs('frontend/js/saharan.js')
-              ;       
-        }
-    
+              ;
+    }
+
     public function getParentCategory() {
         $conditions = "status = 1 AND parent_id =0 ";
         $cate = Category::find(
@@ -64,7 +70,7 @@ class ControllerBase extends Controller {
             );
         return $cate;
     }
-    
+
     public function getCategoryByParentId($parent_id) {
         $conditions = "status = 1 AND parent_id = ". $parent_id;
         $cate = Category::find(
@@ -75,7 +81,7 @@ class ControllerBase extends Controller {
             );
         return $cate;
     }
-    
+
      public function getBrand(){
         $conditions = "status = 1";
         $brand = Brand::find(
@@ -85,9 +91,9 @@ class ControllerBase extends Controller {
                 )
             );
         return $brand;
-    }  
-    
-    public function getProductList($conditions,$order,$page_size=10,$page=0) {      
+    }
+
+    public function getProductList($conditions,$order,$page_size=10,$page=0) {
         if($page > 0){
             $paginator   = new PaginatorModel(
                 array(
@@ -116,21 +122,21 @@ class ControllerBase extends Controller {
         }
         $product = $paginator->getPaginate();
         return $product;
-    }    
-     
-    public function getProductDetailById($product_id) {      
+    }
+
+    public function getProductDetailById($product_id) {
         $product = Product::findFirst("product_id={$product_id}");
         return $product;
     }
-    
-    public function getBrandDetailById($brand_id) {      
-       
+
+    public function getBrandDetailById($brand_id) {
+
         $brand = Brand::findFirst("brand_id={$brand_id}");
         return $brand;
     }
-    
-    public function getCategoryDetail($cate_id) {      
-       
+
+    public function getCategoryDetail($cate_id) {
+
         $cate = Category::findFirst("cate_id={$cate_id}");
         return $cate;
     }
@@ -144,6 +150,6 @@ class ControllerBase extends Controller {
         }
         return $order_by;
     }
-    
+
 }
 ?>
